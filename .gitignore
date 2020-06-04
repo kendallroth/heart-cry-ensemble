@@ -18,3 +18,7 @@ dist/
 logs
 yarn-debug.log
 yarn-error.log
+
+# Vercel deployment
+.vercel
+
