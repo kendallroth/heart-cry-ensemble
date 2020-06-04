@@ -1,0 +1,20 @@
+# Project dependencies
+node_modules
+.cache/
+.temp/
+
+# Build directory
+public/
+dist/
+
+# OS-specific files
+.DS_Store
+
+# Environment variables file
+.env
+.env.test
+
+# Logging
+logs
+yarn-debug.log
+yarn-error.log

@@ -1,0 +1,109 @@
+/**
+ * SCSS media query generator utilizing Bulma breakpoints
+ *
+ * NOTE: This file should only be imported in components, not the main SASS file!
+ */
+
+@import "~bulma/sass/utilities/_all.sass";
+
+// Base breakpoint values are taken from Bulma
+$breakpoint-phone: 0;
+$breakpoint-tablet: $tablet;
+$breakpoint-desktop: $desktop;
+$breakpoint-widescreen: $widescreen;
+$breakpoint-fullhd: $fullhd;
+
+// Extra-tabletall breakpoints
+@mixin phoneDown() {
+  @media only screen and (max-width: #{$breakpoint-tablet - 1}) {
+    @content;
+  }
+}
+
+@mixin phoneOnly() {
+  @media only screen and (min-width: #{$breakpoint-phone}) and (max-width: #{$breakpoint-tablet - 1}) {
+    @content;
+  }
+}
+
+@mixin phoneUp() {
+  // No media query necessary (covers all breakpoints)
+  @content;
+}
+
+// tabletall breakpoints
+@mixin tabletDown() {
+  @media only screen and (max-width: #{$breakpoint-desktop - 1}) {
+    @content;
+  }
+}
+
+@mixin tabletOnly() {
+  @media only screen and (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1}) {
+    @content;
+  }
+}
+
+@mixin tabletUp() {
+  @media only screen and (min-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+// Medium breakpoints
+@mixin desktopDown() {
+  @media only screen and (max-width: #{$breakpoint-widescreen - 1}) {
+    @content;
+  }
+}
+
+@mixin desktopOnly() {
+  @media only screen and (min-width: #{$breakpoint-desktop}) and (max-width: #{$breakpoint-widescreen - 1}) {
+    @content;
+  }
+}
+
+@mixin desktopUp() {
+  @media only screen and (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// Large breakpoints
+@mixin widescreenDown() {
+  @media only screen and (max-width: #{$breakpoint-fullhd - 1}) {
+    @content;
+  }
+}
+
+@mixin widescreenOnly() {
+  @media only screen and (min-width: #{$breakpoint-widescreen}) and (max-width: #{$breakpoint-fullhd - 1}) {
+    @content;
+  }
+}
+
+@mixin widescreenUp() {
+  @media only screen and (min-width: #{$breakpoint-widescreen}) {
+    @content;
+  }
+}
+
+// Extra-large breakpoints
+@mixin fullhdDown() {
+  // No media query necessary (covers all breakpoints)
+  @content;
+}
+
+@mixin fullhdOnly() {
+  // No max media query necessary (already top breakpoint)
+  // Technically equal to `fullhdUp` mixin
+  @media only screen and (min-width: #{$breakpoint-fullhd}) {
+    @content;
+  }
+}
+
+@mixin fullhdUp() {
+  @media only screen and (min-width: #{$breakpoint-fullhd}) {
+    @content;
+  }
+}
