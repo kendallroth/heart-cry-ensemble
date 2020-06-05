@@ -9,7 +9,7 @@
   "scripts": {
     "graphql:deploy": "sanity graphql deploy --playground",
     "start": "sanity start",
-    "studio:deploy": "sanity build",
+    "build": "sanity build && cp static/_redirects dist/",
     "test": "sanity check"
   },
   "keywords": [
