@@ -1,8 +1,8 @@
 <template>
   <div class="app__layout">
-    <TheAppHeader />
+    <TheAppHeader :transparent="headerTransparent" />
     <!-- Default content slot -->
-    <div class="app__content">
+    <div :class="{ 'app__content--offset': headerOffset }" class="app__content">
       <slot />
     </div>
     <TheAppFooter v-if="includeFooter" />
@@ -39,6 +39,23 @@ export default {
   },
   props: {
     /**
+     * Whether the header is transparent
+     */
+    headerTransparent: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    /**
+     * Whether to offset page content for navbar
+     * @type {boolean}
+     */
+    headerOffset: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    /**
      * Whether to include the footer
      * @type {boolean}
      */
@@ -52,6 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@styles/_variables";
+
 .app__layout {
   display: flex;
   flex-direction: column;
@@ -62,5 +81,9 @@ export default {
   flex-grow: 1;
   // NOTE: Necessary to properly handle hero images and their content
   z-index: 1;
+
+  &.app__content--offset {
+    margin-top: $app-header-height;
+  }
 }
 </style>
