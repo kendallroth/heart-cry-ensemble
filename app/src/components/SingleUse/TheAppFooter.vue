@@ -13,7 +13,17 @@
       <div class="footer__info__text">
         Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
       </div>
-      <div class="footer__info__icons">
+      <div class="footer__info__developer has-text-centered-desktop">
+        Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View at
+        <a
+          class="has-text-gitlab"
+          href="https://gitlab.com/kendallroth/heart-cry-ensemble"
+          target="_blank"
+        >
+          <i class="fab fa-gitlab" />
+        </a>
+      </div>
+      <div class="footer__info__icons has-text-right-desktop">
         <a
           key="email"
           :href="$static.siteSettings.contactEmail"
@@ -92,21 +102,35 @@ $footer-padding: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding: $footer-padding;
   border-top: 1px solid grey;
 
-  @include tabletUp {
+  @include tabletDown {
+    > *:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+
+  @include desktopUp {
     flex-direction: row;
+
+    > * {
+      width: calc(100% / 3);
+    }
   }
 }
 
 .footer__info__text {
   font-size: 0.9rem;
   color: #dedede;
+}
 
-  @include phoneDown {
-    margin-bottom: 24px;
+.footer__info__developer {
+  .has-text-love {
+    color: #f14668;
+  }
+  .has-text-gitlab {
+    color: #ff9238;
   }
 }
 
