@@ -1,0 +1,12 @@
+# Redirect http to https
+http://heartcryensemble.ca/*            https://heartcryensemble.ca/:splat      301!
+http://www.heartcryensemble.ca/*        https://heartcryensemble.ca/:splat      301!
+
+# Redirect from Netlify subdomain to actual app subdomain
+https://heart-cry-ensemble-app.netlify.com/*  https://heartcryensemble.ca/:splat      301!
+
+# Redirect from "bare" domain to "www" subdomain
+https://heartcryensemble.ca/*           https://www.heartcryensemble.ca/:splat  301!
+
+# Test redirect file
+https://heartcryensemble.ca/redirect    https://heartcryensemble.ca             302!
