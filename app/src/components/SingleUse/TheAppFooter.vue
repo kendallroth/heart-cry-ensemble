@@ -16,8 +16,10 @@
       <div class="footer__info__developer has-text-centered-desktop">
         Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View at
         <a
+          aria-label="GitLab"
           class="has-text-gitlab"
           href="https://gitlab.com/kendallroth/heart-cry-ensemble"
+          rel="noreferrer"
           target="_blank"
         >
           <i class="fab fa-gitlab" />
@@ -27,7 +29,9 @@
         <a
           key="email"
           :href="$static.siteSettings.contactEmail"
+          aria-label="Email"
           class="icon"
+          rel="noreferrer"
           target="_blank"
         >
           <i class="far fa-envelope" />
@@ -35,8 +39,10 @@
         <a
           v-for="media in $static.siteSettings.socialMedia"
           :key="media.type"
+          :aria-label="media.name"
           :href="media.link"
           class="icon"
+          rel="noreferrer"
           target="_blank"
         >
           <i :class="media.icon" />
