@@ -1,7 +1,7 @@
 <template>
   <header class="app__header">
     <nav class="header__links">
-      <g-link to="/">Home</g-link>
+      <g-link class="header__link" to="/">Home</g-link>
     </nav>
   </header>
 </template>
@@ -13,8 +13,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@styles/_breakpoints";
-
 $header-height: 80px;
 
 // Header styles
@@ -34,15 +32,15 @@ $header-height: 80px;
 .header__links {
   text-transform: uppercase;
   font-weight: bold;
+}
 
-  a {
-    padding: 8px;
-    color: white;
-    transition: color 0.2s;
+.header__link {
+  padding: 8px;
+  color: white;
+  transition: color 0.2s;
 
-    &:hover {
-      color: lightgrey;
-    }
+  &:hover {
+    color: lightgrey;
   }
 }
 </style>

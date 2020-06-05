@@ -75,7 +75,7 @@ $footer-padding: 32px;
   justify-content: center;
   flex-direction: column;
   padding: calc(#{$footer-padding} * 1.5);
-  font-size: 120%;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -102,7 +102,8 @@ $footer-padding: 32px;
 }
 
 .footer__info__text {
-  font-size: 80%;
+  font-size: 0.9rem;
+  color: #dedede;
 
   @include phoneDown {
     margin-bottom: 24px;
@@ -111,7 +112,7 @@ $footer-padding: 32px;
 
 .footer__info__icons {
   .icon {
-    font-size: 20px;
+    font-size: 1.4rem;
     color: white;
 
     &:not(:first-of-type) {

@@ -78,13 +78,13 @@ $content-block-width: 650px;
 
 .content-block__header {
   margin-bottom: 16px;
-  font-size: 250%;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 .content-block__text {
   color: black;
-  font-size: 90%;
+  font-size: 0.9rem;
   line-height: 2;
 }
 </style>
