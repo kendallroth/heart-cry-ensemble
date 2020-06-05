@@ -1,13 +1,12 @@
 <template>
   <Layout>
-    <div class="hero-image">
-      <div class="hero-image__overlay" />
+    <HeroImage :image="require('@assets/images/HC-Marius-Masalar-Book.jpg')">
       <g-image
         alt="logo"
         src="~/assets/images/HCE-Logo-Square.png"
         width="500"
       />
-    </div>
+    </HeroImage>
     <section class="content-blocks">
       <div class="content-block mission-statement">
         <h3 class="content-block__header">Who We Are</h3>
@@ -36,8 +35,14 @@ query {
 </page-query>
 
 <script>
+// Components
+import HeroImage from "@components/HeroImage";
+
 export default {
   name: "IndexPage",
+  components: {
+    HeroImage,
+  },
 };
 </script>
 
@@ -45,35 +50,6 @@ export default {
 @import "~bulma/sass/utilities/_all.sass";
 
 $content-block-width: 650px;
-
-// Hero image styles
-.hero-image {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../assets/images/HC-Marius-Masalar-Book.jpg");
-  background-position: center center;
-  background-size: cover;
-  // Move behind other page elements
-  z-index: -1;
-
-  // Move above other page elements
-  img {
-    z-index: 1;
-  }
-}
-
-.hero-image__overlay {
-  background-color: #000000;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-}
 
 // Content block styles
 .content-blocks {
