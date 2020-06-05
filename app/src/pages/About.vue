@@ -2,7 +2,7 @@
   <Layout>
     <h2 class="about__title">Heart Cry Ensemble</h2>
     <section class="columns is-centered">
-      <div class="about__content column is-10-tablet is-8-desktop">
+      <div class="about__content column is-10-tablet is-8-desktop is-6-fullhd">
         <blockquote class="about__mission-statement">
           Heart Cry Ensemble is a small mixed ensemble dedicated to preserving
           the quality of our spiritual musical heritage by impacting our
