@@ -1,5 +1,5 @@
 <template>
-  <Layout :headerOffset="false" :headerTransparent="true">
+  <Layout :headerOffset="false">
     <HeroImage :image="require('@assets/images/HC-Marius-Masalar-Book.jpg')">
       <g-image
         alt="logo"
