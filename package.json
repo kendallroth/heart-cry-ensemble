@@ -1,8 +1,7 @@
 {
   "scripts": {
     "format": "prettier --write \"app/**/*.(js|vue)\" \"server/**/*.js\"",
-    "api:deploy": "cd api && yarn api:deploy && cd -",
-    "app:build": "cd app && yarn build && cd -"
+    "graphql:deploy": "cd api && yarn graphql:deploy && cd -"
   },
   "devDependencies": {
     "eslint": "^7.1.0",
