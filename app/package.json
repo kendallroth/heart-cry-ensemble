@@ -1,9 +1,13 @@
 {
-  "name": "app",
+  "name": "heart-cry-ensemble-app",
   "private": true,
+  "version": "0.1.0",
+  "description": "Heart Cry Ensemble website app",
+  "author": "Kendall Roth <kendall@kendallroth.ca>",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "gridsome build",
-    "develop": "gridsome develop",
+    "start": "gridsome develop",
     "explore": "gridsome explore"
   },
   "dependencies": {
@@ -11,6 +15,7 @@
     "date-fns": "^2.14.0",
     "dotenv": "^8.2.0",
     "gridsome": "^0.7.0",
+    "gridsome-plugin-pwa": "^0.0.17",
     "gridsome-source-sanity": "^1.0.5",
     "typeface-montserrat": "^0.0.75"
   },

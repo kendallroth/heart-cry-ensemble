@@ -1,20 +1,16 @@
 {
-  "name": "heartcryensemble",
+  "name": "heart-cry-ensemble-api",
   "private": true,
-  "version": "1.0.0",
-  "description": "",
-  "main": "package.json",
+  "version": "0.1.0",
+  "description": "Heart Cry Ensemble website CMS",
   "author": "Kendall Roth <kendall@kendallroth.ca>",
   "license": "UNLICENSED",
   "scripts": {
+    "build": "sanity build && cp static/_redirects dist/",
     "graphql:deploy": "sanity graphql deploy --playground",
     "start": "sanity start",
-    "build": "sanity build && cp static/_redirects dist/",
     "test": "sanity check"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
     "@sanity/base": "^1.149.15",
     "@sanity/cli": "^1.149.13",

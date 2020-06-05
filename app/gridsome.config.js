@@ -11,7 +11,7 @@ const Paths = {
   styles: path.join(__dirname, "src", "assets", "styles"),
 };
 
-// NOTE: This wa an attempt to load some stylesheets for all Vue components,
+// NOTE: This was an attempt to load some stylesheets for all Vue components,
 //         but it prevented Bulma from working somehow...
 // https://gridsome.org/docs/assets-css/#global-preprocessor-files-ie-variables-mixins
 /*function addStyleResource(rule) {
@@ -23,11 +23,13 @@ const Paths = {
     });
 }*/
 
+const siteName = "Heart Cry Ensemble";
+
 module.exports = {
-  siteName: "Heart Cry Ensemble",
+  siteName,
   siteUrl: "https://heartcryensemble.org",
   titleTemplate: "%s",
-  icon: "./src/assets/images/HCE-Favicon.png",
+  icon: "./src/favicon.png",
   plugins: [
     {
       use: "gridsome-source-sanity",
@@ -37,6 +39,26 @@ module.exports = {
         overlayDrafts: false,
         watchMode: false,
         graphqlTag: "default",
+      },
+    },
+    {
+      use: "gridsome-plugin-pwa",
+      options: {
+        title: siteName,
+        shortName: "Heart Cry",
+        categories: ["choral"],
+        lang: "en-US",
+        //startUrl: "/",
+        //display: "standalone",
+        //statusBarStyle: "default",
+        //manifestPath: "manifest.json",
+        disableServiceWorker: true,
+        //serviceWorkerPath: "service-worker.js",
+        //cachedFileTypes: "js,json,css,html,png,jpg,jpeg,svg",
+        themeColor: "",
+        backgroundColor: "",
+        // Must be provided like "src/favicon.png"
+        icon: "src/favicon.png",
       },
     },
   ],
