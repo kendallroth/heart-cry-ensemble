@@ -14,14 +14,6 @@ const Paths = {
 // NOTE: This was an attempt to load some stylesheets for all Vue components,
 //         but it prevented Bulma from working somehow...
 // https://gridsome.org/docs/assets-css/#global-preprocessor-files-ie-variables-mixins
-/*function addStyleResource(rule) {
-  rule
-    .use("style-resource")
-    .loader("style-resources-loader")
-    .options({
-      patterns: [path.join(Paths.styles, "_breakpoints.scss")],
-    });
-}*/
 
 const siteName = "Heart Cry Ensemble";
 
@@ -69,16 +61,6 @@ module.exports = {
       },
     },
   ],
-  // NOTE: This broke Bulma configuration for some reason (maybe loading first??)
-  /*chainWebpack(config) {
-    // Load SCSS variables for all Vue files
-    const vueTypes = ["vue-modules", "vue", "normal-modules", "normal"];
-
-    vueTypes.forEach((type) => {
-      // addStyleResource(config.module.rule("sass").oneOf(type));
-      addStyleResource(config.module.rule("scss").oneOf(type));
-    });
-  },*/
   configureWebpack(config) {
     return merge(
       {
