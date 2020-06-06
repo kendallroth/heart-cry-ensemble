@@ -13,6 +13,17 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "groupType",
+      type: "string",
+      title: "Group Type",
+      options: {
+        list: ["Mixed", "Male"],
+        layout: "radio",
+        direction: "horizontal",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "startDate",
       type: "date",
       title: "Start Date",
@@ -36,6 +47,13 @@ export default {
       validation: (Rule) =>
         Rule.unique().error("Member can only be added to a season once"),
       of: [{ type: "seasonMember" }],
+    },
+  ],
+  orderings: [
+    {
+      title: "Season Date",
+      name: "seasonDate",
+      by: [{ field: "startDate", direction: "desc" }],
     },
   ],
 };

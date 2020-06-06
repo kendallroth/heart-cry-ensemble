@@ -36,6 +36,7 @@ export default {
     {
       name: "socialMedia",
       type: "array",
+      description: "Social media links",
       of: [{ type: "socialMedia" }],
     },
     {

@@ -10,19 +10,16 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "email",
-      type: "string",
-      title: "Email",
-    },
-    {
-      name: "phone",
-      type: "string",
-      title: "Phone",
-    },
-    {
       name: "address",
-      type: "address",
+      type: "string",
       title: "Address",
+      description: "Short address (city, province)",
+    },
+    {
+      name: "socialMedia",
+      type: "array",
+      description: "Social media links",
+      of: [{ type: "socialMedia" }],
     },
   ],
 };
