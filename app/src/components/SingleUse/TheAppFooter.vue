@@ -10,10 +10,7 @@
       </a>
     </div>
     <div class="footer__info">
-      <div class="footer__info__text">
-        Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
-      </div>
-      <div class="footer__info__developer has-text-centered-desktop">
+      <div class="footer__info__developer">
         Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View at
         <a
           aria-label="GitLab"
@@ -24,6 +21,9 @@
         >
           <i class="fab fa-gitlab" />
         </a>
+      </div>
+      <div class="footer__info__text has-text-centered-desktop">
+        Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
       </div>
       <div class="footer__info__icons has-text-right-desktop">
         <a
@@ -79,6 +79,7 @@ export default {
 @import "@styles/_breakpoints";
 
 $footer-padding: 32px;
+$text-grey-light: #bfbfbf;
 
 .app__footer {
   color: white;
@@ -96,7 +97,7 @@ $footer-padding: 32px;
 }
 
 .footer__contact__title {
-  color: #bfbfbf;
+  color: $text-grey-light;
 }
 
 .footer__contact__email {
@@ -104,11 +105,13 @@ $footer-padding: 32px;
   color: white;
 }
 
+// Bottom footer section
 .footer__info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: $footer-padding;
+  font-size: 0.9rem;
   border-top: 1px solid grey;
 
   @include tabletDown {
@@ -126,12 +129,10 @@ $footer-padding: 32px;
   }
 }
 
-.footer__info__text {
-  font-size: 0.9rem;
-  color: #dedede;
-}
-
+.footer__info__text,
 .footer__info__developer {
+  color: $text-grey-light;
+
   .has-text-love {
     color: #f14668;
   }
