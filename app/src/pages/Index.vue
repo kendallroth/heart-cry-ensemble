@@ -8,20 +8,20 @@
       />
     </HeroImage>
     <section class="content-blocks">
-      <div class="content-block mission-statement">
-        <h3 class="content-block__header">Who We Are</h3>
-        <div class="content-block__text">
-          {{ $page.siteSettings.missionStatement }}
+      <template v-for="(contentBlock, idx) in $page.homePage.contentBlocks">
+        <div :key="`${contentBlock.title}_div`" class="content-block">
+          <h3 class="content-block__header">{{ contentBlock.title }}</h3>
+          <BlockContent
+            :blocks="contentBlock.textRaw"
+            className="content-block__text"
+            renderContainerOnSingleChild
+          />
         </div>
-      </div>
-      <hr />
-      <div class="content-block upcoming-events">
-        <h3 class="content-block__header">Upcoming Events</h3>
-        <div class="content-block__text">
-          Our next season of programs will begin this fall
-          <em>(COVID-19 permitting)</em>.
-        </div>
-      </div>
+        <hr
+          v-if="idx < $page.homePage.contentBlocks.length - 1"
+          :key="`${contentBlock.title}_hr`"
+        />
+      </template>
     </section>
   </Layout>
 </template>
@@ -30,6 +30,12 @@
 query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     missionStatement
+  }
+  homePage: sanityHomePage(id: "homePage") {
+    contentBlocks {
+      title
+      textRaw: _rawText
+    }
   }
 }
 </page-query>
@@ -84,7 +90,7 @@ $content-block-width: 650px;
 
 .content-block__text {
   color: black;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 2;
 }
 </style>

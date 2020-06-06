@@ -7,7 +7,7 @@
           {{ $page.siteSettings.missionStatement }}
         </blockquote>
         <BlockContent
-          :blocks="$page.aboutPage._rawGroupSummary"
+          :blocks="$page.aboutPage.groupSummaryRaw"
           className="about__content__blocks"
         />
       </div>
@@ -21,7 +21,7 @@ query {
     missionStatement
   }
   aboutPage: sanityAboutPage(id: "aboutPage") {
-    _rawGroupSummary
+    groupSummaryRaw: _rawGroupSummary
   }
 }
 </page-query>

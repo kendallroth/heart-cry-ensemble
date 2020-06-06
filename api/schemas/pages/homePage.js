@@ -3,13 +3,12 @@ export default {
   type: "document",
   title: "Home Page",
   fields: [
-    // TODO: Replace with "content blocks" (rich text)
     {
-      name: "missionStatement",
-      type: "text",
-      title: "Mission Statement",
-      description: "Short description of the group's vision",
-      rows: 3,
+      name: "contentBlocks",
+      type: "array",
+      title: "Content Blocks",
+      description: "Content blocks beneath main hero image",
+      of: [{ type: "homePageContent" }],
     },
   ],
   preview: {

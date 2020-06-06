@@ -36,8 +36,9 @@ module.exports = {
       options: {
         projectId: config.sanity.projectId,
         dataset: config.sanity.dataset,
+        // NOTE: This seems to not work for some reason
         overlayDrafts: false,
-        watchMode: false,
+        watchMode: true,
         graphqlTag: "default",
       },
     },
