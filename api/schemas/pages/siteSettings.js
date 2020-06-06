@@ -2,6 +2,9 @@ export default {
   name: "siteSettings",
   type: "document",
   title: "Site Settings",
+  // NOTE: This is experimental and not recommended! However, the other approach (custom actions)
+  //         does not disable adding new documents of this type from the "Add New" menu...
+  __experimental_actions: ["update", "publish"],
   fields: [
     {
       name: "title",
