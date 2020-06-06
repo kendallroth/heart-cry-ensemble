@@ -11,7 +11,8 @@
     </div>
     <div class="footer__info">
       <div class="footer__info__developer">
-        Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View at
+        Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View
+        at&nbsp;
         <a
           aria-label="GitLab"
           class="has-text-gitlab"
