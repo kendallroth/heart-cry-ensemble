@@ -18,7 +18,7 @@ Developing the Heart Cry Ensemble website requires a few prerequisites:
 
 The repository consists of 3 "projects," each representing a different portion of the site. The root project handles everything related to shared development (linting, etc). The `app` project handles the actual website app and deployment, while the `api` project handles the API schema and deployment.
 
-After cloning the repository, install the dependencies in all 3 projects with `yarn install`. Both projects can be started (from their respective folders) with `yarn start`, which will compile the scripts and start a local instance of the website and data studio. Changes will be automatically handled and synced to the browser.
+After cloning the repository, install the dependencies in all 3 projects with `yarn install`. Ensure that a local `.env` file exists in the `app`, while a local `.env.development` exists in the `api`. These environment files are necessary to provide configuration variables to the projects! Both projects can be started (from their respective folders) with `yarn start`, which will compile the scripts and start a local instance of the website and data studio. Changes will be automatically handled and synced to the browser.
 
 > **NOTE:** The GraphQL API must be compiled and deployed after every change to the Sanity models!
 
