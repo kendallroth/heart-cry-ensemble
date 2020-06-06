@@ -8,6 +8,7 @@ export default {
       name: "netlify",
       options: {
         title: "Netlify Deployments",
+        description: "Deploy the app when changes have been made in the CMS.",
         sites: [
           {
             title: "Website",
