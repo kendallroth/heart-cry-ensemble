@@ -12,13 +12,8 @@ dist/
 
 # Environment variables file
 .env
-.env.test
+.env.*
 
 # Logging
 logs
-yarn-debug.log
-yarn-error.log
-
-# Vercel deployment
-.vercel
-
+*.log
