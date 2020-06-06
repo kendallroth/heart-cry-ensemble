@@ -2,7 +2,8 @@
  * Define various types for dashboard utilities
  */
 
-const pages = ["homePage"];
+// NOTE: Order here defines order in dashboard
+const pages = ["homePage", "aboutPage"];
 const lists = [
   { label: "Members", value: "member" },
   { label: "Seasons", value: "season" },

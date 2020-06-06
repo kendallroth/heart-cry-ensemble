@@ -9,6 +9,7 @@ import address from "./objects/address";
 import seasonMember from "./objects/seasonMember";
 import socialMedia from "./objects/socialMedia";
 // Singleton (page) models
+import aboutPage from "./pages/aboutPage";
 import homePage from "./pages/homePage";
 import siteSettings from "./pages/siteSettings";
 
@@ -16,6 +17,7 @@ export default createSchema({
   name: "default",
   types: schemaTypes.concat([
     // Pages
+    aboutPage,
     homePage,
     siteSettings,
     // Models

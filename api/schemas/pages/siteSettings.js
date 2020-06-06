@@ -21,6 +21,13 @@ export default {
       },
     },
     {
+      name: "missionStatement",
+      type: "text",
+      title: "Mission Statement",
+      description: "Short description of the group's vision",
+      rows: 3,
+    },
+    {
       name: "contactEmail",
       type: "email",
       title: "Contact Email",
@@ -38,7 +45,6 @@ export default {
       title: "Current Season",
       validation: (Rule) => Rule.required(),
     },
-    // TODO: Add social media icons
   ],
   preview: {
     // NOTE: Override the default page title in the editor

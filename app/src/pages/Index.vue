@@ -11,7 +11,7 @@
       <div class="content-block mission-statement">
         <h3 class="content-block__header">Who We Are</h3>
         <div class="content-block__text">
-          {{ $page.homePage.missionStatement }}
+          {{ $page.siteSettings.missionStatement }}
         </div>
       </div>
       <hr />
@@ -28,7 +28,7 @@
 
 <page-query>
 query {
-  homePage: sanityHomePage(id: "homePage") {
+  siteSettings: sanitySiteSettings(id: "siteSettings") {
     missionStatement
   }
 }

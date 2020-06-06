@@ -3,6 +3,7 @@ export default {
   type: "document",
   title: "Home Page",
   fields: [
+    // TODO: Replace with "content blocks" (rich text)
     {
       name: "missionStatement",
       type: "text",
