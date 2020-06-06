@@ -2,6 +2,7 @@ export default {
   name: "homePageContent",
   type: "object",
   title: "Home Page Content",
+  description: "Block of content for the home page",
   fields: [
     {
       name: "title",

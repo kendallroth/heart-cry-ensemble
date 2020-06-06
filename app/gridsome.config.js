@@ -38,7 +38,8 @@ module.exports = {
         dataset: config.sanity.dataset,
         // NOTE: This seems to not work for some reason
         overlayDrafts: false,
-        watchMode: true,
+        // NOTE: Running this in production will cause builds to fail (hang)
+        watchMode: process.env.NODE_ENV === "development",
         graphqlTag: "default",
       },
     },
