@@ -11,11 +11,13 @@ export default {
       options: {
         // Prevent selecting the same member twice in a season
         filter: ({ document }) => {
-          if (!document.members) return null;
+          if (!document.members) return;
 
           const selectedMemberIds = document.members
             .filter((m) => m.member)
             .map((m) => m.member._ref);
+
+          if (selectedMemberIds.length <= 0) return;
 
           return {
             filter: "!(_id in $selectedMembers)",
