@@ -1,0 +1,35 @@
+/*
+ * Variables
+ */
+
+// Layout
+$layout-navbar-height: 64px;
+
+// Typography
+$typography-header-1: 2.5rem;
+$typography-header-2: 2rem;
+$typography-header-3: 1.5rem;
+$typography-header-4: 1rem;
+
+// Breakpoints
+$breakpoint-xs: 0;     // Small to large handset
+$breakpoint-sm: 600;   // Small to medium tablet
+$breakpoint-md: 960;   // Large tablet to laptop
+$breakpoint-lg: 1280;  // Desktop
+$breakpoint-xl: 1920;  // 4k and ultra-wide
+
+// Colors
+$color-darken-percent: 10%;
+$color-lighten-percent: 10%;
+$color-blue: #3298dc;
+$color-blue-light: lighten($color-blue, $color-lighten-percent);
+$color-blue-dark: darken($color-blue, $color-darken-percent);
+$color-pink: #88034f;
+$color-pink-dark: darken($color-pink, $color-darken-percent);
+$color-pink-light: lighten($color-pink, $color-lighten-percent);
+
+// Theme
+$theme-primary: $color-pink;
+$theme-primary-dark: $color-pink-dark;
+$theme-primary-light: $color-pink-light;
+

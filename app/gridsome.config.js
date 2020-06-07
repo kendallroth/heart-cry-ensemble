@@ -11,11 +11,19 @@ const Paths = {
   styles: path.join(__dirname, "src", "assets", "styles"),
 };
 
-// NOTE: This was an attempt to load some stylesheets for all Vue components,
-//         but it prevented Bulma from working somehow...
-// https://gridsome.org/docs/assets-css/#global-preprocessor-files-ie-variables-mixins
-
 const siteName = "Heart Cry Ensemble";
+
+// Provide the "_vars" SCSS file to all components
+// Taken from: https://gridsome.org/docs/assets-css/#global-preprocessor-files-ie-variables-mixins
+const globalScssFiles = ["_vars", "_breakpoints", "_mixins"];
+const globalScssPaths = globalScssFiles.map((f) =>
+  path.resolve(`./src/assets/styles/${f}.scss`),
+);
+function addStyleResource(rule) {
+  rule.use("style-resource").loader("style-resources-loader").options({
+    patterns: globalScssPaths,
+  });
+}
 
 module.exports = {
   siteName,
@@ -61,6 +69,14 @@ module.exports = {
       },
     },
   ],
+  chainWebpack(config) {
+    const types = ["vue-modules", "vue", "normal-modules", "normal"];
+
+    types.forEach((type) => {
+      addStyleResource(config.module.rule("scss").oneOf(type));
+      addStyleResource(config.module.rule("sass").oneOf(type));
+    });
+  },
   configureWebpack(config) {
     return merge(
       {

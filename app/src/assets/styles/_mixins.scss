@@ -1,0 +1,19 @@
+@mixin setBackgroundHover($color, $hoverPercent: 10%) {
+  background-color: $color;
+
+  &:hover {
+    background-color: darken($color, $hoverPercent);
+  }
+}
+
+@mixin setBackgroundHoverOutline(
+  $color,
+  $hoverPercent: 10%,
+  $outlinePercent: 10%
+) {
+  @include setBackgroundHover($color, $hoverPercent);
+
+  &:active {
+    box-shadow: 0 0 1px 3px transparentize($color, 0.6);
+  }
+}

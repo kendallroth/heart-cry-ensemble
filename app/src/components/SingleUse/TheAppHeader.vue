@@ -27,8 +27,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@styles/_variables";
-
 // Header styles
 .app__header {
   position: absolute;
@@ -38,10 +36,11 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: $primary;
-  height: $app-header-height;
+  background-color: $theme-primary;
+  height: $layout-navbar-height;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  z-index: 10;
 
   &.app__header--transparent {
     background-color: transparent;
@@ -60,7 +59,7 @@ export default {
 
 .header__link {
   padding: 8px;
-  color: lightgrey;
+  color: transparentize(white, 0.25);
   transition: color 0.2s;
 
   &:hover,

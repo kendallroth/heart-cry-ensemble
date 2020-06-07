@@ -20,6 +20,7 @@
         <hr
           v-if="idx < $page.homePage.contentBlocks.length - 1"
           :key="`${contentBlock.title}_hr`"
+          class="content-block__separator"
         />
       </template>
     </section>
@@ -53,9 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~bulma/sass/utilities/_all.sass";
-@import "@styles/_variables";
-
 $content-block-width: 650px;
 
 // Content block styles
@@ -64,13 +62,11 @@ $content-block-width: 650px;
   flex-direction: column;
   align-items: center;
   padding: 64px 32px;
-  border-top: 24px solid $black;
+  border-top: 24px solid black;
 
   hr {
-    height: 1px;
-    width: 100%;
     max-width: $content-block-width;
-    background-color: $primary;
+    background-color: $theme-primary;
   }
 }
 
@@ -92,6 +88,10 @@ $content-block-width: 650px;
 .content-block__text {
   color: black;
   font-size: 0.95rem;
-  line-height: 2;
+  line-height: 1.6;
+}
+
+.content-block__separator {
+  margin: 32px 0;
 }
 </style>

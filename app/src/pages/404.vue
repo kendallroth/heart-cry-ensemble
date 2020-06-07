@@ -1,12 +1,12 @@
 <template>
-  <Layout :includeFooter="false">
+  <Layout :headerOffset="false" :includeFooter="false">
     <HeroImage :image="require('@assets/images/HC-Marius-Masalar-Book.jpg')">
-      <div class="page-not-found box">
-        <h2 class="page-not-found__title has-text-danger">404</h2>
+      <div class="page-not-found">
+        <h2 class="page-not-found__title">404</h2>
         <div class="page-not-found__subtitle">
           You just hit a page that doesn't exist!
         </div>
-        <g-link class="page-not-found__action button is-info is-medium" to="/">
+        <g-link class="page-not-found__action button button--large" to="/">
           Go to Home
         </g-link>
       </div>
@@ -36,6 +36,8 @@ export default {
   align-items: center;
   padding: 32px;
   text-align: center;
+  background-color: white;
+  border-radius: 8px;
 }
 
 .page-not-found__title {
@@ -43,6 +45,7 @@ export default {
   font-size: 8rem;
   line-height: 8rem;
   font-weight: bold;
+  color: $theme-primary;
 }
 
 .page-not-found__subtitle {
@@ -51,5 +54,8 @@ export default {
 
 .page-not-found__action {
   margin-top: 32px;
+  color: white;
+
+  @include setBackgroundHoverOutline($color-blue);
 }
 </style>

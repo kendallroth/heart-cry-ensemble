@@ -69,8 +69,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@styles/_variables";
-
 .app__layout {
   display: flex;
   flex-direction: column;
@@ -83,7 +81,7 @@ export default {
   z-index: 1;
 
   &.app__content--offset {
-    margin-top: $app-header-height;
+    margin-top: $layout-navbar-height;
   }
 }
 </style>

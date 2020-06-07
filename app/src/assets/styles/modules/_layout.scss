@@ -1,0 +1,51 @@
+/*
+ * Generate classes for a simple column/layout structure
+ *
+ * Example classes include "xs-12", "sm-8", and "md-6"
+ */
+
+$column-class: ".layout";
+$breakpoints: "xs", "sm", "md", "lg", "xl";
+$columns: 12;
+
+@mixin generateBreakpointColumns($breakpoint) {
+  @for $number from 1 through $columns {
+    #{$column-class}.#{$breakpoint}-#{$number} {
+      width: calc(100% * #{$number} / #{$columns});
+    }
+  }
+}
+
+// Generate the columns (grouped by media query)
+@include xsUp() {
+  @include generateBreakpointColumns("xs");
+}
+@include smUp() {
+  @include generateBreakpointColumns("sm");
+}
+@include mdUp() {
+  @include generateBreakpointColumns("md");
+}
+@include lgUp() {
+  @include generateBreakpointColumns("lg");
+}
+@include xlUp() {
+  @include generateBreakpointColumns("xl");
+}
+
+// NOTE: Disabled as this is likely not necessary and doubles the final size
+// @include xsOnly() {
+//   @include generateBreakpointColumns("xs-only")
+// }
+// @include smOnly() {
+//   @include generateBreakpointColumns("sm-only")
+// }
+// @include mdOnly() {
+//   @include generateBreakpointColumns("md-only")
+// }
+// @include lgOnly() {
+//   @include generateBreakpointColumns("lg-only")
+// }
+// @include xlOnly() {
+//   @include generateBreakpointColumns("xl-only")
+// }

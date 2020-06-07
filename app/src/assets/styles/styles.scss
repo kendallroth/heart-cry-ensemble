@@ -1,0 +1,23 @@
+// CSS reset
+@import "reset";
+
+@import "utilities";
+
+// Modules
+@import "modules/elements";
+@import "modules/buttons";
+@import "modules/layout";
+@import "modules/typography";
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  font-size: 100%;
+  background-color: #fcfcfc;
+  line-height: 1.3;
+}

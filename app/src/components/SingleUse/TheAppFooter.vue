@@ -10,7 +10,7 @@
       </a>
     </div>
     <div class="footer__info">
-      <div class="footer__info__developer">
+      <div class="footer__info__developer text-align--left">
         Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View
         at&nbsp;
         <a
@@ -23,10 +23,10 @@
           <i class="fab fa-gitlab" />
         </a>
       </div>
-      <div class="footer__info__text has-text-centered-desktop">
+      <div class="footer__info__text text-align--center">
         Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
       </div>
-      <div class="footer__info__icons has-text-right-desktop">
+      <div class="footer__info__icons text-align--right">
         <a
           key="email"
           :href="$static.siteSettings.contactEmail"
@@ -115,13 +115,13 @@ $text-grey-light: #bfbfbf;
   font-size: 0.9rem;
   border-top: 1px solid grey;
 
-  @include tabletDown {
+  @include smDown {
     > *:not(:first-child) {
       margin-top: 16px;
     }
   }
 
-  @include desktopUp {
+  @include mdUp {
     flex-direction: row;
 
     > * {

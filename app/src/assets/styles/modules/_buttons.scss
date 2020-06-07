@@ -1,0 +1,18 @@
+@import "@styles/_mixins";
+
+$button-transition: 0.15s;
+
+a.button,
+button.button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color $button-transition, box-shadow $button-transition,
+    color $button-transition;
+
+  @include setBackgroundHoverOutline(white);
+}
+
+.button.button--large {
+  padding: 16px 32px;
+  font-size: 1.25rem;
+}
