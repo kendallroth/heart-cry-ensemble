@@ -32,7 +32,6 @@ export default {
   },
   computed: {
     sizeClasses() {
-      console.log("Test");
       // NOTE: "sm-12" should always be included (can be overwritten)
       return ["sm-12", this.size.split(" ")];
     },
