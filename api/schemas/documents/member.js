@@ -4,9 +4,15 @@ export default {
   title: "Member",
   fields: [
     {
-      name: "name",
+      name: "firstName",
       type: "string",
-      title: "Name",
+      title: "First Name",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "lastName",
+      type: "string",
+      title: "Last Name",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -27,6 +33,27 @@ export default {
       title: "Biography",
       description: "Short biography about the member",
       rows: 3,
-    }
+    },
+  ],
+  preview: {
+    select: {
+      firstName: "firstName",
+      lastName: "lastName",
+    },
+    prepare({ firstName, lastName }) {
+      return {
+        title: `${firstName} ${lastName}`,
+      };
+    },
+  },
+  orderings: [
+    {
+      title: "Name",
+      name: "name",
+      by: [
+        { field: "lastName", direction: "asc" },
+        { field: "firstName", direction: "asc" },
+      ],
+    },
   ],
 };

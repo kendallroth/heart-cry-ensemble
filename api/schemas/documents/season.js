@@ -69,10 +69,6 @@ export default {
       title: "Programs",
       of: [{ type: "program" }],
     },
-    // TODO: Add songs?
-    /*{
-      name: "songs",
-    }*/
   ],
   orderings: [
     {
