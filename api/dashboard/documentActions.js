@@ -7,7 +7,8 @@ import defaultResolve, {
 import types from "./types";
 
 export default function resolveDocumentActions(props) {
-  // Singleton types cannot be created/removed
+  // Update the entity action menu options for singleton types,
+  //   as Singleton types cannot be created/removed.
   if (types.singletonTypes.includes(props.type)) {
     return defaultResolve(props).filter(
       (Action) => !(Action == DeleteAction || Action == CreateAction),

@@ -7,8 +7,10 @@ import season from "./documents/season";
 // Object models
 import address from "./objects/address";
 import homePageContent from "./objects/homePageContent";
+import program from "./objects/program";
 import seasonMember from "./objects/seasonMember";
 import socialMedia from "./objects/socialMedia";
+import song from "./objects/song";
 // Singleton (page) models
 import aboutPage from "./pages/aboutPage";
 import homePage from "./pages/homePage";
@@ -23,8 +25,10 @@ export default createSchema({
     // Objects
     address,
     homePageContent,
+    program,
     seasonMember,
     socialMedia,
+    song,
     // Pages
     aboutPage,
     homePage,

@@ -21,5 +21,12 @@ export default {
       description: "Social media links",
       of: [{ type: "socialMedia" }],
     },
+    {
+      name: "bio",
+      type: "text",
+      title: "Biography",
+      description: "Short biography about the member",
+      rows: 3,
+    }
   ],
 };

@@ -27,12 +27,21 @@ export default {
       name: "startDate",
       type: "date",
       title: "Start Date",
+      description: "End of season (including practices)",
       validation: (Rule) => Rule.required(),
     },
+    // NOTE: This has been deemed unnecessary currently
+    /*{
+      name: "programsDate",
+      type: "date",
+      title: "Programs Start Date",
+      validation: (Rule) => Rule.required(),
+    },*/
     {
       name: "endDate",
       type: "date",
       title: "End Date",
+      description: "End of season (including scheduled programs)",
       validation: (Rule) =>
         Rule.required().custom(
           (value, context) =>
@@ -48,6 +57,22 @@ export default {
         Rule.unique().error("Member can only be added to a season once"),
       of: [{ type: "seasonMember" }],
     },
+    {
+      name: "songs",
+      type: "array",
+      title: "Songs",
+      of: [{ type: "song" }],
+    },
+    {
+      name: "programs",
+      type: "array",
+      title: "Programs",
+      of: [{ type: "program" }],
+    },
+    // TODO: Add songs?
+    /*{
+      name: "songs",
+    }*/
   ],
   orderings: [
     {
