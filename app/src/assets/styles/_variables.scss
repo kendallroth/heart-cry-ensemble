@@ -1,3 +1,23 @@
-@import "variables-bulma";
+/*
+ * Variable and Bulma overrides
+ */
+
+// Colors
+$pink: #88034f;
+$pink-dark: #560027;
+$pink-light: #bc477b;
 
 $app-header-height: 64px;
+
+///////////////////////////////////////////////////////////////////////////////
+// Bulma Overrides
+///////////////////////////////////////////////////////////////////////////////
+
+// Theme
+$primary: $pink;
+$primary-dark: $pink-dark;
+$primary-light: $pink-light;
+
+// Text
+$family-sans-serif: "Montserrat", sans-serif;
+

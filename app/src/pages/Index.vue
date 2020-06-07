@@ -54,6 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~bulma/sass/utilities/_all.sass";
+@import "@styles/_variables";
 
 $content-block-width: 650px;
 
@@ -69,7 +70,7 @@ $content-block-width: 650px;
     height: 1px;
     width: 100%;
     max-width: $content-block-width;
-    background-color: $black;
+    background-color: $primary;
   }
 }
 

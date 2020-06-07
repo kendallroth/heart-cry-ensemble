@@ -6,7 +6,7 @@ import BlockContent from "sanity-blocks-vue-component";
 import DefaultLayout from "@layouts/Default";
 
 // Styles
-import "@styles/_variables-bulma.scss";
+import "@styles/_variables.scss";
 import "@styles/index.scss";
 
 export default (Vue) => {
