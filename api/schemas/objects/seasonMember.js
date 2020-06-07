@@ -46,8 +46,15 @@ export default {
   ],
   preview: {
     select: {
-      title: "member.name",
-      subtitle: "part",
+      memberFirstName: "member.firstName",
+      memberLastName: "member.lastName",
+      part: "part",
+    },
+    prepare({ memberFirstName, memberLastName, part }) {
+      return {
+        title: `${memberFirstName} ${memberLastName}`,
+        subtitle: part,
+      };
     },
   },
 };

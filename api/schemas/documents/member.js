@@ -40,7 +40,7 @@ export default {
       firstName: "firstName",
       lastName: "lastName",
     },
-    prepare({ firstName, lastName }) {
+    prepare({ firstName = "", lastName = "" }) {
       return {
         title: `${firstName} ${lastName}`,
       };
