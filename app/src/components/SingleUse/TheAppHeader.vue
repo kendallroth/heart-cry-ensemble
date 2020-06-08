@@ -1,7 +1,7 @@
 <template>
   <header
     :class="{ 'app__header--transparent': transparent }"
-    class="app__header navbar"
+    class="app__header elevation-6"
   >
     <nav class="header__links">
       <g-link class="header__link" to="/">Home</g-link>
@@ -38,8 +38,6 @@ export default {
   width: 100%;
   background-color: $theme-primary;
   height: $layout-navbar-height;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px 0 rgba(0, 0, 0, 0.12);
   z-index: 10;
 
   &.app__header--transparent {

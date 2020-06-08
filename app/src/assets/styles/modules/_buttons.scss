@@ -10,6 +10,8 @@ button.button {
   color: $theme-primary-dark;
   border: 1px solid $theme-primary-dark;
   border-radius: 4px;
+  outline: none;
+  cursor: pointer;
   transition: background-color $button-transition, box-shadow $button-transition,
     color $button-transition;
 

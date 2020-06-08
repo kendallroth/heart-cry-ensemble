@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <PageSection size="md-10 lg-8">
-      <h2 class="about__title">Heart Cry Ensemble</h2>
+      <h2 class="about__heading mb-md">Heart Cry Ensemble</h2>
       <blockquote class="about__mission-statement">
         {{ $page.siteSettings.missionStatement }}
       </blockquote>
@@ -10,8 +10,8 @@
         className="about__description__blocks"
       />
       <hr />
-      <h2 class="about__title">Members</h2>
-      <div class="about__members elevation-2">
+      <h2 class="about__heading mb-md">Members</h2>
+      <div class="about__members elevation-3">
         <div v-for="(part, name) in members" :key="name" class="member-list">
           <div class="member-list__title">{{ name }}</div>
           <div
@@ -25,7 +25,7 @@
       </div>
       <g-link
         class="page-not-found__action button is-large is-primary mt-md"
-        to="/members/"
+        to="/members/all/"
       >
         Members
       </g-link>
@@ -82,10 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.about__title {
-  margin-bottom: 24px;
-}
-
 .about__mission-statement {
   margin-bottom: 32px;
   padding: 8px 16px;
