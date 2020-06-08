@@ -6,7 +6,7 @@
         <div class="page-not-found__subtitle">
           You just hit a page that doesn't exist!
         </div>
-        <g-link class="page-not-found__action button button--large" to="/">
+        <g-link class="page-not-found__action button is-large" to="/">
           Go to Home
         </g-link>
       </div>
@@ -55,6 +55,7 @@ export default {
 .page-not-found__action {
   margin-top: 32px;
   color: white;
+  border: none;
 
   @include setBackgroundHoverOutline($color-blue);
 }

@@ -1,3 +1,4 @@
+// Set a button background, with hover based on color
 @mixin setBackgroundHover($color, $hoverPercent: 10%) {
   background-color: $color;
 
@@ -6,14 +7,35 @@
   }
 }
 
+// Set a button background, with hover and outline based on color
 @mixin setBackgroundHoverOutline(
   $color,
-  $hoverPercent: 10%,
-  $outlinePercent: 10%
+  $hoverPercent: 5%,
+  $outlinePercent: 5%
 ) {
   @include setBackgroundHover($color, $hoverPercent);
 
   &:active {
     box-shadow: 0 0 1px 3px transparentize($color, 0.6);
+  }
+}
+
+// Generate a ratio class
+@mixin generateRatioClass($name, $ratio) {
+  .ratio-#{$name} {
+    &:before {
+      content: "";
+      width: 1px;
+      margin-left: -1px;
+      float: left;
+      height: 0;
+      padding-top: 100%;
+    }
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   }
 }

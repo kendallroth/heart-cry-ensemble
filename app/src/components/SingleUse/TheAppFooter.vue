@@ -10,7 +10,7 @@
       </a>
     </div>
     <div class="footer__info">
-      <div class="footer__info__developer text-align--left">
+      <div class="footer__info__developer is-aligned-left">
         Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View
         at&nbsp;
         <a
@@ -23,10 +23,10 @@
           <i class="fab fa-gitlab" />
         </a>
       </div>
-      <div class="footer__info__text text-align--center">
+      <div class="footer__info__text is-aligned-center">
         Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
       </div>
-      <div class="footer__info__icons text-align--right">
+      <div class="footer__info__icons is-aligned-right">
         <a
           key="email"
           :href="$static.siteSettings.contactEmail"

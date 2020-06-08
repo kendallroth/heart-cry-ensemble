@@ -89,6 +89,7 @@ module.exports = {
             "@pages": path.join(Paths.src, "pages"),
             "@styles": path.join(Paths.src, "assets", "styles"),
             "@templates": path.join(Paths.src, "templates"),
+            "@utilities": path.join(Paths.src, "utilities"),
           },
         },
       },
