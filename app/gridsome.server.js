@@ -11,7 +11,7 @@ module.exports = function (api) {
     // Members page (optional filter)
     createPage({
       path: "/members/:filter",
-      component: "./src/pages/Members/Index.vue",
+      component: "./src/pages/Members.vue",
     });
   });
 };

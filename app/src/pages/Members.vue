@@ -74,8 +74,8 @@ query {
 
 <script>
 // Components
-import MemberCard from "./MemberCard";
-import MemberModal from "./MemberModal";
+import MemberCard from "@components/MemberPage/MemberCard";
+import MemberModal from "@components/MemberPage/MemberModal";
 
 const validMemberFilters = ["all"];
 
