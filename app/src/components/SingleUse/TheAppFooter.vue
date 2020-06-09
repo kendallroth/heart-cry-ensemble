@@ -10,9 +10,9 @@
       </a>
     </div>
     <div class="footer__info">
-      <div class="footer__info__developer is-aligned-left">
-        Created with <i class="fa fa-heart has-text-love" />&ensp;|&ensp;View
-        at&nbsp;
+      <div class="footer__info__developer">
+        Created with
+        <i class="material-icons has-text-love">favorite</i>&ensp;|&ensp;View at
         <a
           aria-label="GitLab"
           class="has-text-gitlab"
@@ -20,22 +20,22 @@
           rel="noreferrer"
           target="_blank"
         >
-          <i class="fab fa-gitlab" />
+          <SvgIcon icon="gitlab" />
         </a>
       </div>
-      <div class="footer__info__text is-aligned-center">
+      <div class="footer__info__text">
         Copyright &copy; {{ new Date().getFullYear() }} Heart Cry Ensemble
       </div>
-      <div class="footer__info__icons is-aligned-right">
+      <div class="footer__info__icons">
         <a
           key="email"
-          :href="$static.siteSettings.contactEmail"
+          :href="`mailto:${$static.siteSettings.contactEmail}`"
           aria-label="Email"
           class="icon"
           rel="noreferrer"
           target="_blank"
         >
-          <i class="far fa-envelope" />
+          <i class="material-icons">mail_outline</i>
         </a>
         <a
           v-for="media in $static.siteSettings.socialMedia"
@@ -46,7 +46,8 @@
           rel="noreferrer"
           target="_blank"
         >
-          <i :class="media.icon" />
+          <!-- TODO: Change to "icon" -->
+          <SvgIcon :icon="media.type" />
         </a>
       </div>
     </div>
@@ -130,22 +131,46 @@ $text-grey-light: #bfbfbf;
   }
 }
 
-.footer__info__text,
-.footer__info__developer {
+.footer__info__developer,
+.footer__info__text {
   color: $text-grey-light;
+}
+
+.footer__info__developer {
+  display: flex;
+  align-items: center;
 
   .has-text-love {
+    margin-left: 4px;
     color: #f14668;
   }
+
   .has-text-gitlab {
+    // NOTE: Necessary to properly center "a" tag
+    display: flex;
+    margin-left: 6px;
     color: #ff9238;
+
+    svg {
+      width: $icon-font-size;
+      height: $icon-font-size;
+    }
   }
 }
 
+.footer__info__text {
+  text-align: center;
+}
+
 .footer__info__icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
   .icon {
-    font-size: 1.4rem;
+    display: flex;
     color: white;
+    font-size: 1.25em;
 
     &:not(:first-of-type) {
       margin-left: 16px;

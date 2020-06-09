@@ -13,7 +13,7 @@
       </span>
     </p>
     <p v-if="member && member.seasons.length > 0" class="member-modal__seasons">
-      <i class="member-modal__seasons__icon fas fa-music" />
+      <i class="material-icons">music_note</i>
       <span class="member-modal__seasons__text">
         {{ member.seasons.join(",&ensp;") }}
       </span>
@@ -60,11 +60,12 @@ export default {
 
 .member-modal__seasons {
   display: flex;
+  align-items: center;
   margin-top: 16px;
-}
 
-.member-modal__seasons__icon {
-  color: $theme-secondary;
+  .material-icons {
+    color: $theme-secondary;
+  }
 }
 
 .member-modal__seasons__text {

@@ -9,14 +9,7 @@
           :member="member"
           :selected="selectedMember && selectedMember.id === member.id"
           @select="showModal(member)"
-        >
-          <p class="members-list__item__title">
-            <span class="members-list__item__name">{{ member.name }}</span>
-            <span class="members-list__item__seasons">
-              <i class="far fa-calendar-alt mr-xs" />{{ member.seasons }}
-            </span>
-          </p>
-        </MemberCard>
+        />
       </div>
       <MemberModal
         :member="selectedMember"

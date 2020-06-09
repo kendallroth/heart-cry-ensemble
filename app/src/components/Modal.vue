@@ -16,7 +16,7 @@
         </div>
         <slot v-if="closable" name="close">
           <button class="modal__close" type="button" @click="close">
-            <i class="fa fa-times"></i>
+            <i class="material-icons">close</i>
           </button>
         </slot>
         <div id="modal__content" class="modal__body">
@@ -134,11 +134,11 @@ $transition-time: 0.2s;
 }
 
 .modal__close {
+  display: flex;
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 24px;
-  height: 24px;
+  padding: 4px;
   background-color: transparent;
   border-radius: 100%;
   border: none;
@@ -150,6 +150,10 @@ $transition-time: 0.2s;
   }
 
   @include setBackgroundHoverOutline(white);
+
+  .material-icons {
+    font-weight: inherit;
+  }
 }
 
 .modal__body {
