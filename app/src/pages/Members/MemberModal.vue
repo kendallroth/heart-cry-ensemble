@@ -59,6 +59,7 @@ export default {
 }
 
 .member-modal__seasons {
+  display: flex;
   margin-top: 16px;
 }
 
