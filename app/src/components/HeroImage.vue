@@ -1,6 +1,6 @@
 <template>
   <div class="hero-image">
-    <g-image :src="image" class="hero-image__image" />
+    <g-image :src="image" alt="Hero Image" class="hero-image__image" />
     <div v-if="this.$slots.default" class="hero-image__content">
       <slot />
     </div>

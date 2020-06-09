@@ -142,7 +142,7 @@ $text-grey-light: #bfbfbf;
 
   .has-text-love {
     margin-left: 4px;
-    color: #f14668;
+    color: #e4526f;
   }
 
   .has-text-gitlab {
