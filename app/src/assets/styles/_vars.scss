@@ -22,15 +22,21 @@ $breakpoint-xl: 1920;  // 4k and ultra-wide
 // Colors
 $color-darken-percent: 10%;
 $color-lighten-percent: 10%;
-$color-blue: #3298dc;
+$color-blue: #298bcc;
 $color-blue-light: lighten($color-blue, $color-lighten-percent);
 $color-blue-dark: darken($color-blue, $color-darken-percent);
 $color-pink: #88034f;
 $color-pink-dark: darken($color-pink, $color-darken-percent);
 $color-pink-light: lighten($color-pink, $color-lighten-percent);
+$color-teal: #038874;
+$color-teal-dark: darken($color-teal, $color-darken-percent);
+$color-teal-light: lighten($color-teal, $color-lighten-percent);
 
 // Theme
 $theme-primary: $color-pink;
 $theme-primary-dark: $color-pink-dark;
 $theme-primary-light: $color-pink-light;
+$theme-secondary: $color-blue;
+$theme-secondary-dark: $color-blue-dark;
+$theme-secondary-light: $color-blue-light;
 

@@ -3,9 +3,9 @@ require("typeface-montserrat");
 import BlockContent from "sanity-blocks-vue-component";
 
 // Components
-import DefaultLayout from "@layouts/Default";
 import Modal from "@components/Modal";
 import PageSection from "@components/PageSection";
+import DefaultLayout from "@layouts/Default";
 
 // Styles
 import "@styles/styles.scss";

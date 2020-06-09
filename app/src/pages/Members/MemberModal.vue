@@ -1,15 +1,22 @@
 <template>
   <Modal
     v-show="show"
+    :closable="false"
     :persistent="false"
     :title="member && member.name"
     @close="close"
   >
-    <p v-if="member && member.bio" class="member-modal__bio">
-      {{ member.bio }}
+    <p class="member-modal__bio">
+      <span v-if="member && member.bio">{{ member.bio }}</span>
+      <span v-else class="is-empty">
+        No bio for {{ member && member.name }}
+      </span>
     </p>
-    <p v-else class="member-modal__bio is-empty">
-      No bio for {{ member && member.name }}
+    <p v-if="member && member.seasons.length > 0" class="member-modal__seasons">
+      <i class="member-modal__seasons__icon fas fa-music" />
+      <span class="member-modal__seasons__text">
+        {{ member.seasons.join(",&ensp;") }}
+      </span>
     </p>
   </Modal>
 </template>
@@ -46,8 +53,20 @@ export default {
 
 <style lang="scss" scoped>
 .member-modal__bio {
-  &.is-empty {
+  .is-empty {
     color: #999999;
   }
+}
+
+.member-modal__seasons {
+  margin-top: 16px;
+}
+
+.member-modal__seasons__icon {
+  color: $theme-secondary;
+}
+
+.member-modal__seasons__text {
+  margin-left: 8px;
 }
 </style>

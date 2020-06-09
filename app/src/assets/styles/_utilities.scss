@@ -9,6 +9,13 @@
   text-align: right;
 }
 
+// Text classes
+.can-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // Elevation classes
 $elevation-dark: rgba(0, 0, 0, 0.2);
 $elevation-mid: rgba(0, 0, 0, 0.14);

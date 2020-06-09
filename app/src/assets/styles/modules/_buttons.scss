@@ -5,6 +5,8 @@ $button-transition: 0.15s;
 
 a.button,
 button.button {
+  display: flex;
+  align-items: center;
   padding: 8px 16px;
   text-align: center;
   color: $theme-primary-dark;
@@ -20,6 +22,10 @@ button.button {
   &.is-fullwidth {
     width: 100%;
   }
+  &.is-icon {
+    padding: 8px;
+    border-radius: 48px;
+  }
   &.is-large {
     padding: 16px 32px;
     font-size: 1.25rem;
@@ -28,9 +34,15 @@ button.button {
     border-radius: 48px;
   }
 
-  &.is-primary {
+  &.is-primary,
+  &.is-secondary {
     color: white;
     border: none;
+  }
+  &.is-primary {
     @include setBackgroundHoverOutline($theme-primary);
+  }
+  &.is-secondary {
+    @include setBackgroundHoverOutline($theme-secondary);
   }
 }

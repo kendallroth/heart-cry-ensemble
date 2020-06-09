@@ -7,13 +7,14 @@
         aria-describedby="modal__content"
         class="modal elevation-10"
         role="dialog"
+        @click.stop
       >
         <div id="modal__title" class="modal__header">
           <slot name="header">
             <h3>{{ title }}</h3>
           </slot>
         </div>
-        <slot name="close">
+        <slot v-if="closable" name="close">
           <button class="modal__close" type="button" @click="close">
             <i class="fa fa-times"></i>
           </button>
@@ -37,6 +38,13 @@
 export default {
   name: "modal",
   props: {
+    /**
+     * Whether modal has close icon
+     */
+    closable: {
+      type: Boolean,
+      default: true,
+    },
     /**
      * Close button text
      */

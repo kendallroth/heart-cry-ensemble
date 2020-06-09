@@ -57,6 +57,6 @@ export default {
   color: white;
   border: none;
 
-  @include setBackgroundHoverOutline($color-blue);
+  @include setBackgroundHoverOutline($theme-secondary);
 }
 </style>
