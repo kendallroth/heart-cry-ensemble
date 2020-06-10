@@ -2,7 +2,19 @@
   <Layout>
     <PageSection size="xl-10">
       <h2 class="mb-sm">Members</h2>
-      <div class="members-list elevation-2">
+      <div class="members__filter button-group">
+        <button
+          v-for="filter in memberListFilters"
+          :key="filter.value"
+          :class="{ 'is-primary': memberListFilter === filter.value }"
+          class="button"
+          type="button"
+          @click="onFilterSelect(filter)"
+        >
+          {{ filter.label }}
+        </button>
+      </div>
+      <div class="members__list elevation-2">
         <MemberCard
           v-for="member in members"
           :key="member.id"
@@ -70,7 +82,11 @@ query {
 import MemberCard from "@components/MemberPage/MemberCard";
 import MemberModal from "@components/MemberPage/MemberModal";
 
-const validMemberFilters = ["all"];
+const memberListFilters = [
+  { label: "All", value: "all" },
+  { label: "Current", value: "current" },
+  { label: "Past", value: "past" },
+];
 
 export default {
   name: "Members",
@@ -80,18 +96,14 @@ export default {
   },
   data() {
     return {
+      filterType: "all",
+      memberListFilters,
       selectedMember: null,
     };
   },
   computed: {
     isMemberModalShown() {
       return Boolean(this.selectedMember);
-    },
-    isViewAll() {
-      const { filter } = this.$route.params;
-      if (!filter) return false;
-
-      return filter === "all";
     },
     members() {
       const { seasons, siteSettings } = this.$page;
@@ -121,22 +133,36 @@ export default {
         };
       });
 
-      return this.isViewAll ? members : members.filter((m) => m.isCurrent);
+      if (this.memberListFilter === "current") {
+        return members.filter((m) => m.isCurrent);
+      }
+      if (this.memberListFilter === "past") {
+        return members.filter((m) => !m.isCurrent);
+      }
+      return members;
+    },
+    memberListFilter() {
+      return this.$route.params.filter;
     },
   },
   mounted() {
     const { filter } = this.$route.params;
-    if (!filter) return;
-    if (!validMemberFilters.includes(filter)) {
-      this.$router.replace("/members");
+    // Redirect all non-valid member filter type routes
+    if (!filter || !memberListFilters.find((f) => f.value === filter)) {
+      this.$router.replace("/members/all/");
     }
   },
   methods: {
+    closeModal() {
+      this.selectedMember = null;
+    },
     showModal(member) {
       this.selectedMember = member;
     },
-    closeModal() {
-      this.selectedMember = null;
+    onFilterSelect(filter) {
+      if (filter.value === this.memberListFilter) return;
+
+      this.$router.push(`/members/${filter.value}`);
     },
   },
 };
@@ -146,11 +172,11 @@ export default {
 $items-per-row: 4;
 $item-spacing: 8px;
 
-.members-selector {
+.members__filter {
   margin-bottom: 24px;
 }
 
-.members-list {
+.members__list {
   display: flex;
   flex-direction: column;
   width: 100%;
