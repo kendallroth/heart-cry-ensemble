@@ -123,5 +123,6 @@ $content-block-width: 650px;
 .season-preview {
   margin-top: 32px;
   max-width: 500px;
+  border: 2px solid $theme-primary;
 }
 </style>

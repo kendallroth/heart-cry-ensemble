@@ -19,7 +19,6 @@
           v-for="member in members"
           :key="member.id"
           :member="member"
-          :selected="selectedMember && selectedMember.id === member.id"
           @select="showModal(member)"
         />
       </div>

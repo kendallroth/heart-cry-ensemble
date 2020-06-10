@@ -48,6 +48,8 @@ export default {
   computed: {
     seasonDate() {
       let { startDate, endDate } = this.season;
+      if (!startDate && !startDate) return "";
+
       const dateFormat = "yyyy-MMM-dd";
       startDate = format(new Date(startDate), dateFormat);
       endDate = format(new Date(endDate), dateFormat);
