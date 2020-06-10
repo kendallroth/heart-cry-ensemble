@@ -1,6 +1,10 @@
-// Taken from: https://github.com/vuetifyjs/vuetify/blob/master/packages/vuetify/src/services/breakpoint/index.ts
+import Vue from "vue";
 
-export default class Breakpoint {
+/**
+ * Breakpoint utility class that can be used as a mixin to provide breakpoint data to all components
+ *   Taken from: https://github.com/vuetifyjs/vuetify/blob/master/packages/vuetify/src/services/breakpoint/index.ts
+ */
+class Breakpoint {
   constructor(thresholds) {
     this.xs = false;
     this.sm = false;
@@ -47,14 +51,14 @@ export default class Breakpoint {
 
     this.xsOnly = xs;
     this.smOnly = sm;
-    this.smAndDown = (xs || sm) && !(md || lg || xl);
-    this.smAndUp = !xs && (sm || md || lg || xl);
+    this.smDown = (xs || sm) && !(md || lg || xl);
+    this.smUp = !xs && (sm || md || lg || xl);
     this.mdOnly = md;
-    this.mdAndDown = (xs || sm || md) && !(lg || xl);
-    this.mdAndUp = !(xs || sm) && (md || lg || xl);
+    this.mdDown = (xs || sm || md) && !(lg || xl);
+    this.mdUp = !(xs || sm) && (md || lg || xl);
     this.lgOnly = lg;
-    this.lgAndDown = (xs || sm || md || lg) && !xl;
-    this.lgAndUp = !(xs || sm || md) && (lg || xl);
+    this.lgDown = (xs || sm || md || lg) && !xl;
+    this.lgUp = !(xs || sm || md) && (lg || xl);
     this.xlOnly = xl;
 
     switch (true) {
@@ -74,8 +78,6 @@ export default class Breakpoint {
         this.name = "xl";
         break;
     }
-
-    console.log("Updated breakpoints", this);
   }
 
   onResize() {
@@ -101,3 +103,25 @@ export default class Breakpoint {
     );
   }
 }
+
+// Need to use a Vue instance for its reactive data
+const breakpointData = new Vue({
+  data: {
+    $breakpoint: new Breakpoint({
+      xs: 600,
+      sm: 960,
+      md: 1280,
+      lg: 1920,
+    }),
+  },
+});
+
+const breakpointMixin = {
+  computed: {
+    $breakpoint: {
+      get: () => breakpointData.$data.$breakpoint,
+    },
+  },
+};
+
+export { Breakpoint, breakpointMixin };

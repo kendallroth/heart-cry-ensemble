@@ -6,6 +6,9 @@
       <slot />
     </div>
     <TheAppFooter v-if="includeFooter" />
+    <div v-if="isDebugBreakpointShown" class="debug-breakpoint">
+      {{ $breakpoint.name }}
+    </div>
   </div>
 </template>
 
@@ -30,6 +33,9 @@ query {
 // Components
 import TheAppFooter from "@components/SingleUse/TheAppFooter";
 import TheAppHeader from "@components/SingleUse/TheAppHeader";
+
+// Utilities
+import config from "@config";
 
 export default {
   name: "DefaultLayout",
@@ -65,6 +71,11 @@ export default {
       default: true,
     },
   },
+  computed: {
+    isDebugBreakpointShown() {
+      return config.isDevelopment;
+    },
+  },
 };
 </script>
 
@@ -83,5 +94,15 @@ export default {
   &.app__content--offset {
     margin-top: $layout-navbar-height;
   }
+}
+
+.debug-breakpoint {
+  position: fixed;
+  bottom: 0;
+  padding: 8px 16px;
+  border-top-right-radius: 4px;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 100;
 }
 </style>

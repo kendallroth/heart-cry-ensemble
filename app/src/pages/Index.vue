@@ -9,7 +9,7 @@
         width="500"
       />
     </HeroImage>
-    <section class="content-blocks">
+    <PageSection class="content-blocks" size="md-10 lg-8">
       <template v-for="(contentBlock, idx) in $page.homePage.contentBlocks">
         <div :key="`${contentBlock.title}_div`" class="content-block">
           <h3 class="content-block__header">{{ contentBlock.title }}</h3>
@@ -25,7 +25,14 @@
           class="content-block__separator"
         />
       </template>
-    </section>
+      <Hover v-slot="{ hover }">
+        <SeasonCard
+          :class="{ 'elevation-4': hover }"
+          :season="currentSeason"
+          class="season-preview"
+        />
+      </Hover>
+    </PageSection>
   </Layout>
 </template>
 
@@ -33,6 +40,17 @@
 query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     missionStatement
+    currentSeason {
+      name
+      startDate
+      endDate
+      members {
+        _key
+      }
+      programs {
+        _key
+      }
+    }
   }
   homePage: sanityHomePage(id: "homePage") {
     contentBlocks {
@@ -45,12 +63,19 @@ query {
 
 <script>
 // Components
-import HeroImage from "@components/HeroImage";
+import HeroImage from "@components/Layout/HeroImage";
+import SeasonCard from "@components/Season/SeasonCard";
 
 export default {
   name: "IndexPage",
   components: {
     HeroImage,
+    SeasonCard,
+  },
+  computed: {
+    currentSeason() {
+      return this.$page.siteSettings.currentSeason;
+    },
   },
 };
 </script>
@@ -60,9 +85,6 @@ $content-block-width: 650px;
 
 // Content block styles
 .content-blocks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 64px 32px;
   border-top: 24px solid black;
 
@@ -95,5 +117,11 @@ $content-block-width: 650px;
 
 .content-block__separator {
   margin: 32px 0;
+}
+
+// Season preview styles
+.season-preview {
+  margin-top: 32px;
+  max-width: 500px;
 }
 </style>
