@@ -110,26 +110,26 @@ export default {
       const { currentSeason } = siteSettings;
 
       const { edges } = this.$page.members;
-      const members = edges.map(({ node }) => {
+      const members = edges.map(({ node: member }) => {
         // Determine whether member is part of the current season
         const isCurrent = currentSeason.members.find(
-          (m) => m.member.id === node.id,
+          (m) => m.member.id === member.id,
         );
         // Find all seasons that the member has been part of
         const memberSeasons = seasons.edges.reduce(
           (accum, { node: season }) =>
-            season.members.find((m) => m.member.id === node.id)
+            season.members.find((m) => m.member.id === member.id)
               ? [...accum, season.name]
               : accum,
           [],
         );
 
         return {
-          id: node.id,
-          bio: node.bio,
+          id: member.id,
+          bio: member.bio,
           isCurrent,
           seasons: memberSeasons,
-          name: `${node.firstName} ${node.lastName}`,
+          name: `${member.firstName} ${member.lastName}`,
         };
       });
 

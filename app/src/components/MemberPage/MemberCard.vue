@@ -93,7 +93,7 @@ export default {
 }
 
 .members-card__chips {
-  > *:not(:first-of-type) {
+  > *:not(:first-child) {
     margin-left: 8px;
   }
 }
