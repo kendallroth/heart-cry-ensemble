@@ -4,7 +4,6 @@
       'elevation-1': !member.isCurrent,
       'elevation-2': member.isCurrent,
       'is-past': !member.isCurrent,
-      'is-selected': selected,
     }"
     class="members-card"
   >

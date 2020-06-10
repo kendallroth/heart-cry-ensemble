@@ -15,7 +15,11 @@
           </slot>
         </div>
         <slot v-if="closable" name="close">
-          <button class="modal__close" type="button" @click="close">
+          <button
+            class="modal__close button is-icon"
+            type="button"
+            @click="close"
+          >
             <i class="material-icons">close</i>
           </button>
         </slot>
