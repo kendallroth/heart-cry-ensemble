@@ -28,7 +28,7 @@
       </div>
       <g-link
         class="page-not-found__action button is-large is-primary mt-md"
-        to="/members/all/"
+        to="/members/current/"
       >
         Members
       </g-link>

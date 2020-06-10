@@ -96,7 +96,7 @@ export default {
   },
   data() {
     return {
-      filterType: "all",
+      filterType: "current",
       memberListFilters,
       selectedMember: null,
     };
@@ -149,7 +149,7 @@ export default {
     const { filter } = this.$route.params;
     // Redirect all non-valid member filter type routes
     if (!filter || !memberListFilters.find((f) => f.value === filter)) {
-      this.$router.replace("/members/all/");
+      this.$router.replace("/members/current/");
     }
   },
   methods: {
