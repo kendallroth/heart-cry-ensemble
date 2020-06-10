@@ -1,11 +1,7 @@
 <template>
   <div
-    :class="{
-      'elevation-1': !member.isCurrent,
-      'elevation-2': member.isCurrent,
-      'is-past': !member.isCurrent,
-    }"
-    class="members-card"
+    :class="{ 'is-past': !member.isCurrent }"
+    class="members-card elevation-2"
   >
     <div class="members-card__title">
       <span class="members-card__title__name can-truncate">

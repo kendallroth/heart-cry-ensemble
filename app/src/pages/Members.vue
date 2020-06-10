@@ -153,16 +153,27 @@ export default {
     }
   },
   methods: {
+    /**
+     * Close the member modal
+     */
     closeModal() {
       this.selectedMember = null;
     },
+    /**
+     * Show the member modal
+     */
     showModal(member) {
       this.selectedMember = member;
     },
+    /**
+     * Update the selected member filter
+     * @param {string} filter - Selected member filter
+     */
     onFilterSelect(filter) {
       if (filter.value === this.memberListFilter) return;
 
-      this.$router.push(`/members/${filter.value}`);
+      // Avoid cluttering history when switching through filter
+      this.$router.replace(`/members/${filter.value}`);
     },
   },
 };

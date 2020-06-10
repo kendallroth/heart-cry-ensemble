@@ -20,7 +20,7 @@
           <div
             v-for="member in part"
             :key="member.key"
-            class="member-list__name"
+            class="member-list__name can-truncate"
           >
             {{ member.name }}
           </div>
