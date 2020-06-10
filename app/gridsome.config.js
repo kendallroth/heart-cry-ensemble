@@ -44,12 +44,6 @@ module.exports = {
       },
     },
     {
-      use: "@gridsome/plugin-google-analytics",
-      options: {
-        id: config.google.analyticsId,
-      },
-    },
-    {
       use: "gridsome-plugin-pwa",
       options: {
         title: siteName,

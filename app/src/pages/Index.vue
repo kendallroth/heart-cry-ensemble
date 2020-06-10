@@ -2,7 +2,9 @@
   <Layout :headerOffset="false">
     <HeroImage :image="require('@assets/images/HC-Marius-Masalar-Book.jpg')">
       <g-image
-        alt="logo"
+        alt="Logo"
+        fit="contain"
+        height="500"
         src="~/assets/images/HCE-Logo-Square.png"
         width="500"
       />

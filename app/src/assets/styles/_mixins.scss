@@ -1,26 +1,8 @@
-// Set a button background, with hover based on color
-@mixin setBackgroundHover($color, $hoverPercent: 10%) {
-  background-color: $color;
-
-  &:hover {
-    background-color: darken($color, $hoverPercent);
-  }
-}
-
-// Set a button background, with hover and outline based on color
-@mixin setBackgroundHoverOutline(
-  $color,
-  $hoverPercent: 5%,
-  $outlinePercent: 5%
-) {
-  @include setBackgroundHover($color, $hoverPercent);
-
-  &:active {
-    box-shadow: 0 0 1px 3px transparentize($color, 0.6);
-  }
-}
-
-// Generate a ratio class
+/**
+ * Generate an aspect ratio class
+ * @param {string} name  - Aspect ratio name
+ * @param {string} ratio - Aspect ratio percentage
+ */
 @mixin generateRatioClass($name, $ratio) {
   .ratio-#{$name} {
     &:before {
@@ -29,7 +11,7 @@
       margin-left: -1px;
       float: left;
       height: 0;
-      padding-top: 100%;
+      padding-top: $ratio;
     }
 
     &:after {

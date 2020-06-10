@@ -32,8 +32,8 @@ export default {
   },
   computed: {
     sizeClasses() {
-      // NOTE: "sm-12" should always be included (can be overwritten)
-      return ["sm-12", this.size.split(" ")];
+      // NOTE: "xs-12" should always be included (can be overwritten)
+      return ["xs-12", this.size.split(" ")];
     },
   },
 };
