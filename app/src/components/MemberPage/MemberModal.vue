@@ -12,12 +12,23 @@
         No bio for {{ member && member.name }}
       </span>
     </p>
-    <p v-if="member && member.seasons.length > 0" class="member-modal__seasons">
-      <i class="material-icons">music_note</i>
-      <span class="member-modal__seasons__text">
-        {{ member.seasons.join(",&ensp;") }}
-      </span>
-    </p>
+    <div class="member-modal__details">
+      <p v-if="member" class="member-modal__detail">
+        <i class="material-icons">account_balance</i>
+        <span class="member-modal__detail__text">
+          {{ member.church || "Unknown" }}
+        </span>
+      </p>
+      <p
+        v-if="member && member.seasons.length > 0"
+        class="member-modal__detail"
+      >
+        <i class="material-icons">music_note</i>
+        <span class="member-modal__detail__text">
+          {{ member.seasons.join(",&ensp;") }}
+        </span>
+      </p>
+    </div>
   </Modal>
 </template>
 
@@ -58,17 +69,23 @@ export default {
   }
 }
 
-.member-modal__seasons {
+.member-modal__details {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-top: 16px;
 
-  .material-icons {
-    color: $theme-secondary;
+  > .member-modal__detail:not(:first-child) {
+    margin-top: 12px;
   }
 }
 
-.member-modal__seasons__text {
-  margin-left: 8px;
+.member-modal__detail {
+  display: flex;
+  align-items: center;
+
+  .material-icons {
+    margin-right: 8px;
+    color: $theme-secondary;
+  }
 }
 </style>

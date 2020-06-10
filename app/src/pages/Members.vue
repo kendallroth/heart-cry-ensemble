@@ -43,6 +43,7 @@ query {
         id
         firstName
         lastName
+        church
         bio
       }
     }
@@ -127,6 +128,7 @@ export default {
         return {
           id: member.id,
           bio: member.bio,
+          church: member.church,
           isCurrent,
           seasons: memberSeasons,
           name: `${member.firstName} ${member.lastName}`,

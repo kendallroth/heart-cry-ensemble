@@ -22,6 +22,11 @@ export default {
       description: "Short address (city, province)",
     },
     {
+      name: "church",
+      type: "string",
+      title: "Church",
+    },
+    {
       name: "socialMedia",
       type: "array",
       description: "Social media links",
