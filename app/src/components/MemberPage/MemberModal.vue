@@ -19,6 +19,12 @@
           {{ member.church || "Unknown" }}
         </span>
       </p>
+      <p v-if="member" class="member-modal__detail">
+        <i class="material-icons">location_on</i>
+        <span class="member-modal__detail__text">
+          {{ member.address || "Unknown" }}
+        </span>
+      </p>
       <p
         v-if="member && member.seasons.length > 0"
         class="member-modal__detail"

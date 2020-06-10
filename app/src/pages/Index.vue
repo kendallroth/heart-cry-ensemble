@@ -44,6 +44,7 @@ query {
       name
       startDate
       endDate
+      groupType
       members {
         _key
       }

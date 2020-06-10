@@ -44,6 +44,7 @@ query {
         lastName
         church
         bio
+        address
       }
     }
   }
@@ -125,9 +126,7 @@ export default {
         );
 
         return {
-          id: member.id,
-          bio: member.bio,
-          church: member.church,
+          ...member,
           isCurrent,
           seasons: memberSeasons,
           name: `${member.firstName} ${member.lastName}`,

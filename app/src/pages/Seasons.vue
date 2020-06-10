@@ -23,8 +23,9 @@ query {
       node {
         id
         name
-        #startDate
-        #endDate
+        startDate
+        endDate
+        groupType
         members {
           member {
             id
@@ -70,11 +71,8 @@ export default {
         const isCurrent = currentSeason.id === season.id;
 
         return {
-          id: season.id,
+          ...season,
           isCurrent,
-          members: season.members,
-          name: season.name,
-          programs: season.programs,
         };
       });
 
@@ -121,8 +119,14 @@ $item-spacing: 8px;
     }
 
     &.is-current {
-      box-shadow: 0 0 1px 3px $theme-primary;
+      box-shadow: 0 0 1px 3px $theme-secondary;
       opacity: 1;
+
+      @include smUp() {
+        margin-bottom: 8px;
+        transform: scale(1.05);
+        border-color: $theme-secondary;
+      }
     }
 
     &:not(:first-child) {

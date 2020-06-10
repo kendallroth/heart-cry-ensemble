@@ -4,6 +4,9 @@
       <span class="season-card__title__left">
         <span class="season-card__title__name">
           {{ season.name }}
+          <span class="season-card__title__type">
+            ({{ season.groupType }})
+          </span>
         </span>
         <span class="season-card__title__date">
           {{ seasonDate }}
@@ -65,7 +68,6 @@ export default {
   padding: 16px;
   transition: box-shadow 0.2s ease;
   overflow: hidden;
-  user-select: none;
   border: 2px solid $theme-primary;
 }
 
@@ -86,11 +88,18 @@ export default {
 }
 
 .season-card__title__name {
+  display: flex;
   font-weight: 500;
 }
 
-.season-card__title__date {
-  font-style: italic;
+.season-card__title__type {
+  margin-left: 8px;
   color: grey;
+  font-size: 0.9em;
+}
+
+.season-card__title__date {
+  color: grey;
+  font-size: 0.9em;
 }
 </style>
