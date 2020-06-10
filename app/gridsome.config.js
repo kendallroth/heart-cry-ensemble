@@ -78,6 +78,7 @@ module.exports = {
           alias: {
             "@": Paths.src,
             "@assets": path.join(Paths.src, "assets"),
+            "@config": path.join(Paths.src, "../config.js"),
             "@components": path.join(Paths.src, "components"),
             "@layouts": path.join(Paths.src, "layouts"),
             "@pages": path.join(Paths.src, "pages"),
