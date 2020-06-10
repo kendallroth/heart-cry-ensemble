@@ -134,22 +134,11 @@ $transition-time: 0.2s;
 }
 
 .modal__close {
-  display: flex;
   position: absolute;
   top: 16px;
   right: 16px;
   padding: 4px;
-  background-color: transparent;
-  border-radius: 100%;
   border: none;
-  cursor: pointer;
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  @include setBackgroundHoverOutline(white);
 
   .material-icons {
     font-weight: inherit;

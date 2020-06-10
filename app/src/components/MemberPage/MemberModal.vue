@@ -1,7 +1,7 @@
 <template>
   <Modal
     v-show="show"
-    :closable="false"
+    :closable="true"
     :persistent="false"
     :title="member && member.name"
     @close="close"
