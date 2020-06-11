@@ -99,7 +99,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$border-color: #eeeeee;
 $transition-time: 0.2s;
 
 .modal-backdrop {
@@ -120,7 +119,7 @@ $transition-time: 0.2s;
   display: flex;
   flex-direction: column;
   margin: 16px;
-  background: #ffffff;
+  background: white;
   overflow-x: auto;
   border-radius: 4px;
 
@@ -134,7 +133,7 @@ $transition-time: 0.2s;
   justify-content: flex-start;
   padding: 16px;
   color: $theme-primary-dark;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $color-light;
 }
 
 .modal__close {
@@ -157,7 +156,7 @@ $transition-time: 0.2s;
   display: flex;
   justify-content: flex-end;
   padding: 16px;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid $color-light;
 }
 
 // Modal fade transition

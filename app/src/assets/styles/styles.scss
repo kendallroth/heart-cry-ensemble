@@ -1,9 +1,11 @@
 // CSS reset
 @import "reset";
 
+@import "vars";
 @import "utilities";
 
 // Modules
+@import "modules/containers";
 @import "modules/elements";
 @import "modules/buttons";
 @import "modules/icons";

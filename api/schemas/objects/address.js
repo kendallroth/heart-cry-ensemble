@@ -19,7 +19,10 @@ export default {
       type: "string",
       title: "Province",
       options: {
-        list: [{ title: "ON", value: "ON" }],
+        list: [
+          { title: "ON", value: "ON" },
+          { title: "MI", value: "MI" },
+        ],
       },
       validation: (Rule) => Rule.required(),
     },

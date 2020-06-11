@@ -16,6 +16,10 @@ $button-transition: 0.15s;
   &.is-large {
     padding: 16px 32px;
   }
+
+  &.is-icon {
+    padding: 6px;
+  }
 }
 
 /**
@@ -72,6 +76,7 @@ button.button {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   background-color: white;
   border: 1px solid transparent;
   border-radius: 4px;

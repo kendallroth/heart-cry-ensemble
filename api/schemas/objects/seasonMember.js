@@ -37,7 +37,9 @@ export default {
         list: [
           { title: "Soprano", value: "soprano" },
           { title: "Alto", value: "alto" },
+          { title: "Lead", value: "lead" },
           { title: "Tenor", value: "tenor" },
+          { title: "Baritone", value: "baritone" },
           { title: "Bass", value: "bass" },
         ],
       },

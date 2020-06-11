@@ -19,7 +19,7 @@
 
 <script>
 // Components
-import HeroImage from "@components/HeroImage";
+import HeroImage from "@components/Layout/HeroImage";
 
 export default {
   name: "PageNotFound",

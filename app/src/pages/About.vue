@@ -14,18 +14,7 @@
       <div class="about__members__description">
         Members of the current {{ currentSeason.name }} season
       </div>
-      <div class="about__members elevation-3">
-        <div v-for="(part, name) in members" :key="name" class="member-list">
-          <div class="member-list__title">{{ name }}</div>
-          <div
-            v-for="member in part"
-            :key="member.key"
-            class="member-list__name can-truncate"
-          >
-            {{ member.name }}
-          </div>
-        </div>
-      </div>
+      <SeasonMemberList :members="currentSeason.members" />
       <g-link
         class="page-not-found__action button is-large is-primary mt-md"
         to="/members/current/"
@@ -59,27 +48,17 @@ query {
 </page-query>
 
 <script>
+// Components
+import SeasonMemberList from "@components/Season/SeasonMemberList";
+
 export default {
   name: "About",
+  components: {
+    SeasonMemberList,
+  },
   computed: {
     currentSeason() {
       return this.$page.siteSettings.currentSeason;
-    },
-    members() {
-      const members = this.currentSeason.members.reduce((accum, m) => {
-        const part = m.part.charAt(0).toUpperCase() + m.part.substring(1);
-        const member = {
-          key: m._key,
-          name: `${m.member.firstName} ${m.member.lastName}`,
-          part,
-        };
-        const partMembers = accum[part] || [];
-        partMembers.push(member);
-
-        return { ...accum, [part]: partMembers };
-      }, {});
-
-      return members;
     },
   },
 };
@@ -135,7 +114,7 @@ export default {
 
 .about__members__description {
   margin-bottom: 24px;
-  color: grey;
+  color: $color-grey;
 }
 
 .member-list {

@@ -19,7 +19,6 @@
           v-for="member in members"
           :key="member.id"
           :member="member"
-          :selected="selectedMember && selectedMember.id === member.id"
           @select="showModal(member)"
         />
       </div>
@@ -43,7 +42,9 @@ query {
         id
         firstName
         lastName
+        church
         bio
+        address
       }
     }
   }
@@ -125,8 +126,7 @@ export default {
         );
 
         return {
-          id: member.id,
-          bio: member.bio,
+          ...member,
           isCurrent,
           seasons: memberSeasons,
           name: `${member.firstName} ${member.lastName}`,

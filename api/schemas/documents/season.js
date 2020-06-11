@@ -13,6 +13,17 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "slug",
+      type: "slug",
+      title: "URL Slug",
+      description:
+        "Slug used for the season page URL (DO NOT CHANGE FREQUENTLY!)",
+      options: {
+        source: "name",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "groupType",
       type: "string",
       title: "Group Type",
@@ -48,6 +59,13 @@ export default {
             isAfter(context.document.endDate, context.document.startDate) ||
             "End date must be after start date",
         ),
+    },
+    {
+      name: "theme",
+      type: "text",
+      title: "Theme",
+      description: "Theme of the season music",
+      rows: 3,
     },
     {
       name: "members",

@@ -30,6 +30,14 @@ module.exports = {
   siteUrl: "https://heartcryensemble.org",
   titleTemplate: "%s",
   icon: "./src/favicon.png",
+  templates: {
+    SanitySeason: [
+      {
+        path: "/seasons/:slug__current",
+        component: "./src/templates/Season.vue",
+      },
+    ],
+  },
   plugins: [
     {
       use: "gridsome-source-sanity",
@@ -78,6 +86,7 @@ module.exports = {
           alias: {
             "@": Paths.src,
             "@assets": path.join(Paths.src, "assets"),
+            "@config": path.join(Paths.src, "../config.js"),
             "@components": path.join(Paths.src, "components"),
             "@layouts": path.join(Paths.src, "layouts"),
             "@pages": path.join(Paths.src, "pages"),

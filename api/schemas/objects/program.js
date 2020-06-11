@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export default {
   name: "program",
   type: "object",
@@ -7,6 +9,12 @@ export default {
       name: "name",
       type: "string",
       title: "Name",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "dateTime",
+      type: "datetime",
+      title: "Date & Time",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -25,9 +33,9 @@ export default {
       title: "Status",
       options: {
         list: [
-          { title: "scheduled", value: "Scheduled" },
-          { title: "tentative", value: "Tentative" },
-          { title: "cancelled", value: "Cancelled" },
+          { title: "Scheduled", value: "scheduled" },
+          { title: "Tentative", value: "tentative" },
+          { title: "Cancelled", value: "cancelled" },
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -47,8 +55,14 @@ export default {
   ],
   preview: {
     select: {
-      title: "name",
-      subtitle: "status",
+      dateTime: "dateTime",
+      name: "name",
+    },
+    prepare({ dateTime, name }) {
+      return {
+        title: name,
+        subtitle: format(dateTime, "YYYY-MM-DD @ HH:mm"),
+      };
     },
   },
 };
