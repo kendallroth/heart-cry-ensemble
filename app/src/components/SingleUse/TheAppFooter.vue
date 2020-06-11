@@ -104,6 +104,10 @@ $footer-padding: 32px;
 .footer__contact__email {
   margin-top: 16px;
   color: white;
+
+  &:hover {
+    color: $theme-secondary-light;
+  }
 }
 
 // Bottom footer section
@@ -170,6 +174,10 @@ $footer-padding: 32px;
     display: flex;
     color: white;
     font-size: 1.25em;
+
+    &:hover {
+      color: $theme-secondary-light;
+    }
 
     &:not(:first-of-type) {
       margin-left: 16px;
