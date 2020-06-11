@@ -7,6 +7,9 @@ module.exports = function (api) {
     store.addMetadata("sanityOptions", config.sanity);
   });
 
+  // NOTE: Dynamic pages require a Netlify URL redirect rule from this path
+  //         to the (single) generated HTML file.
+  //   https://gridsome.org/docs/dynamic-routing/#generating-rewrite-rules
   api.createPages(({ createPage }) => {
     // Members page (optional filter)
     createPage({
