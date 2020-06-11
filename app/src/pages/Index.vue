@@ -12,7 +12,7 @@
     <PageSection class="content-blocks" size="md-10 lg-8">
       <template v-for="(contentBlock, idx) in $page.homePage.contentBlocks">
         <div :key="`${contentBlock.title}_div`" class="content-block">
-          <h3 class="content-block__header">{{ contentBlock.title }}</h3>
+          <h2 class="content-block__header">{{ contentBlock.title }}</h2>
           <BlockContent
             :blocks="contentBlock.textRaw"
             className="content-block__text"

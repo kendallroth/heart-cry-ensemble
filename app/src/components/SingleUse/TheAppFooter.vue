@@ -1,7 +1,7 @@
 <template>
   <footer class="app__footer">
     <div class="footer__contact">
-      <h4 class="footer__contact__title">Contact Us</h4>
+      <p class="footer__contact__title">Contact Us</p>
       <a
         :href="`mailto:${$static.siteSettings.contactEmail}`"
         class="footer__contact__email"
@@ -93,7 +93,6 @@ $footer-padding: 32px;
   justify-content: center;
   flex-direction: column;
   padding: calc(#{$footer-padding} * 1.5);
-  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -104,6 +103,7 @@ $footer-padding: 32px;
 .footer__contact__email {
   margin-top: 16px;
   color: white;
+  font-size: 1.2rem;
 
   &:hover {
     color: $theme-secondary-light;
@@ -145,7 +145,7 @@ $footer-padding: 32px;
 
   .has-text-love {
     margin-left: 4px;
-    color: #e4526f;
+    color: #ff6f8c;
   }
 
   .has-text-gitlab {
