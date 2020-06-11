@@ -1,7 +1,7 @@
 <template>
   <div class="song-list elevation-3">
     <div v-for="song in songs" :key="song._key" class="song">
-      <div class="song__title">{{ song.name }}</div>
+      <div class="song__title can-truncate">{{ song.name }}</div>
       <div class="song__arranger">{{ song.arranger }}</div>
     </div>
   </div>
@@ -55,7 +55,8 @@ export default {
 }
 
 .song__arranger {
-  color: $color-grey;
+  color: $color-grey-dark;
   font-size: 0.9rem;
+  font-weight: 300;
 }
 </style>

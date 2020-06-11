@@ -15,6 +15,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.is-empty {
+  color: $color-grey;
+  font-style: italic;
+}
 
 // Elevation classes
 $elevation-dark: rgba(0, 0, 0, 0.2);

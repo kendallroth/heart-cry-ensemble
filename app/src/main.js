@@ -1,5 +1,6 @@
 require("typeface-montserrat");
 
+import { format } from "date-fns";
 import BlockContent from "sanity-blocks-vue-component";
 
 // Components
@@ -28,4 +29,6 @@ export default (Vue) => {
   Vue.filter("formatDate", dateFilter);
 
   Vue.mixin(breakpointMixin);
+
+  Vue.prototype.$formatDate = format;
 };

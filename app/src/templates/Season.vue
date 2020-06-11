@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <PageSection size="md-10 lg-8">
+    <PageSection class="pb-no" size="md-10 lg-8">
       <h2 class="season__title mb-xs">{{ season.name }}</h2>
       <h3 class="season__subtitle mb-sm">{{ season.subtitle }}</h3>
       <div class="season__dates">
@@ -12,7 +12,13 @@
       <SeasonMemberList :members="season.members" />
     </PageSection>
     <PageSection class="pt-no" size="sm-10 md-8 lg-6">
-      <h3 class="mb-sm">Songs</h3>
+      <h3 class="mt-md mb-sm">Programs</h3>
+      <SeasonProgramList
+        v-if="season.programs && season.programs.length > 0"
+        :programs="season.programs"
+      />
+      <div v-else class="is-empty">No programs entered for this season yet</div>
+      <h3 class="mt-md mb-sm">Songs</h3>
       <SeasonSongList :songs="season.songs" />
     </PageSection>
   </Layout>
@@ -59,12 +65,14 @@ import { format } from "date-fns";
 
 // Components
 import SeasonMemberList from "@components/Season/SeasonMemberList";
+import SeasonProgramList from "@components/Season/SeasonProgramList";
 import SeasonSongList from "@components/Season/SeasonSongList";
 
 export default {
   name: "Season",
   components: {
     SeasonMemberList,
+    SeasonProgramList,
     SeasonSongList,
   },
   computed: {
