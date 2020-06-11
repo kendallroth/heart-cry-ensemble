@@ -173,7 +173,7 @@ export default {
       if (filter.value === this.memberListFilter) return;
 
       // Avoid cluttering history when switching through filter
-      this.$router.replace(`/members/${filter.value}`);
+      this.$router.replace(`/members/${filter.value}/`);
     },
   },
 };

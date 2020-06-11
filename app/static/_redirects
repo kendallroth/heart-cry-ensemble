@@ -1,3 +1,5 @@
+### Domain Redirects #####
+
 # Redirect http to https
 http://heartcryensemble.ca/*                  https://heartcryensemble.ca/:splat      301!
 http://www.heartcryensemble.ca/*              https://heartcryensemble.ca/:splat      301!
@@ -10,3 +12,9 @@ https://heartcryensemble.ca/*                 https://www.heartcryensemble.ca/:s
 
 # Test redirect file
 https://www.heartcryensemble.ca/redirect      https://www.heartcryensemble.ca         302!
+
+
+### App Redirects #####
+
+# Redirect dynamic routes
+/members/:filter            /members/_filter.html  200
