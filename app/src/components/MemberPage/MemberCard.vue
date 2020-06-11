@@ -48,7 +48,7 @@ export default {
   overflow: hidden;
 
   &.is-past {
-    color: grey;
+    color: $color-grey;
 
     .members-card__chip {
       background-color: transparent;

@@ -81,11 +81,10 @@ export default {
 @import "@styles/_breakpoints";
 
 $footer-padding: 32px;
-$text-grey-light: #bfbfbf;
 
 .app__footer {
-  color: white;
-  background-color: #3b3b3b;
+  color: $color-light;
+  background-color: $color-dark;
 }
 
 .footer__contact {
@@ -99,7 +98,7 @@ $text-grey-light: #bfbfbf;
 }
 
 .footer__contact__title {
-  color: $text-grey-light;
+  color: $color-grey-light;
 }
 
 .footer__contact__email {
@@ -114,7 +113,7 @@ $text-grey-light: #bfbfbf;
   align-items: center;
   padding: $footer-padding;
   font-size: 0.9rem;
-  border-top: 1px solid grey;
+  border-top: 1px solid $color-grey;
 
   @include smDown {
     > *:not(:first-child) {
@@ -133,7 +132,7 @@ $text-grey-light: #bfbfbf;
 
 .footer__info__developer,
 .footer__info__text {
-  color: $text-grey-light;
+  color: $color-grey-light;
 }
 
 .footer__info__developer {

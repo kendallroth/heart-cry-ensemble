@@ -15,7 +15,7 @@ $spacings: ("no", 0px), ("auto", "auto"), ("xs", 8px), ("sm", 16px),
 
   .#{str-slice($type, 0, 1)}#{$prefix}-#{$spacing-name} {
     @each $direction in $directions {
-      #{$type}-#{$direction}: #{$spacing-value};
+      #{$type}-#{$direction}: #{$spacing-value} !important;
     }
   }
 }

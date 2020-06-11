@@ -9,17 +9,12 @@
           </span>
         </span>
         <span class="season-card__title__date">
-          {{ seasonDate }}
+          {{ seasonDates }}
         </span>
       </span>
-      <button
-        class="button is-icon is-primary"
-        disabled
-        type="button"
-        @click="$emit('select', season)"
-      >
+      <g-link :to="season.path" class="button is-icon is-primary">
         <i class="material-icons">search</i>
-      </button>
+      </g-link>
     </div>
     <div class="chips">
       <span class="chip">
@@ -49,7 +44,7 @@ export default {
     },
   },
   computed: {
-    seasonDate() {
+    seasonDates() {
       let { startDate, endDate } = this.season;
       if (!startDate && !startDate) return "";
 

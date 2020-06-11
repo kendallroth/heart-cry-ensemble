@@ -41,6 +41,8 @@ query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     missionStatement
     currentSeason {
+      id
+      path
       name
       startDate
       endDate
@@ -124,6 +126,6 @@ $content-block-width: 650px;
 .season-preview {
   margin-top: 32px;
   max-width: 500px;
-  border: 2px solid $theme-primary;
+  border: 2px solid $theme-secondary;
 }
 </style>

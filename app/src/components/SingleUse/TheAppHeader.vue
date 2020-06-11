@@ -4,7 +4,7 @@
     class="app__header elevation-6"
   >
     <nav class="header__links">
-      <g-link class="header__link" to="/">Home</g-link>
+      <g-link class="header__link" exact to="/">Home</g-link>
       <g-link class="header__link" to="/seasons/">Seasons</g-link>
       <g-link class="header__link" to="/about/">About Us</g-link>
     </nav>
@@ -62,6 +62,7 @@ export default {
   transition: color 0.2s;
 
   &:hover,
+  &.active,
   &.active--exact {
     color: white;
   }

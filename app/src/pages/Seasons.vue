@@ -3,12 +3,14 @@
     <PageSection size="sm-8 md-6 lg-4">
       <h2 class="mb-md">Seasons</h2>
       <div class="season__list elevation-2">
-        <SeasonCard
-          v-for="season in seasons"
-          :key="season.id"
-          :class="{ 'is-current': season.isCurrent }"
-          :season="season"
-        />
+        <template v-for="season in seasons">
+          <Hover v-slot="{ hover }" :key="season.id">
+            <SeasonCard
+              :class="{ 'elevation-4': hover, 'is-current': season.isCurrent }"
+              :season="season"
+            />
+          </Hover>
+        </template>
       </div>
     </PageSection>
   </Layout>
@@ -22,6 +24,7 @@ query {
     edges {
       node {
         id
+        path
         name
         startDate
         endDate
@@ -40,12 +43,6 @@ query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     currentSeason {
       id
-      name
-      members {
-        member {
-          id
-        }
-      }
     }
   }
 }
@@ -105,9 +102,8 @@ $item-spacing: 8px;
     box-shadow: none;
   }
 
+  // Season list cards
   > div {
-    opacity: 0.9;
-
     @include xsOnly() {
       border-radius: 0;
       border: none;
@@ -119,9 +115,6 @@ $item-spacing: 8px;
     }
 
     &.is-current {
-      box-shadow: 0 0 1px 3px $theme-secondary;
-      opacity: 1;
-
       @include smUp() {
         margin-bottom: 8px;
         transform: scale(1.05);

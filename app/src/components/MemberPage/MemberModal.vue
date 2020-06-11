@@ -71,7 +71,7 @@ export default {
 <style lang="scss" scoped>
 .member-modal__bio {
   .is-empty {
-    color: #999999;
+    color: $color-grey;
   }
 }
 
