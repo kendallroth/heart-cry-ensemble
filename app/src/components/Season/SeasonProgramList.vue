@@ -1,7 +1,12 @@
 <template>
   <div class="program-list elevation-3">
     <div v-for="program in seasonPrograms" :key="program._key" class="program">
-      <div class="program__header">
+      <div
+        :class="{
+          'program__header--cancelled': program.status === 'cancelled',
+        }"
+        class="program__header"
+      >
         <div class="program__name can-truncate">
           {{ program.name }}
           <i v-if="program.type === 'partial'" class="material-icons ml-xs">
@@ -80,6 +85,11 @@ export default {
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.program__header--cancelled {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 .program__name {

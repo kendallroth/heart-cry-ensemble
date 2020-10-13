@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2020-10-13
+### Changed
+- Disabled cancelled programs and removed from counts
+
 ## [1.0.0] - 2020-06-11
 ### Added
 - Site layout and structure (header, footer, content)

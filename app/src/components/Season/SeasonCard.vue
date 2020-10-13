@@ -23,7 +23,7 @@
       </span>
       <span class="chip">
         <i class="material-icons">location_on</i>
-        <span>{{ season.programs.length }}</span>
+        <span>{{ seasonPrograms }}</span>
       </span>
     </div>
   </div>
@@ -52,6 +52,10 @@ export default {
       startDate = format(new Date(startDate), dateFormat);
       endDate = format(new Date(endDate), dateFormat);
       return `${startDate} – ${endDate}`;
+    },
+    seasonPrograms() {
+      const { programs = [] } = this.season;
+      return programs.filter((p) => p.status !== "cancelled").length;
     },
   },
 };

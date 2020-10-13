@@ -52,6 +52,7 @@ query {
       }
       programs {
         _key
+        status
       }
     }
   }

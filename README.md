@@ -10,15 +10,14 @@ The project utilizes the [JAMstack](https://jamstack.org) idealogy to provide a 
 
 Developing the Heart Cry Ensemble website requires a few prerequisites:
 
-- Node
-- Yarn
+- Node (NPM)
 - Gridsome CLI
 - Sanity CLI
 - _Netlify CLI (deployment)_
 
 The repository consists of 3 "projects," each representing a different portion of the site. The root project handles everything related to shared development (linting, etc). The `app` project handles the actual website app and deployment, while the `api` project handles the API schema and deployment.
 
-After cloning the repository, install the dependencies in all 3 projects with `yarn install`. Ensure that a local `.env` file exists in the `app`, while a local `.env.development` exists in the `api`. These environment files are necessary to provide configuration variables to the projects! Both projects can be started (from their respective folders) with `yarn start`, which will compile the scripts and start a local instance of the website and data studio. Changes will be automatically handled and synced to the browser.
+After cloning the repository, install the dependencies in all 3 projects with `npm install`. Ensure that a local `.env` file exists in the `app`, while a local `.env.development` exists in the `api`. These environment files are necessary to provide configuration variables to the projects! Both projects can be started (from their respective folders) with `npm start`, which will compile the scripts and start a local instance of the website and data studio. Changes will be automatically handled and synced to the browser.
 
 > **NOTE:** The GraphQL API must be compiled and deployed after every change to the Sanity models!
 
@@ -35,5 +34,5 @@ Netlify automatically deploys both the website and content management portal whe
 The GraphQL API is managed separately (by [Sanity.io](https://sanity.io)) and must be deployed separately as a result. After a production release, run the following script to deploy the GraphQL API. This will deploy the GraphQL API to a Sanity.io endpoint and create a GraphQL Playground environment.
 
 ```bash
-yarn graphql:deploy
+npm run graphql:deploy
 ```
