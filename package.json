@@ -6,7 +6,7 @@
   "author": "Kendall Roth <kendall@kendallroth.ca>",
   "license": "UNLICENSED",
   "scripts": {
-    "format": "prettier --write \"app/**/*.(js|vue)\" \"server/**/*.js\"",
+    "format": "prettier --write \"app/**/*.(js|vue)\" \"api/**/*.js\"",
     "graphql:deploy": "cd api && yarn graphql:deploy && cd -"
   },
   "devDependencies": {
