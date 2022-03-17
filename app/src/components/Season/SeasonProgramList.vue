@@ -20,7 +20,10 @@
       <div class="program__details">
         <div class="program__address">
           <i class="material-icons mr-xs">location_on</i>
-          {{ program.address.city }}, {{ program.address.province }}
+          <template v-if="program.address">
+            {{ program.address.city }}, {{ program.address.province }}
+          </template>
+          <template v-else>N/A</template>
         </div>
       </div>
     </div>
