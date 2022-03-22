@@ -12,20 +12,26 @@
           <i v-if="program.type === 'partial'" class="material-icons ml-xs">
             help_outline
           </i>
+          <i v-if="program.type === 'livestream'" class="material-icons">*</i>
         </div>
         <div :class="{ 'is-future': program.isFuture }" class="program__date">
           {{ program.dateTime | formatDate("MMM dd, yyyy @ HH:mm") }}
         </div>
       </div>
-      <div class="program__details">
-        <div class="program__address">
+      <template>
+        <div v-if="program.type === 'livestream'" class="program__details">
+          <i class="material-icons mr-xs">link</i>
+          <a v-if="program.link" :href="program.link">Livestream link</a>
+          <template v-else>N/A</template>
+        </div>
+        <div v-else class="program__details">
           <i class="material-icons mr-xs">location_on</i>
           <template v-if="program.address">
             {{ program.address.city }}, {{ program.address.province }}
           </template>
           <template v-else>N/A</template>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -114,11 +120,6 @@ export default {
 }
 
 .program__details {
-  display: flex;
-  align-items: center;
-}
-
-.program__address {
   display: flex;
   align-items: center;
   color: $color-grey-dark;

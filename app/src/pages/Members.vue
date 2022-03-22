@@ -55,8 +55,9 @@ query {
       node {
         id
         name
-        #startDate
-        #endDate
+        conductor {
+          id
+        }
         members {
           member {
             id
@@ -68,6 +69,9 @@ query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     currentSeason {
       name
+      conductor {
+        id
+      }
       members {
         member {
           id
@@ -112,14 +116,15 @@ export default {
 
       const { edges } = this.$page.members;
       const members = edges.map(({ node: member }) => {
-        // Determine whether member is part of the current season
-        const isCurrent = currentSeason.members.find(
-          (m) => m.member.id === member.id,
-        );
-        // Find all seasons that the member has been part of
+        // Determine whether member is part of the current season (member or conductor)
+        const isCurrent =
+          currentSeason.members.find((m) => m.member.id === member.id) ||
+          currentSeason.conductor?.id === member.id;
+        // Find all seasons that the member has been part of (or conducted)
         const memberSeasons = seasons.edges.reduce(
           (accum, { node: season }) =>
-            season.members.find((m) => m.member.id === member.id)
+            season.members.find((m) => m.member.id === member.id) ||
+            season.conductor?.id === member.id
               ? [...accum, season.name]
               : accum,
           [],

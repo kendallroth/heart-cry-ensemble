@@ -8,6 +8,8 @@
   "scripts": {
     "build": "sanity build && cp static/_redirects dist/",
     "graphql:deploy": "sanity graphql deploy --playground",
+    "sanity:login": "sanity login",
+    "sanity:logout": "sanity logout",
     "start": "sanity start",
     "test": "sanity check"
   },

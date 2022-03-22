@@ -47,6 +47,7 @@ export default {
       options: {
         list: [
           { title: "Full", value: "full" },
+          { title: "Livestream", value: "livestream" },
           { title: "Partial", value: "partial" },
         ],
       },

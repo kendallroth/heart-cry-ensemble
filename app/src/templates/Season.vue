@@ -9,7 +9,10 @@
         <span>{{ season.endDate }}</span>
       </div>
       <h3 class="mt-md mb-sm">Members</h3>
-      <SeasonMemberList :members="season.members" />
+      <SeasonMemberList
+        :conductor="season.conductor"
+        :members="season.members"
+      />
     </PageSection>
     <PageSection class="pt-no" size="sm-10 md-8 lg-6">
       <h3 class="mt-md mb-sm">Programs</h3>
@@ -32,6 +35,10 @@ query ($id: ID!) {
     startDate
     endDate
     groupType
+    conductor {
+      firstName
+      lastName
+    }
     members {
       part
       member {
@@ -61,7 +68,7 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 // Components
 import SeasonMemberList from "@components/Season/SeasonMemberList";
@@ -87,19 +94,17 @@ export default {
           subtitle = "Heart Cry Ensemble";
       }
 
+      let { startDate, endDate } = this.$page.season;
+      const dateFormat = "yyyy-MMM-dd";
+      startDate = startDate ? format(parseISO(startDate), dateFormat) : null;
+      endDate = endDate ? format(parseISO(endDate), dateFormat) : null;
+
       return {
         ...this.$page.season,
+        endDate,
+        startDate,
         subtitle,
       };
-    },
-    seasonDates() {
-      let { startDate, endDate } = this.season;
-      if (!startDate && !startDate) return "";
-
-      const dateFormat = "yyyy-MMM-dd";
-      startDate = format(new Date(startDate), dateFormat);
-      endDate = format(new Date(endDate), dateFormat);
-      return `${startDate} – ${endDate}`;
     },
   },
 };

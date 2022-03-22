@@ -14,11 +14,11 @@
       <div class="about__members__description">
         Members of the current {{ currentSeason.name }} season
       </div>
-      <SeasonMemberList :members="currentSeason.members" />
-      <g-link
-        class="page-not-found__action button is-large is-primary mt-md"
-        to="/members/current/"
-      >
+      <SeasonMemberList
+        :conductor="currentSeason.conductor"
+        :members="currentSeason.members"
+      />
+      <g-link class="button is-large is-primary mt-md" to="/members/current/">
         Member Bios
       </g-link>
     </PageSection>
@@ -31,6 +31,10 @@ query {
     missionStatement
     currentSeason {
       name
+      conductor {
+        firstName
+        lastName
+      }
       members {
         _key
         part
