@@ -41,13 +41,6 @@ export default {
       description: "End of season (including practices)",
       validation: (Rule) => Rule.required(),
     },
-    // NOTE: This has been deemed unnecessary currently
-    /*{
-      name: "programsDate",
-      type: "date",
-      title: "Programs Start Date",
-      validation: (Rule) => Rule.required(),
-    },*/
     {
       name: "endDate",
       type: "date",
@@ -66,6 +59,12 @@ export default {
       title: "Theme",
       description: "Theme of the season music",
       rows: 3,
+    },
+    {
+      name: "conductor",
+      type: "reference",
+      title: "Conductor",
+      to: [{ type: "member" }],
     },
     {
       name: "members",

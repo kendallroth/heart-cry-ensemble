@@ -31,7 +31,7 @@
       >
         <i class="material-icons">music_note</i>
         <span class="member-modal__detail__text">
-          {{ member.seasons.join(",&ensp;") }}
+          {{ member.seasons.join(",&ensp;").replaceAll(" ", "&nbsp;") }}
         </span>
       </p>
     </div>

@@ -23,7 +23,7 @@ After cloning the repository, install the dependencies in all 3 projects with `n
 
 ## Deployment
 
-Netlify automatically deploys both the website and content management portal whenever a `push` is made to `master`. This means that the deployment process simply involves merging changes into `master`, resulting in a new deployment. All new production deployments should increase the version number, via semantic versioning, of all 3 `package.json` files.
+Netlify automatically deploys both the website and content management portal whenever a `push` is made to `main`. This means that the deployment process simply involves merging changes into `main`, resulting in a new deployment. All new production deployments should increase the version number, via semantic versioning, of all 3 `package.json` files.
 
 > While deployments can also be created manually from the Netlify CLI, they should only be created via merge requests.
 

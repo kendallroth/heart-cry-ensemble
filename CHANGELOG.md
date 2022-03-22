@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0 - 2022-03-21]
+### Added
+- Conductor field for seasons
+
+### Updated
+- Include conductor in member counts/seasons
+
 ## [1.2.1] - 2022-03-16
 ### Fixed
 - Replaced `node-sass` (deprecated) with `dart-sass`

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 export default {
   name: "SeasonCard",
@@ -49,8 +49,8 @@ export default {
       if (!startDate && !startDate) return "";
 
       const dateFormat = "yyyy-MMM-dd";
-      startDate = format(new Date(startDate), dateFormat);
-      endDate = format(new Date(endDate), dateFormat);
+      startDate = format(parseISO(startDate), dateFormat);
+      endDate = format(parseISO(endDate), dateFormat);
       return `${startDate} – ${endDate}`;
     },
     seasonPrograms() {

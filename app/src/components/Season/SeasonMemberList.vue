@@ -1,13 +1,19 @@
 <template>
-  <div class="season-members elevation-3">
-    <div v-for="(part, name) in partMembers" :key="name" class="member-list">
-      <div class="member-list__title">{{ name }}</div>
-      <div
-        v-for="member in part"
-        :key="member.key"
-        class="member-list__name can-truncate"
-      >
-        {{ member.name }}
+  <div class="season-members">
+    <h4 v-if="conductor" class="season-members__conductor">
+      <strong>Conductor: </strong>
+      <span>{{ conductor.firstName }} {{ conductor.lastName }}</span>
+    </h4>
+    <div class="season-members__members elevation-3">
+      <div v-for="(part, name) in partMembers" :key="name" class="member-list">
+        <div class="member-list__title">{{ name }}</div>
+        <div
+          v-for="member in part"
+          :key="member.key"
+          class="member-list__name can-truncate"
+        >
+          {{ member.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -17,9 +23,12 @@
 export default {
   name: "SeasonMembersList",
   props: {
-    /**
-     * Season members
-     */
+    /** Season conductor */
+    conductor: {
+      default: null,
+      type: Object,
+    },
+    /** Season members */
     members: {
       type: Array,
       required: true,
@@ -48,6 +57,22 @@ export default {
 
 <style lang="scss" scoped>
 .season-members {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.season-members__conductor {
+  margin-bottom: 16px;
+  font-weight: 500;
+
+  strong {
+    color: $theme-primary-dark;
+  }
+}
+
+.season-members__members {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
