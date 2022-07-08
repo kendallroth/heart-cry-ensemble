@@ -43,6 +43,12 @@ export default {
       of: [{ type: "socialMedia" }],
     },
     {
+      name: "streamingPlatforms",
+      type: "array",
+      description: "Streaming platform artist/album links",
+      of: [{ type: "streamingPlatform" }],
+    },
+    {
       name: "currentSeason",
       type: "reference",
       to: [{ type: "season" }],

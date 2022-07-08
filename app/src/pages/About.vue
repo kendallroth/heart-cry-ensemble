@@ -10,9 +10,32 @@
         className="about__description__blocks"
       />
       <hr />
+      <h2 class="about__heading mb-sm">Music</h2>
+      <p>
+        Heart Cry has been blessed to be able to record and produce several
+        recordings in recent seasons. CDs can be obtained by contacting the
+        group/members or at programs ($10). Recordings can also be found on the
+        major streaming platforms!
+      </p>
+      <div class="about__music-platforms">
+        <a
+          v-for="platform in $page.siteSettings.streamingPlatforms"
+          :key="platform.type"
+          :aria-label="platform.name"
+          :href="platform.link"
+          class="about__music-platforms__platform"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <!-- TODO: Change to "icon" -->
+          <SvgIcon :icon="platform.type" />
+          <div>{{ platform.name }}</div>
+        </a>
+      </div>
+      <hr />
       <h2 class="about__heading mb-sm">Members</h2>
       <div class="about__members__description">
-        Members of the current {{ currentSeason.name }} season
+        Members of the {{ currentSeason.name }} season
       </div>
       <SeasonMemberList
         :conductor="currentSeason.conductor"
@@ -43,6 +66,12 @@ query {
           lastName
         }
       }
+    }
+    streamingPlatforms {
+      icon
+      link
+      name
+      type
     }
   }
   aboutPage: sanityAboutPage(id: "aboutPage") {
@@ -141,5 +170,40 @@ export default {
 
 .member-list__name {
   line-height: 1.75;
+}
+
+.about__music-platforms {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+
+  @include smDown {
+    width: 100%;
+
+    > :not(:first-child) {
+      margin-top: 0.8rem;
+    }
+  }
+
+  @include mdUp {
+    flex-direction: row;
+    align-items: center;
+
+    > :not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+
+  .about__music-platforms__platform {
+    display: flex;
+    align-items: center;
+    color: $theme-primary-dark;
+    font-size: 1rem;
+
+    svg {
+      margin-right: 8px;
+      font-size: 1.5rem;
+    }
+  }
 }
 </style>

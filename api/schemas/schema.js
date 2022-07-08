@@ -11,6 +11,7 @@ import program from "./objects/program";
 import seasonMember from "./objects/seasonMember";
 import socialMedia from "./objects/socialMedia";
 import song from "./objects/song";
+import streamingPlatform from "./objects/streamingPlatform";
 // Singleton (page) models
 import aboutPage from "./pages/aboutPage";
 import homePage from "./pages/homePage";
@@ -29,6 +30,7 @@ export default createSchema({
     seasonMember,
     socialMedia,
     song,
+    streamingPlatform,
     // Pages
     aboutPage,
     homePage,
