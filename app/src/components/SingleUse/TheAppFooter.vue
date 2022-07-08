@@ -28,6 +28,19 @@
       </div>
       <div class="footer__info__icons">
         <a
+          v-for="platform in $static.siteSettings.streamingPlatforms"
+          :key="platform.type"
+          :aria-label="platform.name"
+          :href="platform.link"
+          class="icon"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <!-- TODO: Change to "icon" -->
+          <SvgIcon :icon="platform.type" />
+        </a>
+        <div class="footer__info__icons__divider" />
+        <a
           key="email"
           :href="`mailto:${$static.siteSettings.contactEmail}`"
           aria-label="Email"
@@ -62,6 +75,12 @@ query {
   siteSettings: sanitySiteSettings(id: "siteSettings") {
     contactEmail
     socialMedia {
+      icon
+      link
+      name
+      type
+    }
+    streamingPlatforms {
       icon
       link
       name
@@ -170,6 +189,10 @@ $footer-padding: 32px;
   align-items: center;
   justify-content: flex-end;
 
+  > :not(:first-child) {
+    margin-left: 16px;
+  }
+
   .icon {
     display: flex;
     color: white;
@@ -178,10 +201,12 @@ $footer-padding: 32px;
     &:hover {
       color: $theme-secondary-light;
     }
-
-    &:not(:first-of-type) {
-      margin-left: 16px;
-    }
   }
+}
+
+.footer__info__icons__divider {
+  align-self: stretch;
+  width: 1px;
+  background-color: white;
 }
 </style>
