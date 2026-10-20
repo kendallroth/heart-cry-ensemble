@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Use '@theme static' to generate all CSS variables (not just used ones). */
+/* Use '@theme inline' to output CSS variables (vs resolved values) when referencing other variables. */
+
+/* Detect classes mentioned in Nuxt config file */
+@source "../../../nuxt.config.ts";
+
+/**************************************************************************************************/
+/* Theming */
+/**************************************************************************************************/
+
+/* TODO: Add some theme color light/dark variants (ie. primary, etc), and maybe make split accent colors use that?  */
+
+/* Customize the dark variant to use classes vs 'prefers-color-scheme' media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme color variables should be static (always generated regardless of use) */
+@theme inline static {
+  --color-primary: var(--bg-primary);
+  --color-on-primary: var(--text-on-primary);
+  --color-accent: var(--bg-accent);
+  --color-on-accent: var(--text-on-accent);
+  --color-accent-light: var(--bg-accent-light);
+  --color-on-accent-light: var(--text-on-accent-light);
+
+  --color-warning: var(--bg-warning);
+  --color-on-warning: var(--text-on-warning);
+  --color-error: var(--bg-error);
+  --color-on-error: var(--text-on-error);
+
+  --color-background: var(--bg-background);
+  --color-on-background: var(--text-on-background);
+  --color-surface: var(--bg-surface);
+  --color-on-surface: var(--text-on-surface);
+}
+
+:root {
+  --primary-unthemed: #12213a;
+}
+
+/* Light theme */
+:root {
+  --bg-primary: var(--primary-unthemed);
+  --text-on-primary: #ffffff;
+  --bg-accent: #3e6e60;
+  --text-on-accent: #ffffff;
+  --bg-accent-light: #a9d3c3;
+  --text-on-accent-light: #000000;
+
+  --bg-warning: #a15c07;
+  --text-on-warning: #ffffff;
+  --bg-error: #b42318;
+  --text-on-error: #ffffff;
+
+  --bg-background: #fdfdfe;
+  --text-on-background: var(--primary-unthemed);
+  --bg-surface: #ffffff;
+  --text-on-surface: var(--primary-unthemed);
+}
+
+/* Dark theme */
+:root.dark,
+:is(html).dark {
+  --bg-primary: #c3d3ea;
+  --text-on-primary: var(--primary-unthemed);
+  --bg-accent: #a9d3cd;
+  --text-on-accent: var(--primary-unthemed);
+  --bg-accent-light: #3e6e60;
+  --text-on-accent-light: #ffffff;
+
+  --bg-warning: #f2c26b;
+  --text-on-warning: var(--primary-unthemed);
+  --bg-error: #f4a39a;
+  --text-on-error: var(--primary-unthemed);
+
+  --bg-background: var(--primary-unthemed);
+  --text-on-background: #e6ecf4;
+  --bg-surface: #1b2e4d;
+  --text-on-surface: #e6ecf4;
+}
+
+/**************************************************************************************************/
+/* Fonts */
+/**************************************************************************************************/
+
+@theme {
+  /* --default-font-family uses --font-sans */
+  --font-sans: "Instrument Sans", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+}
