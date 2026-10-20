@@ -1,0 +1,11 @@
+# Project dependencies
+node_modules
+.cache/
+.temp/
+
+# Build directory
+dist/
+
+# Logging
+logs
+*.log

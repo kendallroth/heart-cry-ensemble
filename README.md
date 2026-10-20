@@ -1,7 +1,5 @@
 # Heart Cry Ensemble
 
-Website for the Heart Cry Ensemble
-
 ## Stack
 
 The project utilizes the [JAMstack](https://jamstack.org) idealogy to provide a modern web experience. The website is created with [Vue](https://vuejs.org), compiled into a static site using [Gridsome](https://gridsome.org), and deployed with [Netlify](https://netlify.com). The content is managed with [Sanity](https://sanity.io) and deployed with [Netlify](https://netlify.com).

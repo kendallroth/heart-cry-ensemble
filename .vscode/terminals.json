@@ -1,0 +1,34 @@
+{
+  "_docs": "https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-terminals",
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "Project",
+      "focus": true,
+      "icon": "file-directory"
+    },
+    {
+      "name": "Web",
+      "cwd": "./web",
+      "icon": "file-directory"
+    },
+    {
+      "name": "Web (run)",
+      "cwd": "./web",
+      "command": "npm run dev",
+      "autorun": false,
+      "icon": "zap"
+    },
+    {
+      "name": "API",
+      "cwd": "./api",
+      "icon": "file-directory"
+    },
+    {
+      "name": "API (run)",
+      "cwd": "./api",
+      "autorun": false,
+      "icon": "zap"
+    }
+  ]
+}

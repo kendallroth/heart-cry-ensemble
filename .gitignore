@@ -1,19 +1,19 @@
-# Project dependencies
-node_modules
-.cache/
-.temp/
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Root/shared Git ignore patterns (across all projects)
+#
+# NOTE: Environment/editor specific ignore patterns belong in global Git config!
+#
+# NOTE: Root Git ignore patterns are automatically applied to all projects,
+#         and should not contain project-specific patterns (use own files)!
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# Build directory
-public/
-dist/
+# Agentic configuration
+.claude/settings.local.json
 
-# OS-specific files
-.DS_Store
-
-# Environment variables file
+# Environment variables
+!.env.example
 .env
 .env.*
 
-# Logging
-logs
-*.log
+# Local Netlify folder
+.netlify
