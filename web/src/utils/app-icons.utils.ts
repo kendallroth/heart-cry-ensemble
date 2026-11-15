@@ -1,19 +1,21 @@
 import {
-  ArrowLeftIcon,
-  ArrowTopRightOnSquareIcon,
-  Bars3Icon,
-  EnvelopeIcon,
-  LinkIcon,
-  MapPinIcon,
-  MoonIcon,
-  MusicalNoteIcon,
-  PlayIcon,
-  SunIcon,
-  UsersIcon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline";
-
-import ThemeSystemIcon from "~/components/icon/ThemeSystem.vue";
+  IconArrowLeft,
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandYoutube,
+  IconExternalLink,
+  IconLink,
+  IconMail,
+  IconMapPin,
+  IconMenu2,
+  IconMoon,
+  IconMusic,
+  IconPlayerPlay,
+  IconSun,
+  IconSunMoon,
+  IconUsers,
+  IconX,
+} from "@tabler/icons-vue";
 
 const appIconSizeClasses = {
   sm: "w-4 h-4",
@@ -21,24 +23,27 @@ const appIconSizeClasses = {
   lg: "w-6 h-6",
 };
 
-/** Heroicon type */
-export type IconType = typeof EnvelopeIcon;
+/** Tabler icon type */
+export type IconType = typeof IconMail;
 
 export const appIcons = {
   sizeClasses: appIconSizeClasses,
 
   // Icons
-  ArrowLeft: ArrowLeftIcon,
-  CloseIcon: XMarkIcon,
-  EmailIcon: EnvelopeIcon,
-  LinkIcon,
-  MenuIcon: Bars3Icon,
-  MusicIcon: MusicalNoteIcon,
-  OpenIcon: ArrowTopRightOnSquareIcon,
-  PeopleIcon: UsersIcon,
-  PlaceIcon: MapPinIcon,
-  PlayIcon,
-  ThemeLightIcon: SunIcon,
-  ThemeDarkIcon: MoonIcon,
-  ThemeSystemIcon: ThemeSystemIcon as unknown as typeof LinkIcon,
-} as const;
+  ArrowLeft: IconArrowLeft,
+  CloseIcon: IconX,
+  EmailIcon: IconMail,
+  FacebookIcon: IconBrandFacebook,
+  InstagramIcon: IconBrandInstagram,
+  LinkIcon: IconLink,
+  MenuIcon: IconMenu2,
+  MusicIcon: IconMusic,
+  OpenIcon: IconExternalLink,
+  PeopleIcon: IconUsers,
+  PlaceIcon: IconMapPin,
+  PlayIcon: IconPlayerPlay,
+  ThemeLightIcon: IconSun,
+  ThemeDarkIcon: IconMoon,
+  ThemeSystemIcon: IconSunMoon,
+  YouTubeIcon: IconBrandYoutube,
+};

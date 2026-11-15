@@ -19,11 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import {IconDeviceDesktop, IconDeviceMobile} from "@tabler/icons-vue";
 import {useMagicKeys, whenever} from "@vueuse/core";
-import {
-  ComputerDesktopIcon as ComputerIcon,
-  DevicePhoneMobileIcon as MobileIcon,
-} from "@heroicons/vue/24/outline";
 
 useHead({
   bodyAttrs: {
@@ -41,5 +38,5 @@ const breakpointKeys = shortKeys["Ctrl+Shift+Alt+KeyM"];
 whenever(breakpointKeys!, () => {
   showBreakpointIndicators.value = !showBreakpointIndicators.value;
 });
-const breakpointIcon = computed(() => (mobile.value ? MobileIcon : ComputerIcon));
+const breakpointIcon = computed(() => (mobile.value ? IconDeviceMobile : IconDeviceDesktop));
 </script>

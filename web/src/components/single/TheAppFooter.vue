@@ -31,18 +31,17 @@ interface SocialLink {
   link: string;
 }
 
-// TODO: Figure out social link icons
 const socialLinks: SocialLink[] = [
-  /*{
-    icon: appIcons.EmailIcon,
+  {
+    icon: appIcons.FacebookIcon,
     label: "Facebook",
     link: "https://www.facebook.com/heartcryensemble",
-  },*/
-  /*{
-    icon: appIcons.EmailIcon,
+  },
+  {
+    icon: appIcons.InstagramIcon,
     label: "Instagram",
     link: "https://www.instagram.com/heartcryensemble",
-  },*/
+  },
   {
     icon: appIcons.EmailIcon,
     label: "Email",

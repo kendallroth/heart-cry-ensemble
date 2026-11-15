@@ -102,7 +102,7 @@
       </div>
     </PageWidth>
 
-    <div class="lg:pb-12">
+    <div class="lg:pb-12 lg:px-4">
       <div class="bg-primary text-on-primary w-fit mx-auto md:p-4 lg:rounded-2xl">
         <PageWidth align="center" class="grid md:grid-cols-2 gap-8 py-6 md:py-12">
           <TextBlock title="Invite us to your church" title-class="!text-on-primary">
