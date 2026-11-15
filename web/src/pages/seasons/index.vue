@@ -2,8 +2,8 @@
   <PageLayout>
     <PageHeader subtitle="Past & Present" title="Seasons">
       <p>
-        Each season begins with months of weekly rehearsals, followed by a month
-        of programs — some close to home, some much further afield.
+        Each season begins with months of weekly rehearsals, followed by a month of programs — some close to
+        home, some much further afield.
       </p>
       <template #media></template>
     </PageHeader>
@@ -17,9 +17,7 @@
             Conducted by Wendell Diefenbacher
           </p>
         </TextBlock>
-        <div
-          class="flex flex-row items-center justify-center lg:justify-end gap-8"
-        >
+        <div class="flex flex-row items-center justify-center lg:justify-end gap-8">
           <div class="text-center">
             <p class="text-3xl font-serif">{{ recentSeason!.members }}</p>
             <p class="text-sm">singers</p>
@@ -37,10 +35,7 @@
       <div class="grid lg:grid-cols-2 gap-4 lg:gap-8 mt-4 lg:mt-8">
         <div class="p-4 border border-primary/10 rounded-xl">
           <div class="mb-2 uppercase">Programs</div>
-          <template
-            v-for="(program, programIdx) in seasonPrograms"
-            :key="programIdx"
-          >
+          <template v-for="(program, programIdx) in seasonPrograms" :key="programIdx">
             <hr class="text-primary/10" />
             <ProgramItem :program="program" />
           </template>
@@ -70,10 +65,10 @@
           <p class="text-lg font-medium">{{ season.label }}</p>
           <p class="text-sm">{{ getSeasonDateString(season) }}</p>
           <div class="flex items-center gap-1">
-            <PeopleIcon :class="appIcons.sizeClasses.sm" class="text-primary" />
+            <PeopleIcon class="text-primary" :class="appIcons.sizeClasses.sm" />
             {{ season.members }} singers
             <span class="mx-0.5">&bullet;</span>
-            <PlaceIcon :class="appIcons.sizeClasses.sm" class="text-primary" />
+            <PlaceIcon class="text-primary" :class="appIcons.sizeClasses.sm" />
             {{ season.programs || "No" }} programs
           </div>
         </div>
@@ -86,7 +81,7 @@
 import dayjs from "dayjs";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
 
-const { PeopleIcon, PlaceIcon } = appIcons;
+const {PeopleIcon, PlaceIcon} = appIcons;
 
 const seasons: Season[] = [
   {
@@ -224,20 +219,20 @@ interface SeasonSong {
 }
 
 const seasonSongs: SeasonSong[] = [
-  { title: "May Thy Holy Spirit", composer: "Pavel Chesnokov" },
-  { title: "All the Way my Saviour Leads Me", composer: "Lyle Stutzman" },
-  { title: "Be Thou My Vision", composer: "Jamey Ray" },
-  { title: "God Is Seen", composer: "Alice Parker" },
-  { title: "God With Me", composer: "Sarah Quartel" },
-  { title: "All Will Be Well", composer: "Taizé" },
-  { title: "Here I Am", composer: "Craig Courtney" },
-  { title: "Walk Together Children", composer: "Robert DeCormier" },
-  { title: "This Little Light of Mine", composer: "Jared Zook" },
-  { title: "I Believe", composer: "Mark Miller" },
-  { title: "I Shall See", composer: "Michael John Trotta" },
-  { title: "I Go to the Rock", composer: "Don Huff" },
-  { title: "May We Reflect You", composer: "Drew Roth" },
-  { title: "Walk With Your God", composer: "Yolanda Lichty" },
-  { title: "Still with Thee", composer: "Elaine Hagenberg" },
+  {title: "May Thy Holy Spirit", composer: "Pavel Chesnokov"},
+  {title: "All the Way my Saviour Leads Me", composer: "Lyle Stutzman"},
+  {title: "Be Thou My Vision", composer: "Jamey Ray"},
+  {title: "God Is Seen", composer: "Alice Parker"},
+  {title: "God With Me", composer: "Sarah Quartel"},
+  {title: "All Will Be Well", composer: "Taizé"},
+  {title: "Here I Am", composer: "Craig Courtney"},
+  {title: "Walk Together Children", composer: "Robert DeCormier"},
+  {title: "This Little Light of Mine", composer: "Jared Zook"},
+  {title: "I Believe", composer: "Mark Miller"},
+  {title: "I Shall See", composer: "Michael John Trotta"},
+  {title: "I Go to the Rock", composer: "Don Huff"},
+  {title: "May We Reflect You", composer: "Drew Roth"},
+  {title: "Walk With Your God", composer: "Yolanda Lichty"},
+  {title: "Still with Thee", composer: "Elaine Hagenberg"},
 ];
 </script>

@@ -14,5 +14,5 @@ interface MemberListProps {
   part: string;
 }
 
-const props = defineProps<MemberListProps>();
+defineProps<MemberListProps>();
 </script>

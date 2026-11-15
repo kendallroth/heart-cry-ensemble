@@ -36,5 +36,5 @@ export const appIcons = {
   PlayIcon,
   ThemeLightIcon: SunIcon,
   ThemeDarkIcon: MoonIcon,
-  ThemeSystemIcon,
-};
+  ThemeSystemIcon: ThemeSystemIcon as unknown as typeof LinkIcon,
+} as const;

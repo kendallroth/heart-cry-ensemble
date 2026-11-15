@@ -6,8 +6,8 @@ export const musicPlatformLinks = {
 } as const;
 
 export const musicPlatforms: MusicPlatform[] = [
-  { code: "youtube", label: "YouTube", link: musicPlatformLinks.youtube },
-  { code: "spotify", label: "Spotify", link: musicPlatformLinks.spotify },
+  {code: "youtube", label: "YouTube", link: musicPlatformLinks.youtube},
+  {code: "spotify", label: "Spotify", link: musicPlatformLinks.spotify},
   {
     code: "appleMusic",
     label: "Apple Music",

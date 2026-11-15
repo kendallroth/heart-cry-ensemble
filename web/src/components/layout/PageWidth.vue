@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { HTMLAttributes } from "vue";
+import type {HTMLAttributes} from "vue";
 
 type PageAlign = "center" | "stretch";
 
@@ -30,6 +30,7 @@ interface PageWidthProps {
 
 const props = withDefaults(defineProps<PageWidthProps>(), {
   align: undefined,
+  class: undefined,
   padding: "md",
   width: "md",
 });

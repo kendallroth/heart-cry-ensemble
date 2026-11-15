@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "code:format": "prettier --write .",
+    "code:lint": "eslint .",
+    "code:lint:fix": "eslint . --fix",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -26,8 +29,9 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
-    "@types/node": "^26.6.5",
-    "typescript": "^7.0.2",
-    "vue-tsc": "^3.3.13"
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "prettier": "^3.10.1",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.14"
   }
 }

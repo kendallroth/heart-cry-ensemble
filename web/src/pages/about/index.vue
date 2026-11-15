@@ -1,10 +1,6 @@
 <template>
   <PageLayout>
-    <PageHeader
-      subtitle="About Us"
-      title="A love of singing"
-      title-class="lg:flex lg:flex-col"
-    >
+    <PageHeader subtitle="About Us" title="A love of singing" title-class="lg:flex lg:flex-col">
       <template #title>
         <span>Two families, a love of singing, and a&nbsp;</span>
         <span class="text-accent-light">tradition worth keeping.</span>
@@ -14,20 +10,16 @@
     <PageWidth class="grid md:grid-cols-2 gap-8 py-6 md:py-12">
       <TextBlock title="Our Story">
         <p>
-          Heart Cry Ensemble was founded in 2017 by friends from two families,
-          the Diefenbachers and the Roths. Having grown up singing, they wanted
-          to continue that tradition in a more organized, small-group setting.
+          Heart Cry Ensemble was founded in 2017 by friends from two families, the Diefenbachers and the
+          Roths. Having grown up singing, they wanted to continue that tradition in a more organized,
+          small-group setting.
         </p>
         <p>
-          Though founded as a mixed ensemble, we've also sung a season of men's
-          music. Each season begins with several months of weekly rehearsals
-          before a month of programs, both near and far — in churches from
+          Though founded as a mixed ensemble, we've also sung a season of men's music. Each season begins with
+          several months of weekly rehearsals before a month of programs, both near and far — in churches from
           Markham, ON to Detroit, MI.
         </p>
-        <p>
-          In 2025 we were privileged to tour around Lake Erie and record our
-          first music video.
-        </p>
+        <p>In 2025 we were privileged to tour around Lake Erie and record our first music video.</p>
       </TextBlock>
       <div class="flex flex-col gap-4">
         <div class="bg-primary/10 w-full aspect-3/2 rounded-xl" />
@@ -108,32 +100,32 @@ const currentSeason: CurrentSeason = {
   label: "2026 Season",
   members: {
     soprano: [
-      { name: "Dorothy Carr" },
-      { name: "Lauren Diefenbacher" },
-      { name: "Yolanda Lichty" },
-      { name: "Callie Shantz" },
-      { name: "Brianna Burden" },
+      {name: "Dorothy Carr"},
+      {name: "Lauren Diefenbacher"},
+      {name: "Yolanda Lichty"},
+      {name: "Callie Shantz"},
+      {name: "Brianna Burden"},
     ],
     alto: [
-      { name: "Natalie Martin" },
-      { name: "Sherlyn Martin" },
-      { name: "Alyssa Roth" },
-      { name: "Carolyn Roth" },
-      { name: "Tanya Streicher" },
+      {name: "Natalie Martin"},
+      {name: "Sherlyn Martin"},
+      {name: "Alyssa Roth"},
+      {name: "Carolyn Roth"},
+      {name: "Tanya Streicher"},
     ],
     tenor: [
-      { name: "Greg Horst" },
-      { name: "Kyle Roth" },
-      { name: "Phil Roth" },
-      { name: "Brendon Weber" },
-      { name: "Caleb Weber" },
+      {name: "Greg Horst"},
+      {name: "Kyle Roth"},
+      {name: "Phil Roth"},
+      {name: "Brendon Weber"},
+      {name: "Caleb Weber"},
     ],
     bass: [
-      { name: "Curtis Cressman" },
-      { name: "Christopher Good" },
-      { name: "Dezhan Good" },
-      { name: "Kendall Roth" },
-      { name: "Kenton Shantz" },
+      {name: "Curtis Cressman"},
+      {name: "Christopher Good"},
+      {name: "Dezhan Good"},
+      {name: "Kendall Roth"},
+      {name: "Kenton Shantz"},
     ],
   },
 };

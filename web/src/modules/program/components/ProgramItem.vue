@@ -25,7 +25,5 @@ interface ProgramItemProps {
 
 const props = defineProps<ProgramItemProps>();
 
-const showYear = computed(
-  () => dayjs(props.program.date).year() !== dayjs().year(),
-);
+const showYear = computed(() => dayjs(props.program.date).year() !== dayjs().year());
 </script>

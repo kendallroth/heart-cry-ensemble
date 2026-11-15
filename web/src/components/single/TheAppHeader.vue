@@ -26,7 +26,7 @@
             :title="currentTheme.label"
             variant="text"
             @click="handleThemeToggle"
-            />
+          />
           <template #fallback>
             <!-- TODO: Render bare button OR the same one if it doesn't cause issues -->
             <!-- Matches 'md' icon button size -->
@@ -50,9 +50,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { Component } from "vue";
+import type {Component} from "vue";
 
-const { MenuIcon } = appIcons;
+const publicConfig = useRuntimeConfig().public;
+
+const {MenuIcon} = appIcons;
 
 interface AppLink {
   label: string;
@@ -60,9 +62,9 @@ interface AppLink {
 }
 
 const appLinks: AppLink[] = [
-  { label: "Home", path: "/" },
-  { label: "Seasons", path: "/seasons" },
-  { label: "About", path: "/about" },
+  {label: "Home", path: "/"},
+  {label: "Seasons", path: "/seasons"},
+  {label: "About", path: "/about"},
 ];
 
 type ThemePreference = "system" | "light" | "dark";
@@ -79,16 +81,15 @@ const themeOptions: Record<ThemePreference, ThemeOption> = {
     label: "System theme",
     next: "light",
   },
-  light: { icon: appIcons.ThemeLightIcon, label: "Light theme", next: "dark" },
-  dark: { icon: appIcons.ThemeDarkIcon, label: "Dark theme", next: "system" },
+  light: {icon: appIcons.ThemeLightIcon, label: "Light theme", next: "dark"},
+  dark: {icon: appIcons.ThemeDarkIcon, label: "Dark theme", next: "system"},
 };
 
 const colorMode = useColorMode();
 
 const currentTheme = computed(
-  () =>
-    themeOptions[colorMode.preference as ThemePreference] ??
-    themeOptions.system,
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  () => themeOptions[colorMode.preference as ThemePreference] ?? themeOptions.system,
 );
 
 const handleThemeToggle = () => {
