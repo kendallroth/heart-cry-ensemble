@@ -12,17 +12,14 @@
         </p>
       </div>
       <div class="flex flex-row items-center gap-2">
-        <NuxtLink
+        <AppButton
           v-for="link in socialLinks"
           :key="link.label"
-          :aria-label="link.label"
-          class="hover:bg-primary/10 block p-1.5 rounded-full transition-colors"
-          rel="noopener noreferrer"
+          :icon="link.icon"
           target="_blank"
           :to="link.link"
-        >
-          <component :is="link.icon" :class="appIcons.sizeClasses.md" />
-        </NuxtLink>
+          variant="text"
+        />
       </div>
     </PageWidth>
   </footer>

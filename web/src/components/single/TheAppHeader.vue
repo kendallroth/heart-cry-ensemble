@@ -5,46 +5,41 @@
         <NuxtImg class="rounded-lg" src="/icon-maskable.png" width="48" />
         <h2 class="text-xl font-medium">Heart Cry Ensemble</h2>
       </div>
-      <div class="hidden lg:flex gap-8">
-        <nav class="flex items-center gap-6">
-          <NuxtLink
+      <div class="hidden lg:flex items-center gap-8">
+        <nav class="flex items-center gap-2">
+          <AppButton
             v-for="link in appLinks"
-            active-class="!opacity-100 font-semibold"
-            class="opacity-80 font-medium"
             :key="link.label"
+            active-class="font-semibold"
+            color="on-primary"
+            :text="link.label"
             :to="link.path"
-          >
-            {{ link.label }}
-          </NuxtLink>
+            variant="text"
+          />
         </nav>
 
         <!-- Stored theme preference is only known client-side (avoids hydration mismatch) -->
         <ClientOnly>
-          <button
-            class="p-2 rounded-full hover:bg-on-primary/10 transition-colors"
-            type="button"
-            :aria-label="`${currentTheme.label} (click to change)`"
+          <AppButton
+            color="on-primary"
+            :icon="currentTheme.icon"
             :title="currentTheme.label"
+            variant="text"
             @click="handleThemeToggle"
-          >
-            <component
-              :is="currentTheme.icon"
-              :class="appIcons.sizeClasses.md"
             />
-          </button>
           <template #fallback>
             <!-- TODO: Render bare button OR the same one if it doesn't cause issues -->
-            <span class="block p-2">
-              <span class="block" :class="appIcons.sizeClasses.md" />
-            </span>
+            <!-- Matches 'md' icon button size -->
+            <span class="block h-10 aspect-square" />
           </template>
         </ClientOnly>
 
-        <button
-          class="bg-accent-light hover:bg-accent text-on-accent-light hover:text-on-accent py-2 px-4 rounded-full font-medium transition-colors"
-        >
-          Host a program
-        </button>
+        <AppButton
+          color="accent-light"
+          target="_blank"
+          text="Host a program"
+          :to="`mailto:${publicConfig.email}?subject=Host a program`"
+        />
       </div>
       <div class="lg:hidden">
         <!-- TODO: Implement mobile menu -->

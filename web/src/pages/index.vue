@@ -16,21 +16,14 @@
           music.
         </p>
         <div class="flex flex-col lg:flex-row items-center gap-4">
-          <button
-            class="bg-on-primary text-primary px-4 py-2 font-medium rounded-full"
-          >
-            <PlayIcon
-              class="inline text-primary"
-              :class="appIcons.sizeClasses.md"
-            />
-            Listen to our music
-          </button>
-          <NuxtLink
-            class="border border-on-primary px-4 py-2 font-medium rounded-full"
-            to="/seasons"
-          >
-            See past seasons
-          </NuxtLink>
+          <AppButton
+            color="on-primary"
+            :icon-prepend="PlayIcon"
+            size="lg"
+            text="Listen to our music"
+            :to="`#${headerIdListenAnywhere}`"
+          />
+          <AppButton color="on-primary" text="See past seasons" to="/seasons" variant="outlined" />
         </div>
       </template>
       <template #media>
@@ -93,14 +86,14 @@
             <MusicIcon :class="appIcons.sizeClasses.sm" />
           </div>
           <div class="font-medium">{{ platform.label }}</div>
-          <NuxtLink
-            class="hover:bg-primary/10 block ml-auto p-1 rounded-full transition-colors"
-            rel="noopener noreferrer"
+          <AppButton
+            class="ml-auto"
+            :icon="LinkIcon"
+            size="sm"
             target="_blank"
             :to="platform.link"
-          >
-            <LinkIcon class="ml-auto" :class="appIcons.sizeClasses.sm" />
-          </NuxtLink>
+            variant="text"
+          />
         </div>
       </div>
     </PageWidth>
@@ -122,12 +115,8 @@
             message in song.
           </TextBlock>
           <div class="flex flex-col gap-4">
-            <button
-              class="bg-accent-light text-on-accent-light px-4 py-2 rounded-full"
-            >
-              Contact us
-            </button>
-            <p class="text-sm">We usually plan programs 6 months in advance.</p>
+            <AppButton color="accent-light" size="lg" text="Contact Us" />
+            <p class="text-sm text-center">We usually plan programs 6 months in advance.</p>
           </div>
         </PageWidth>
       </div>
@@ -138,7 +127,9 @@
 <script lang="ts" setup>
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
 
-const { LinkIcon, MusicIcon, PlayIcon } = appIcons;
+const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
+
+const publicConfig = useRuntimeConfig().public;
 
 interface HeroStat {
   label: string;

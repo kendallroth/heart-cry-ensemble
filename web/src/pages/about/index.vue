@@ -74,15 +74,14 @@
 
     <PageWidth align="center" class="flex-col gap-8 py-6 md:py-12">
       <TextBlock class="text-center" title="Get in touch">
-        <p>
-          To host a program, order a CD, or ask about singing with us, send us a
-          note.
-        </p>
-        <button
-          class="bg-primary text-on-primary self-center px-4 py-2 rounded-full"
-        >
-          {{ publicConfig.email }}
-        </button>
+        <p>To host a program, order a CD, or ask about singing with us, send us a note.</p>
+        <AppButton
+          class="self-center"
+          color="primary"
+          target="_blank"
+          :text="publicConfig.email"
+          :to="`mailto:${publicConfig.email}?subject=Get in touch`"
+        />
       </TextBlock>
     </PageWidth>
   </PageLayout>
