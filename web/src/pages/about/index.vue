@@ -22,7 +22,9 @@
         <p>In 2025 we were privileged to tour around Lake Erie and record our first music video.</p>
       </TextBlock>
       <div class="flex flex-col gap-4">
-        <div class="bg-primary/10 w-full aspect-3/2 rounded-xl" />
+        <div class="bg-primary/10 w-full aspect-3/2 rounded-xl overflow-hidden">
+          <img alt="Group photo" src="/group-photo.jpg" />
+        </div>
         <TextBlock
           class="bg-primary text-on-primary flex-col-reverse px-6 py-4 rounded-xl"
           subtitle="Our Mission"

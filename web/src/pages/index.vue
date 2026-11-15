@@ -23,7 +23,9 @@
         </div>
       </template>
       <template #media>
-        <div class="bg-primary brightness-125 w-full aspect-3/2 rounded-xl" />
+        <div class="bg-on-primary/10 w-full aspect-3/2 rounded-xl overflow-hidden">
+          <img alt="Group photo" src="/group-photo.jpg" />
+        </div>
       </template>
     </PageHeader>
 
@@ -44,7 +46,18 @@
         album release!
       </TextBlock>
       <div>
-        <div class="bg-primary/10 w-full aspect-3/2 rounded-xl" />
+        <div class="bg-primary/10 w-full aspect-3/2 rounded-xl overflow-hidden">
+          <iframe
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+            frameborder="0"
+            height="100%"
+            referrerpolicy="strict-origin-when-cross-origin"
+            :src="publicConfig.heroYoutube + '?si=ML5pzKSoyDXYDkO_&amp;controls=0'"
+            title="YouTube video player"
+            width="100%"
+          ></iframe>
+        </div>
       </div>
     </PageWidth>
 
