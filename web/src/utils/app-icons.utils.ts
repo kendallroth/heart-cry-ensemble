@@ -1,4 +1,5 @@
 import {
+  ArrowLeftIcon,
   ArrowTopRightOnSquareIcon,
   Bars3Icon,
   EnvelopeIcon,
@@ -26,6 +27,7 @@ export const appIcons = {
   sizeClasses: appIconSizeClasses,
 
   // Icons
+  ArrowLeft: ArrowLeftIcon,
   EmailIcon: EnvelopeIcon,
   LinkIcon,
   MenuIcon: Bars3Icon,
