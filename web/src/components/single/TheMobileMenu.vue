@@ -61,6 +61,7 @@ const open = defineModel<boolean>("open", {default: false});
 
 const publicConfig = useRuntimeConfig().public;
 const route = useRoute();
+const {mobile} = useDisplay();
 
 const {CloseIcon} = appIcons;
 
@@ -87,6 +88,13 @@ watch(
     open.value = false;
   },
 );
+
+// Close mobile menu when switching to desktop layout (menu trigger is hidden)
+watch(mobile, (newValue) => {
+  if (!newValue) {
+    open.value = false;
+  }
+});
 
 /** Close when clicking the backdrop (only the dialog itself, as content fills the panel) */
 const handleDialogClick = (event: MouseEvent) => {
