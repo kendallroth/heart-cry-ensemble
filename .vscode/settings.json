@@ -2,6 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
+  // Formatting on save does not conflict with ESLint "fix on save" since formatting rules are skipped.
   "editor.formatOnSave": true,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {

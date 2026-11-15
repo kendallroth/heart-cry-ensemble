@@ -1,14 +1,11 @@
-import { fileURLToPath } from "node:url";
+import {fileURLToPath} from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
 
-const getAliasPath = (path: string) =>
-  fileURLToPath(new URL(path, import.meta.url));
+const getAliasPath = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxtjs/color-mode"],
-
   // Path aliases are automatically added to TypeScript. However, some non-JS imports still require
   //   '~' prefix, rendering alternative formats (ie. '#') less useful.
   alias: {
@@ -16,7 +13,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: "icon", href: "/favicon.png" }],
+      link: [{rel: "icon", href: "/favicon.png"}],
       title: "Heart Cry Ensemble",
     },
     rootAttrs: {
@@ -32,7 +29,7 @@ export default defineNuxtConfig({
     },
   ],
   css: ["~/assets/css/main.css"],
-  devtools: { enabled: true },
+  devtools: {enabled: true},
   imports: {
     dirs: ["~/modules/**"],
   },
@@ -43,6 +40,7 @@ export default defineNuxtConfig({
     // Client-side runtime configuration
     public: {
       email: "info@heartcryensemble.ca",
+      heroYoutube: "https://www.youtube.com/embed/zLRb9iOCqlw",
     },
   },
   typescript: {
@@ -69,16 +67,28 @@ export default defineNuxtConfig({
   // Module configuration
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/sanity"],
   colorMode: {
     preference: "system",
     fallback: "light",
     storage: "localStorage",
     storageKey: "hce-color-mode",
   },
+  eslint: {
+    config: {
+      typescript: {
+        tsconfigPath: "./tsconfig.json",
+      },
+    },
+  },
   fonts: {
     families: [
       // Variable weight font (only supports 400 - 700)
-      { name: "Instrument Sans", weights: ["400 700"], provider: "google" },
+      {name: "Instrument Sans", weights: ["400 700"], provider: "google"},
     ],
+  },
+  sanity: {
+    projectId: process.env.SANITY_PROJECT_ID || "",
+    dataset: process.env.SANITY_DATASET || "production",
   },
 });
