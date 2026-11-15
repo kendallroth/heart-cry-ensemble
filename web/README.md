@@ -3,7 +3,6 @@
 ## TODOs
 
 - Project documentation
-- Mobile header menu drawer
 - Button component
   - Understand and cleanup generated code
 - Figure out social icons (or other non hero icons)

@@ -10,6 +10,7 @@ import {
   PlayIcon,
   SunIcon,
   UsersIcon,
+  XMarkIcon,
 } from "@heroicons/vue/24/outline";
 
 import ThemeSystemIcon from "~/components/icon/ThemeSystem.vue";
@@ -28,6 +29,7 @@ export const appIcons = {
 
   // Icons
   ArrowLeft: ArrowLeftIcon,
+  CloseIcon: XMarkIcon,
   EmailIcon: EnvelopeIcon,
   LinkIcon,
   MenuIcon: Bars3Icon,
