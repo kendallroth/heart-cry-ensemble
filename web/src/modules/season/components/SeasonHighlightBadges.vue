@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import type {AppButtonProps} from "~/components/app-button.types";
 
-export interface SeasonHighlightBadge extends Partial<
+interface SeasonHighlightBadge extends Partial<
   Pick<AppButtonProps, "color" | "iconPrepend" | "iconAppend" | "size" | "variant">
 > {
   text: string;
