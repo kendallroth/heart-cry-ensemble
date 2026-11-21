@@ -1,26 +1,35 @@
 <template>
-  <div class="flex flex-col items-stretch gap-4">
-    <h5 v-if="subtitle" class="text-accent text-sm font-semibold uppercase" :class="subtitleClass">
-      {{ subtitle }}
-    </h5>
-    <div
-      class="flex"
-      :class="[
-        titleAppendStackOnMobile ? 'flex-col md:flex-row items-start md:items-center' : 'items-center',
-      ]"
+  <div class="text-block flex flex-col items-stretch" :class="gapClass">
+    <component
+      :is="slots['title-append'] ? 'div' : SlotPassthrough"
+      class="flex gap-[inherit]"
+      :class="[titleAppendStackOnMobile ? 'flex-col md:flex-row md:items-end' : 'items-end']"
     >
-      <h4 :id="titleId" class="text-primary text-4xl font-serif grow" :class="titleClass">
-        {{ title }}
-      </h4>
+      <component
+        :is="slots['title-append'] ? 'div' : SlotPassthrough"
+        class="flex flex-col gap-[inherit] grow"
+      >
+        <h5 v-if="subtitle" class="text-accent text-sm font-semibold uppercase" :class="subtitleClass">
+          {{ subtitle }}
+        </h5>
+        <h4
+          :id="titleId"
+          class="text-primary text-4xl font-serif"
+          :class="[titleClass, {grow: slots['title-append']}]"
+        >
+          {{ title }}
+        </h4>
+      </component>
       <slot name="title-append" />
-    </div>
+    </component>
+
     <slot name="default" />
-    <slot name="append" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import type {HTMLAttributes} from "vue";
+import SlotPassthrough from "../layout/SlotPassthrough";
 
 export interface TextBlockProps {
   subtitle?: string;
@@ -40,9 +49,13 @@ withDefaults(defineProps<TextBlockProps>(), {
   titleId: undefined,
 });
 
-defineSlots<{
+const slots = defineSlots<{
   append: () => unknown;
   default: () => unknown;
   "title-append": () => unknown;
 }>();
+
+const attrs = useAttrs();
+
+const gapClass = computed<string>(() => (hasClass(attrs.class, "gap-") ? "" : "gap-4"));
 </script>
