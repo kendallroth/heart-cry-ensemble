@@ -61,8 +61,23 @@
 
     <div class="bg-primary/5">
       <PageWidth class="flex flex-col gap-6 py-8">
-        <TextBlock :subtitle="seasonPrograms.subtitle" :title="seasonPrograms.title" />
-        <!-- TODO: handle link to current/previous season -->
+        <TextBlock
+          :subtitle="seasonPrograms.subtitle"
+          :title="seasonPrograms.title"
+          title-append-stack-on-mobile
+        >
+          <template #title-append>
+            <AppButton
+              class="w-fit"
+              :icon-append="appIcons.ArrowRightIcon"
+              :text="currentSeason ? 'See current season' : 'See past seasons'"
+              :to="
+                currentSeason ? routeLinks.seasons.details(currentSeason.slug) : routeLinks.seasons.index()
+              "
+              variant="tonal"
+            />
+          </template>
+        </TextBlock>
         <div class="bg-surface text-on-surface rounded-xl divide-y-2 divide-primary/5">
           <template v-if="seasonPrograms.programs.length">
             <ProgramItem
@@ -128,6 +143,7 @@ import {useQueryHomePageData} from "~/modules/app/app-page.data";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
 import {useQueryCurrentSeason} from "~/modules/season/season.data";
 import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
+import dayjs from "dayjs";
 
 const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
 
@@ -152,12 +168,15 @@ const heroStats = computed<HeroStat[]>(() => [
   {label: "programs given", value: groupStats.value?.programs ?? 0},
 ]);
 
-// TODO: Update to add styling (and dynamic title) client-side based on whether program date is upcoming or past
+// TODO: is this client-side
 const seasonPrograms = computed<{title: string; subtitle: string; programs: Program[]}>(() => {
+  const hasUpcomingPrograms =
+    currentSeason.value?.programs.some((program) => dayjs(program.date).isAfter(undefined, "day")) ?? false;
+
   return {
     programs: currentSeason.value?.programs ?? [],
     subtitle: "Programs",
-    title: "Come and hear us sing",
+    title: hasUpcomingPrograms ? "Come and hear us sing" : "Our recent programs",
   };
 });
 </script>
