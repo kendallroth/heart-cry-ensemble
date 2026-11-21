@@ -3,18 +3,28 @@
     <PageWidth align="center" class="grid gap-8 py-6 md:py-10" :class="{'md:grid-cols-2': slots.media}">
       <div class="flex flex-col gap-6">
         <AppButton
-          v-if="backText || backRoute"
-          class="w-fit -mt-4 -mb-2"
+          v-if="backText"
+          class="w-fit -ml-3 -mt-4 -mb-2"
           color="on-primary"
           :icon-prepend="appIcons.ArrowLeftIcon"
           size="sm"
           :text="backText || 'Back'"
-          :to="backRoute"
           variant="text"
           @click="handleBack"
         />
-        <div class="text-accent-light uppercase">{{ subtitle }}</div>
-        <h2 :alt="title" class="text-6xl font-serif" :class="titleClass">
+        <div
+          class="text-accent-light uppercase"
+          :class="[subtitleClass, {'max-md:text-center': props.mobileTitleLayout === 'center'}]"
+        >
+          <slot name="subtitle" v-bind="{subtitle}">
+            {{ subtitle }}
+          </slot>
+        </div>
+        <h2
+          :alt="title"
+          class="text-6xl font-serif"
+          :class="[titleClass, {'max-md:text-center': props.mobileTitleLayout === 'center'}]"
+        >
           <slot name="title" v-bind="{title}">
             {{ title }}
           </slot>
@@ -28,26 +38,28 @@
 
 <script lang="ts" setup>
 import type {HTMLAttributes} from "vue";
-import {useRouter, type RouteLocationRaw} from "vue-router";
+import {useRouter} from "vue-router";
 
 interface PageHeaderProps {
-  /** @deprecated Prefer always redirecting to previous page */
-  backRoute?: RouteLocationRaw;
   backText?: string;
+  mobileTitleLayout?: "center" | "default";
   subtitle: string;
+  subtitleClass?: HTMLAttributes["class"];
   /** NOTE: Title is always required (even if not shown) for accessibility */
   title: string;
   titleClass?: HTMLAttributes["class"];
 }
 
 const props = withDefaults(defineProps<PageHeaderProps>(), {
-  backRoute: undefined,
   backText: undefined,
+  mobileTitleLayout: "default",
+  subtitleClass: undefined,
   titleClass: undefined,
 });
 
 const slots = defineSlots<{
   default: () => unknown;
+  subtitle?: (props: {subtitle: string}) => unknown;
   title?: (props: {title: string}) => unknown;
   media?: () => unknown;
 }>();
@@ -55,8 +67,6 @@ const slots = defineSlots<{
 const router = useRouter();
 
 const handleBack = () => {
-  if (props.backRoute) return;
-
   router.back();
 };
 </script>

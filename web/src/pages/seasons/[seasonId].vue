@@ -1,16 +1,22 @@
 <template>
   <PageLayout class="gap-8 pb-8 md:gap-12 md:pb-12">
-    <!-- TODO: Consider subtitle "tag" (for men's ensemble, etc) -->
     <PageHeader
       back-text="All seasons"
       :subtitle="seasonDateSpan ?? enDash"
-      :title="seasonData?.name ?? enDash"
+      :title="seasonData?.title ?? enDash"
     >
-      <TextStats class="self-start" :stats="seasonStats" />
+      <template v-if="seasonBadges.length" #subtitle="{subtitle}">
+        <div class="flex items-center gap-4">
+          {{ subtitle }}
+          <SeasonHighlightBadges :badges="seasonBadges" class="font-sans" variant="flat" />
+        </div>
+      </template>
+
+      <TextStats class="self-center md:self-start" :stats="seasonStats" />
     </PageHeader>
 
     <PageWidth v-if="seasonData" align="center" class="grid md:grid-cols-2 gap-8">
-      <TextBlock subtitle="About this season" :title="seasonData.contentTitle ?? seasonData.name">
+      <TextBlock subtitle="About this season" :title="seasonData.contentTitle ?? seasonData.dateName">
         <template v-if="seasonData.contentDescription">{{ seasonData.contentDescription }}</template>
         <span v-else class="italic">No description available.</span>
       </TextBlock>
@@ -25,7 +31,11 @@
         class="flex-col md:flex-row gap-8 py-6 md:max-lg:py-4 text-on-primary"
         tile-class="lg:before:-inset-x-2 before:bg-primary lg:before:rounded-2xl"
       >
-        <AppMedia alt="Album cover" aspect="1/1" class="w-40 bg-on-primary/10 border-2 border-on-primary">
+        <AppMedia
+          alt="Album cover"
+          aspect="1/1"
+          class="w-40 md:w-32 bg-on-primary/10 border-2 border-on-primary"
+        >
           <img v-if="seasonRecording.thumbnailUrl" alt="Album cover" :src="seasonRecording.thumbnailUrl" />
         </AppMedia>
         <TextBlock
@@ -35,12 +45,28 @@
           :title="seasonRecording.title"
           title-class="!text-on-primary truncate"
         >
-          {{ dayjs(seasonRecording.releaseDate).format("YYYY") }}
-          <template v-if="(seasonRecording.trackCount ?? 0) > 1">
-            &ensp;&bullet;&emsp;{{ seasonRecording.trackCount }} tracks
-          </template>
+          <div class="flex items-center gap-2">
+            <span
+              class="flex items-center gap-1"
+              :class="{'italic opacity-80': !seasonRecordingReleaseDate.released}"
+            >
+              <WarningFilledIcon
+                v-if="!seasonRecordingReleaseDate.released"
+                class="text-on-primary"
+                :class="appIcons.sizeClasses.sm"
+              />
+              {{ seasonRecordingReleaseDate.releaseDate }}
+            </span>
+            <template v-if="(seasonRecording.trackCount ?? 0) > 1">
+              &bullet;
+              <span>{{ seasonRecording.trackCount }} tracks</span>
+            </template>
+          </div>
         </TextBlock>
-        <div class="flex flex-wrap justify-center md:justify-end gap-4 md:ml-auto">
+        <div
+          v-if="seasonRecording.platforms.length"
+          class="flex flex-wrap justify-center md:justify-end gap-4 md:ml-auto"
+        >
           <AppButton
             v-for="platform in seasonRecording.platforms"
             :key="platform.type"
@@ -102,10 +128,12 @@ import type {TextStat} from "~/components/typography/TextStats.vue";
 import ConductorChip from "~/modules/member/components/ConductorChip.vue";
 import MemberList from "~/modules/member/components/MemberList.vue";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
+import SeasonHighlightBadges from "~/modules/season/components/SeasonHighlightBadges.vue";
 import {useQuerySeasonDetails} from "~/modules/season/season.data";
 import SongItem from "~/modules/song/components/SongItem.vue";
 
 const route = useRoute();
+const {WarningFilledIcon} = appIcons;
 
 const {data: seasonData} = await useQuerySeasonDetails(() => route.params.seasonId as string);
 
@@ -127,9 +155,22 @@ const seasonRecording = computed(() => {
   return null;
 });
 
+const seasonBadges = computed(() =>
+  seasonData.value ? getSeasonHighlightBadges(seasonData.value, ["tour", "mens"]) : [],
+);
+
 const seasonDateSpan = computed(() =>
   seasonData.value ? formatDateSpan(seasonData.value.dateStart, seasonData.value.dateEnd) : undefined,
 );
+
+const seasonRecordingReleaseDate = computed<{releaseDate: string; released: boolean}>(() => {
+  if (!seasonRecording.value?.releaseDate) {
+    return {releaseDate: "Unreleased", released: false};
+  }
+  const released = dayjs(seasonRecording.value.releaseDate).isBefore(undefined, "day");
+  const dateFormat = released ? "YYYY" : "MMM DD, YYYY";
+  return {releaseDate: dayjs(seasonRecording.value.releaseDate).format(dateFormat), released};
+});
 
 const seasonMemberPartLists = computed(() => getSeasonMemberPartLists(seasonData.value?.members ?? []));
 </script>

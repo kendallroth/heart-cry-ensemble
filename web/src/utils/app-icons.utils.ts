@@ -1,4 +1,6 @@
 import {
+  IconAlertTriangle,
+  IconAlertTriangleFilled,
   IconArrowLeft,
   IconArrowRight,
   IconBrandFacebook,
@@ -48,5 +50,7 @@ export const appIcons = {
   ThemeLightIcon: IconSun,
   ThemeDarkIcon: IconMoon,
   ThemeSystemIcon: IconSunMoon,
+  WarningIcon: IconAlertTriangle,
+  WarningFilledIcon: IconAlertTriangleFilled,
   YouTubeIcon: IconBrandYoutube,
 };

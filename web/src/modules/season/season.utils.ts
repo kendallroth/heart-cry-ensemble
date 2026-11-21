@@ -1,3 +1,4 @@
+import type {AppButtonProps} from "~/components/AppButton.vue";
 import type {SeasonMember} from "~/modules/season/season.types";
 
 export const getSeasonMemberPartLists = (members: SeasonMember[]): {label: string; members: Member[]}[] => {
@@ -9,4 +10,63 @@ export const getSeasonMemberPartLists = (members: SeasonMember[]): {label: strin
   }, {});
 
   return Object.entries(partMap).map(([label, members]) => ({label, members}));
+};
+
+export type SeasonRelativity = "past" | "present" | "future";
+
+export const getSeasonRelativity = (seasonStart: Date, seasonEnd: Date): SeasonRelativity => {
+  const now = new Date();
+  if (seasonEnd < now) return "past";
+  if (seasonStart > now) return "future";
+  return "present";
+};
+
+export interface SeasonHighlightBadge extends Partial<
+  Pick<AppButtonProps, "color" | "iconPrepend" | "iconAppend" | "size" | "variant">
+> {
+  text: string;
+}
+
+const seasonHighlightBadgeTypes = {
+  tour: {
+    color: "warning",
+    text: "Tour",
+    condition: (season: Season) => !!season.tour,
+  },
+  mens: {
+    color: "warning",
+    text: "TTBB",
+    condition: (season: Season) => season.type === SeasonType.MENS,
+  },
+  album: {
+    color: "primary",
+    text: "Album",
+    condition: (season: Season) => season.releases.some((r) => r.type === MusicReleaseType.ALBUM),
+  },
+  single: {
+    color: "primary",
+    text: "Single",
+    condition: (season: Season) => season.releases.some((r) => r.type === MusicReleaseType.SINGLE),
+  },
+  video: {
+    color: "primary",
+    text: "Video",
+    condition: (season: Season) => season.releases.some((r) => r.type === MusicReleaseType.VIDEO),
+  },
+} as const satisfies Record<string, SeasonHighlightBadge & {condition: (season: Season) => boolean}>;
+
+export type SeasonHighlightBadgeType = keyof typeof seasonHighlightBadgeTypes;
+
+/** Season highlight badges indicate memorable aspects of a season (ie. tours, releases, etc) */
+export const getSeasonHighlightBadges = (season: Season, badgeTypes?: SeasonHighlightBadgeType[]) => {
+  const result: SeasonHighlightBadge[] = [];
+  for (const [key, badgeDefinition] of Object.entries(seasonHighlightBadgeTypes)) {
+    if (badgeTypes && !badgeTypes.includes(key as SeasonHighlightBadgeType)) continue;
+
+    if (badgeDefinition.condition(season)) {
+      const {condition: _condition, ...badgeProps} = badgeDefinition;
+      result.push({...badgeProps});
+    }
+  }
+  return result;
 };

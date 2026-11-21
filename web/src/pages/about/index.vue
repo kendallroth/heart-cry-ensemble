@@ -33,7 +33,7 @@
       <PageWidth class="flex-col py-6 md:py-8">
         <TextBlock
           class="w-full"
-          :subtitle="currentSeason?.name"
+          :subtitle="currentSeason?.dateName"
           title="The Voices"
           title-append-stack-on-mobile
         >
@@ -45,7 +45,7 @@
           <MemberList
             v-for="partList in seasonMemberPartLists"
             :key="partList.label"
-            class="bg-surface p-4 rounded-xl"
+            class="bg-surface p-4 border border-primary/10 rounded-xl"
             :members="partList.members"
             :part="partList.label"
           />

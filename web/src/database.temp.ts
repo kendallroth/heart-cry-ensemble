@@ -1,4 +1,5 @@
-import {MusicPlatformType, MusicReleaseType} from "./modules/app/app.types";
+import {MusicPlatformType} from "./modules/app/app.types";
+import {MusicReleaseType} from "./modules/release/release.types";
 import {MemberPart} from "./modules/member/member.types";
 import {ProgramStatus, ProgramType} from "./modules/program/program.types";
 import {SeasonType} from "./modules/season/season.types";
@@ -216,18 +217,40 @@ export const releaseMap = {
       ),
     ],
   },
+  "2026_spring_album": {
+    title: "Be Thou My Vision",
+    type: MusicReleaseType.ALBUM,
+    releaseDate: null,
+    trackCount: 10,
+    platforms: [],
+  },
+  "2026_spring_video_1": {
+    title: "Be Thou My Vision",
+    type: MusicReleaseType.VIDEO,
+    releaseDate: null,
+    platforms: [],
+  },
+  "2026_spring_video_2": {
+    title: "God Is Here",
+    type: MusicReleaseType.VIDEO,
+    releaseDate: null,
+    platforms: [],
+  },
 } satisfies Record<string, MusicRelease>;
 
-export const releaseList: MusicRelease[] = Object.values(releaseMap).sort(
-  (a, b) => b.releaseDate.getTime() - a.releaseDate.getTime(),
-);
+export const releaseList: MusicRelease[] = Object.values(releaseMap).sort((a, b) => {
+  if (!a.releaseDate) return 1;
+  if (!b.releaseDate) return -1;
+  return b.releaseDate.getTime() - a.releaseDate.getTime();
+});
 
 export const seasonMap = {
   "2018-spring": {
     slug: "2018-spring",
     dateStart: new Date("2017-08-24"),
     dateEnd: new Date("2018-08-12"),
-    name: "Spring 2018",
+    dateName: "Spring 2018",
+    title: "Hear My Prayer",
     type: SeasonType.MIXED,
     conductor: null,
     members: [
@@ -312,7 +335,8 @@ export const seasonMap = {
     slug: "2019-spring",
     dateStart: new Date("2018-11-05"),
     dateEnd: new Date("2019-03-31"),
-    name: "Spring 2019",
+    dateName: "Spring 2019",
+    title: "Going Home",
     type: SeasonType.MENS,
     conductor: null,
     members: [
@@ -367,7 +391,8 @@ export const seasonMap = {
     slug: "2019-fall",
     dateStart: new Date("2019-05-06"),
     dateEnd: new Date("2019-11-12"),
-    name: "Fall 2019",
+    dateName: "Fall 2019",
+    title: "Between Darkness and Light",
     type: SeasonType.MIXED,
     conductor: null,
     members: [
@@ -442,7 +467,8 @@ export const seasonMap = {
       "Unfortunately our fall season was heavily impacted by COVID, but we were thankful we were able to record our first album!",
     dateStart: new Date("2020-07-06"),
     dateEnd: new Date("2020-10-26"),
-    name: "Fall 2020",
+    dateName: "Fall 2020",
+    title: "God is Near",
     type: SeasonType.MIXED,
     conductor: null,
     members: [
@@ -500,8 +526,8 @@ export const seasonMap = {
     slug: "2022-spring",
     dateStart: new Date("2022-01-03"),
     dateEnd: new Date("2022-04-03"),
-    name: "Spring 2022",
-    theme: '"Because He Lives" we can face tomorrow!',
+    dateName: "Spring 2022",
+    title: "Because He Lives",
     type: SeasonType.MIXED,
     conductor: memberMap["wendell_diefenbacher"],
     members: [
@@ -560,8 +586,8 @@ export const seasonMap = {
     slug: "2023-fall",
     dateStart: new Date("2023-07-10"),
     dateEnd: new Date("2023-11-05"),
-    name: "Fall 2023",
-    theme: '"And send thee help" (themes from Psalm 20)',
+    dateName: "Fall 2023",
+    title: "And Send Thee Help",
     type: SeasonType.MIXED,
     conductor: memberMap["wendell_diefenbacher"],
     members: [
@@ -649,7 +675,8 @@ export const seasonMap = {
     contentTitle: "Local Collaboration",
     dateStart: new Date("2024-02-12"),
     dateEnd: new Date("2024-05-05"),
-    name: "Menno Singers Collaboration 2024",
+    dateName: "Collaboration 2024",
+    title: "Menno Singers Collaboration",
     type: SeasonType.MIXED,
     conductor: memberMap["wendell_diefenbacher"],
     members: [
@@ -714,8 +741,9 @@ export const seasonMap = {
       type: "image",
       url: "/group-photo.jpg",
     },
-    name: "Tour 2025",
-    theme: "All the Way My Saviour Leads Me",
+    dateName: "Tour 2025",
+    title: "All the Way",
+    tour: true,
     type: SeasonType.MIXED,
     conductor: memberMap["wendell_diefenbacher"],
     members: [
@@ -777,8 +805,8 @@ export const seasonMap = {
     slug: "2026-spring",
     dateStart: new Date("2026-01-19"),
     dateEnd: new Date("2026-05-10"),
-    name: "Spring 2026",
-    theme: "Be Thou My Vision",
+    dateName: "Spring 2026",
+    title: "Be Thou My Vision",
     type: SeasonType.MIXED,
     conductor: memberMap["wendell_diefenbacher"],
     members: [
@@ -838,7 +866,11 @@ export const seasonMap = {
         venue: "St. Jacobs Mennonite Church",
       },
     ],
-    releases: [],
+    releases: [
+      releaseMap["2026_spring_album"],
+      releaseMap["2026_spring_video_1"],
+      releaseMap["2026_spring_video_2"],
+    ],
     songs: [
       {composer: "Lyle Stutzman", title: "Down in the River to Pray"},
       {composer: "Michael John Trotta", title: "I Shall See"},

@@ -1,6 +1,3 @@
-import type {AppMedia} from "../app/app.types";
-import type {MemberPart} from "../member/member.types";
-
 export enum SeasonType {
   MIXED = "mixed",
   MENS = "mens",
@@ -15,11 +12,15 @@ export interface Season {
   slug: string;
   dateStart: Date;
   dateEnd: Date;
+  /** Date-based name (ie. 'Fall 2025', etc) */
+  dateName: string;
   contentDescription?: string | null;
   contentTitle?: string | null;
   media?: AppMedia | null;
-  name: string;
-  theme?: string | null;
+  /** Season title */
+  title: string;
+  /** Whether season included a tour */
+  tour?: boolean;
   type: SeasonType;
 
   conductor: Member | null;
