@@ -26,9 +26,12 @@
           </div>
         </template>
         <template #media>
-          <AppMedia alt="Group photo" aspect="3/2" class="bg-on-primary/10">
-            <img v-if="homePageData" alt="Group photo" :src="homePageData.header.media.url" />
-          </AppMedia>
+          <AppMedia
+            alt="Group photo"
+            aspect="3/2"
+            class="bg-on-primary/10"
+            :media="homePageData?.header.media"
+          />
         </template>
       </PageHeader>
 
@@ -49,25 +52,7 @@
         <TextBlock :subtitle="homePageData.news.subtitle || 'Latest news'" :title="homePageData.news.title">
           {{ homePageData.news.description }}
         </TextBlock>
-        <AppMedia alt="News media" aspect="3/2" class="bg-primary/10">
-          <!-- TODO: Extract media rendering into a separate component -->
-          <img
-            v-if="homePageData.news.media.type === 'image'"
-            alt="Group photo"
-            :src="homePageData.news.media.url"
-          />
-          <iframe
-            v-if="homePageData.news.media.type === 'video'"
-            allow="clipboard-write; encrypted-media; web-share"
-            allowfullscreen
-            frameborder="0"
-            height="100%"
-            referrerpolicy="strict-origin-when-cross-origin"
-            :src="homePageData.news.media.url"
-            :title="homePageData.news.media.name"
-            width="100%"
-          ></iframe>
-        </AppMedia>
+        <AppMedia alt="News media" aspect="3/2" class="bg-primary/10" :media="homePageData.news.media" />
       </template>
       <TextBlock v-else subtitle="Latest news" title="No news available">
         Stay tuned for upcoming updates and announcements!

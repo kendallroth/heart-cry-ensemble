@@ -12,13 +12,12 @@
         <p v-if="aboutPageData" class="whitespace-pre-wrap">{{ aboutPageData.content.description }}</p>
       </TextBlock>
       <div class="flex flex-col gap-4">
-        <AppMedia alt="Group photo" aspect="3/2" class="bg-primary/10">
-          <img
-            v-if="aboutPageData?.content.media"
-            :alt="aboutPageData.content.media.name"
-            :src="aboutPageData.content.media.url"
-          />
-        </AppMedia>
+        <AppMedia
+          alt="Group photo"
+          aspect="3/2"
+          class="bg-primary/10"
+          :media="aboutPageData?.content.media"
+        />
         <TextBlock
           class="bg-primary text-on-primary flex-col-reverse px-6 py-4 rounded-xl"
           subtitle="Our Mission"

@@ -9,7 +9,22 @@
     >
       {{ alt }}
     </span>
-    <slot name="default" />
+    <slot name="default">
+      <template v-if="media">
+        <img v-if="media.type === 'image'" :alt="alt" :src="media.url" />
+        <iframe
+          v-if="media.type === 'video'"
+          allow="clipboard-write; encrypted-media; web-share"
+          allowfullscreen
+          frameborder="0"
+          height="100%"
+          referrerpolicy="strict-origin-when-cross-origin"
+          :src="media.url"
+          :title="media.name"
+          width="100%"
+        ></iframe>
+      </template>
+    </slot>
   </div>
 </template>
 
@@ -19,11 +34,13 @@ type AppMediaAspect = "1/1" | "3/2" | "4/3";
 interface AppMediaProps {
   alt?: string;
   aspect: AppMediaAspect;
+  media?: AppMedia;
   rounded?: boolean;
 }
 
 withDefaults(defineProps<AppMediaProps>(), {
   alt: undefined,
+  media: undefined,
   rounded: true,
 });
 

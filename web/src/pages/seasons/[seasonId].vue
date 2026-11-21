@@ -20,9 +20,13 @@
         <template v-if="seasonData.contentDescription">{{ seasonData.contentDescription }}</template>
         <span v-else class="italic">No description available.</span>
       </TextBlock>
-      <AppMedia v-if="seasonData.media" :alt="seasonData.media.name" aspect="3/2" class="bg-primary/10">
-        <img :alt="seasonData.media.name" :src="seasonData.media.url" />
-      </AppMedia>
+      <AppMedia
+        v-if="seasonData.media"
+        :alt="seasonData.media.name"
+        aspect="3/2"
+        class="bg-primary/10"
+        :media="seasonData.media"
+      />
     </PageWidth>
 
     <div v-if="seasonRecording" class="lg:px-6">
