@@ -8,6 +8,9 @@
         </p>
       </div>
       <div class="flex flex-row items-center gap-2">
+        <p v-if="showHydratedNow" class="text-sm text-primary/75">
+          {{ currentNowTime }}
+        </p>
         <AppButton
           v-for="link in socialLinks"
           :key="link.label"
@@ -22,9 +25,14 @@
 </template>
 
 <script lang="ts" setup>
+import {useMagicKeys, whenever} from "@vueuse/core";
+import dayjs from "dayjs";
+
 const publicConfig = useRuntimeConfig().public;
+
 const now = useNow();
 const currentYear = computed(() => new Date(now.value).getFullYear());
+const currentNowTime = computed(() => dayjs(now.value).format("YYYY-MM-DD HH:mm:ss"));
 
 interface SocialLink {
   icon: IconType;
@@ -49,4 +57,12 @@ const socialLinks: SocialLink[] = [
     link: `mailto:${publicConfig.email}`,
   },
 ];
+
+const shortKeys = useMagicKeys();
+
+const showHydratedNow = ref(false);
+const breakpointKeys = shortKeys["Ctrl+Shift+Alt+KeyT"];
+whenever(breakpointKeys!, () => {
+  showHydratedNow.value = !showHydratedNow.value;
+});
 </script>
