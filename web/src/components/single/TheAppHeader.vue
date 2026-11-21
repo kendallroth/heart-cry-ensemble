@@ -45,6 +45,8 @@
 </template>
 
 <script lang="ts" setup>
+import {routeLinks} from "~/utils/routes.utils";
+
 export interface AppLink {
   label: string;
   path: string;
@@ -55,9 +57,9 @@ const publicConfig = useRuntimeConfig().public;
 const {MenuIcon} = appIcons;
 
 const appLinks: AppLink[] = [
-  {label: "Home", path: "/"},
-  {label: "Seasons", path: "/seasons"},
-  {label: "About", path: "/about"},
+  {label: "Home", path: routeLinks.home()},
+  {label: "Seasons", path: routeLinks.seasons.index()},
+  {label: "About", path: routeLinks.about()},
 ];
 
 const mobileMenuOpen = ref(false);

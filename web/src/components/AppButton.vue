@@ -35,7 +35,7 @@ const NuxtLink = resolveComponent("NuxtLink");
 type BaseThemeColor = (typeof baseThemeColors)[number];
 export type AppButtonThemeColor = BaseThemeColor | `on-${BaseThemeColor}`;
 export type AppButtonRounded = "none" | "sm" | "md" | "lg" | "full";
-export type AppButtonSize = "sm" | "md" | "lg";
+export type AppButtonSize = "xs" | "sm" | "md" | "lg";
 export type AppButtonVariant = "elevated" | "flat" | "tonal" | "outlined" | "text";
 
 export interface AppButtonProps {
@@ -97,6 +97,11 @@ const roundedClasses: Record<AppButtonRounded, string> = {
 };
 
 const sizeClasses: Record<AppButtonSize, {height: string; icon: string; content: string}> = {
+  xs: {
+    content: "gap-1 px-2 text-xs",
+    height: "h-6",
+    icon: appIcons.sizeClasses.xs,
+  },
   sm: {
     content: "gap-1.5 px-3 text-sm",
     height: "h-8",

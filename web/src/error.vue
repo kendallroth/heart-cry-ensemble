@@ -15,7 +15,7 @@
         We couldn't find the page you were looking for. It may have moved when we refreshed the site, or the
         link may be mistyped.
       </p>
-      <AppButton :icon-prepend="appIcons.ArrowLeft" to="/">Back to home</AppButton>
+      <AppButton :icon-prepend="appIcons.ArrowLeftIcon" to="/">Back to home</AppButton>
     </PageWidth>
   </PageLayout>
 

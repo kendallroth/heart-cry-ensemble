@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t border-primary/20">
+  <footer class="bg-surface border-t border-primary/20">
     <PageWidth align="center" class="flex-col md:flex-row md:justify-between gap-2 py-4">
       <div class="text-center md:text-left">
         <p class="text-xl font-serif">Heart Cry Ensemble</p>
