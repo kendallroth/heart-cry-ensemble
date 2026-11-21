@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-row items-center gap-5 px-5 py-3" :class="{'opacity-75': programInPast}">
-    <div class="flex flex-col items-center">
+  <div class="flex flex-row items-center gap-5 px-5 py-3">
+    <div class="flex flex-col items-center" :class="programInPastClass">
       <p class="text-accent text-sm uppercase">
         {{ formatDate(program.date, "MMM") }}
       </p>
@@ -14,7 +14,7 @@
         <span
           :class="{
             'line-through': program.status === ProgramStatus.CANCELLED,
-            italic: program.status === ProgramStatus.TENTATIVE,
+            'italic opacity-75': program.status === ProgramStatus.TENTATIVE,
           }"
         >
           {{ program.venue }}
@@ -28,7 +28,24 @@
           variant="tonal"
         />
       </p>
-      <p>{{ program.location || "N/A" }}&ensp;&bullet;&ensp;{{ formatDate(program.date, "HH:mm") }}</p>
+      <p v-if="program.address && !programInPast" class="text-xs opacity-80">
+        {{ program.address }}
+      </p>
+      <p class="flex items-center gap-2">
+        <span>{{ program.location || "N/A" }}</span>
+        &bullet;
+        <span :class="programInPastClass">{{ formatDate(program.date, "HH:mm") }}</span>
+        <template v-if="program.eventLink">
+          &bullet;
+          <AppButton
+            :icon="appIcons.LinkIcon"
+            size="xs"
+            target="_blank"
+            :to="program.eventLink"
+            variant="text"
+          />
+        </template>
+      </p>
     </div>
   </div>
 </template>
@@ -43,22 +60,25 @@ interface ProgramItemProps {
 
 const props = defineProps<ProgramItemProps>();
 
-// TODO: Style program item based on date (requires client-side calculation)
-
 // TODO: Ensure this is a client-side calculation
 const showYear = computed(() => dayjs(props.program.date).year() !== dayjs().year());
 
 const programInPast = computed(() => dayjs(props.program.date).isBefore(undefined, "day"));
 
+const programInPastClass = computed(() => (programInPast.value ? "opacity-60" : ""));
+
 const programBadges = computed(() => {
   const badges: AppBadgeProps[] = [];
+  if (props.program.status === ProgramStatus.CANCELLED) {
+    badges.push({text: "Cancelled", color: "error"});
+  } else if (props.program.status === ProgramStatus.TENTATIVE) {
+    badges.push({text: "Pending", color: "warning"});
+  }
+
   if (props.program.type === ProgramType.PARTIAL) {
     badges.push({text: "Partial", color: "warning"});
   } else if (props.program.type === ProgramType.LIVESTREAM) {
     badges.push({text: "Livestream", color: "warning"});
-  }
-  if (props.program.status === ProgramStatus.CANCELLED) {
-    badges.push({text: "Cancelled", color: "error"});
   }
   return badges;
 });
