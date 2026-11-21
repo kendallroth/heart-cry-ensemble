@@ -15,7 +15,7 @@
       <TextStats class="self-center md:self-start" :stats="seasonStats" />
     </PageHeader>
 
-    <PageWidth v-if="seasonData" align="center" class="grid md:grid-cols-2 gap-8">
+    <PageWidth v-if="seasonData" class="grid md:grid-cols-2 gap-8">
       <TextBlock subtitle="About this season" :title="seasonData.contentTitle ?? seasonData.dateName">
         <template v-if="seasonData.contentDescription">{{ seasonData.contentDescription }}</template>
         <span v-else class="italic">No description available.</span>
@@ -101,21 +101,23 @@
     <PageWidth v-if="seasonData" class="grid lg:grid-cols-2 gap-8 lg:gap-12">
       <div>
         <TextBlock title="Programs" />
-        <div class="mt-4 bg-surface border border-primary/10 rounded-xl">
-          <template v-for="(program, programIdx) in seasonData.programs" :key="programIdx">
-            <hr v-if="programIdx > 0" class="text-primary/10" />
-            <ProgramItem :program="program" />
+        <div class="mt-4 bg-surface border border-primary/10 rounded-xl divide-y-2 divide-primary/5">
+          <template v-if="seasonData.programs.length">
+            <ProgramItem
+              v-for="(program, programIdx) in seasonData.programs"
+              :key="programIdx"
+              :program="program"
+            />
           </template>
+          <ProgramListEmpty v-else class="p-4" />
         </div>
       </div>
       <div>
         <TextBlock title="Songs" />
-        <div class="mt-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-xl">
-          <template v-for="(song, songIdx) in seasonData.songs" :key="song.title">
-            <hr v-if="songIdx > 0" class="text-primary/5" />
-            <!-- TODO: Extract this to re-usable component (handle mobile) -->
-            <SongItem :song="song" />
-          </template>
+        <div
+          class="mt-4 px-4 py-2 bg-primary/5 border border-primary/10 rounded-xl divide-y divide-primary/5"
+        >
+          <SongItem v-for="song in seasonData.songs" :key="song.title" :song="song" />
         </div>
       </div>
     </PageWidth>
@@ -128,6 +130,7 @@ import type {TextStat} from "~/components/typography/TextStats.vue";
 import ConductorChip from "~/modules/member/components/ConductorChip.vue";
 import MemberList from "~/modules/member/components/MemberList.vue";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
+import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
 import SeasonHighlightBadges from "~/modules/season/components/SeasonHighlightBadges.vue";
 import {useQuerySeasonDetails} from "~/modules/season/season.data";
 import SongItem from "~/modules/song/components/SongItem.vue";

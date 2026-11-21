@@ -32,19 +32,20 @@
         </div>
       </div>
       <div v-if="currentSeason" class="grid lg:grid-cols-2 items-start gap-6 lg:gap-8 mt-4 lg:mt-8">
-        <div class="bg-surface border border-primary/10 rounded-xl">
+        <div class="bg-surface border border-primary/10 rounded-xl divide-y-2 divide-primary/5">
           <div class="py-3 px-4 uppercase">Programs</div>
-          <template v-for="(program, programIdx) in currentSeason.programs" :key="programIdx">
-            <hr class="text-primary/10" />
-            <ProgramItem :program="program" />
+          <template v-if="currentSeason.programs.length">
+            <ProgramItem
+              v-for="(program, programIdx) in currentSeason.programs"
+              :key="programIdx"
+              :program="program"
+            />
           </template>
+          <ProgramListEmpty v-else class="p-4" />
         </div>
-        <div class="px-4 bg-primary/5 border border-primary/10 rounded-xl">
+        <div class="px-4 bg-primary/5 border border-primary/10 rounded-xl divide-y divide-primary/5">
           <div class="py-3 uppercase">Songs</div>
-          <template v-for="song in currentSeason.songs" :key="song.title">
-            <hr class="text-primary/5" />
-            <SongItem :song="song" />
-          </template>
+          <SongItem v-for="song in currentSeason.songs" :key="song.title" :song="song" />
         </div>
       </div>
     </PageWidth>
@@ -67,6 +68,7 @@
 import type {TextStat} from "~/components/typography/TextStats.vue";
 import {useQuerySeasonsPageData} from "~/modules/app/app-page.data";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
+import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
 import SeasonCard from "~/modules/season/components/SeasonCard.vue";
 import SeasonHighlightBadges from "~/modules/season/components/SeasonHighlightBadges.vue";
 import {useQueryCurrentSeason, useQuerySeasonList} from "~/modules/season/season.data";

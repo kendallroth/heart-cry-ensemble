@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import type {AppButtonProps} from "./AppButton.vue";
 
-interface AppBadgeProps extends Pick<
+export interface AppBadgeProps extends Pick<
   AppButtonProps,
   "color" | "iconPrepend" | "iconAppend" | "rounded" | "size" | "variant"
 > {

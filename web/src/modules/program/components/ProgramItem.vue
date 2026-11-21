@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center gap-5 px-5 py-3">
+  <div class="flex flex-row items-center gap-5 px-5 py-3" :class="{'opacity-75': programInPast}">
     <div class="flex flex-col items-center">
       <p class="text-accent text-sm uppercase">
         {{ formatDate(program.date, "MMM") }}
@@ -9,8 +9,8 @@
         {{ formatDate(program.date, "YYYY") }}
       </p>
     </div>
-    <div class="flex flex-col gap-0.5" :class="{'opacity-75': program.status === ProgramStatus.CANCELLED}">
-      <p class="flex items-center gap-2 font-medium">
+    <div class="flex flex-col gap-1">
+      <p class="flex max-md:flex-col items-start md:items-center gap-[inherit] md:gap-2 font-medium">
         <span
           :class="{
             'line-through': program.status === ProgramStatus.CANCELLED,
@@ -19,12 +19,12 @@
         >
           {{ program.venue }}
         </span>
-        <AppButton
-          v-if="program.status === ProgramStatus.CANCELLED"
-          color="warning"
-          readonly
+        <AppBadge
+          v-for="badge in programBadges"
+          :key="badge.text"
+          :color="badge.color"
           size="xs"
-          text="Cancelled"
+          :text="badge.text"
           variant="tonal"
         />
       </p>
@@ -35,6 +35,7 @@
 
 <script lang="ts" setup>
 import dayjs from "dayjs";
+import type {AppBadgeProps} from "~/components/AppBadge.vue";
 
 interface ProgramItemProps {
   program: Program;
@@ -46,4 +47,19 @@ const props = defineProps<ProgramItemProps>();
 
 // TODO: Ensure this is a client-side calculation
 const showYear = computed(() => dayjs(props.program.date).year() !== dayjs().year());
+
+const programInPast = computed(() => dayjs(props.program.date).isBefore(undefined, "day"));
+
+const programBadges = computed(() => {
+  const badges: AppBadgeProps[] = [];
+  if (props.program.type === ProgramType.PARTIAL) {
+    badges.push({text: "Partial", color: "warning"});
+  } else if (props.program.type === ProgramType.LIVESTREAM) {
+    badges.push({text: "Livestream", color: "warning"});
+  }
+  if (props.program.status === ProgramStatus.CANCELLED) {
+    badges.push({text: "Cancelled", color: "error"});
+  }
+  return badges;
+});
 </script>

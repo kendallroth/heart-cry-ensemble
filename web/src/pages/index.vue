@@ -77,14 +77,16 @@
     <div class="bg-primary/5">
       <PageWidth class="flex flex-col gap-6 py-8">
         <TextBlock :subtitle="seasonPrograms.subtitle" :title="seasonPrograms.title" />
-        <!-- TODO: Handle no upcoming programs -->
         <!-- TODO: handle link to current/previous season -->
         <div class="bg-surface text-on-surface rounded-xl divide-y-2 divide-primary/5">
-          <ProgramItem
-            v-for="(program, programIdx) in seasonPrograms.programs"
-            :key="programIdx"
-            :program="program"
-          />
+          <template v-if="seasonPrograms.programs.length">
+            <ProgramItem
+              v-for="(program, programIdx) in seasonPrograms.programs"
+              :key="programIdx"
+              :program="program"
+            />
+          </template>
+          <ProgramListEmpty v-else class="p-4" text="No programs yet; check again soon!" />
         </div>
       </PageWidth>
     </div>
@@ -140,6 +142,7 @@ import {useQueryGroupStats, useQueryMusicPlatforms} from "~/modules/app/app.data
 import {useQueryHomePageData} from "~/modules/app/app-page.data";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
 import {useQueryCurrentSeason} from "~/modules/season/season.data";
+import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
 
 const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
 

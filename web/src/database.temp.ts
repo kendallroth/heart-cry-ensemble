@@ -290,6 +290,12 @@ export const seasonMap = {
         type: ProgramType.PARTIAL,
         venue: "Millbank Community Sing",
       },
+      {
+        date: new Date("2018-03-06T01:30:00Z"),
+        location: "St. Jacobs",
+        type: ProgramType.PARTIAL,
+        venue: "Jamaican Fundraiser",
+      },
       {date: new Date("2018-03-18T23:30:00Z"), location: "New Hamburg", venue: "Grace Mennonite Fellowship"},
       {date: new Date("2018-03-22T23:30:00Z"), location: "Brussels", venue: "Zion Mennonite Fellowship"},
       {date: new Date("2018-06-10T13:30:00Z"), location: "Hesson", venue: "Hesson Christian Fellowship"},
@@ -301,7 +307,7 @@ export const seasonMap = {
       },
       {
         date: new Date("2018-06-24T23:30:00Z"),
-        location: "Morrefield",
+        location: "Woodlawn",
         venue: "Woodlawn Mennonite Fellowship",
       },
       {
@@ -312,12 +318,6 @@ export const seasonMap = {
       },
       {date: new Date("2018-07-15T23:30:00Z"), location: "Tara", venue: "Glad Tidings Fellowship"},
       {date: new Date("2018-10-30T23:00:00Z"), location: "New Hamburg", venue: "Nithview Home"},
-      {
-        date: new Date("2019-03-06T01:30:00Z"),
-        location: "St. Jacobs",
-        type: ProgramType.PARTIAL,
-        venue: "Jamaican Fundraiser",
-      },
     ],
     releases: [],
     songs: [
@@ -445,7 +445,7 @@ export const seasonMap = {
       },
       {date: new Date("2019-09-22T22:30:00Z"), location: "Kitchener", venue: "Oasis Mennonite Church"},
       {date: new Date("2019-09-25T23:45:00Z"), location: "Stratford", venue: "Anchor of Hope"},
-      {date: new Date("2019-10-06T15:00:00Z"), location: "Detroit, USA", venue: "Detroit Mission"},
+      {date: new Date("2019-10-06T15:00:00Z"), location: "Detroit, MI", venue: "Detroit Mission"},
       {
         date: new Date("2019-10-20T23:30:00Z"),
         location: "Millbank",
@@ -796,16 +796,24 @@ export const seasonMap = {
     programs: [
       {
         date: new Date("2025-05-02T23:00:00Z"),
-        location: null,
+        location: "Kitchener",
         venue: "Blessed Sacrament Roman Catholic Church",
       },
-      {date: new Date("2025-05-04T23:00:00Z"), location: null, venue: "Elmira Mennonite Church"},
-      {date: new Date("2025-05-11T19:00:00Z"), location: null, venue: "Atwood United Church"},
+      {date: new Date("2025-05-04T23:00:00Z"), location: "Elmira", venue: "Elmira Mennonite Church"},
+      {date: new Date("2025-05-11T19:00:00Z"), location: "Atwood", venue: "Atwood United Church"},
       {date: new Date("2025-05-15T23:00:00Z"), location: "Port Alma", venue: "Talbot Street United Church"},
-      {date: new Date("2025-05-15T23:00:00Z"), location: "Detroit, USA", venue: "Grace Fellowship"},
-      {date: new Date("2025-05-17T23:00:00Z"), location: null, venue: "Hartville Conservative Mennonite"},
-      {date: new Date("2025-05-18T13:30:00Z"), location: null, venue: "Shalom Mennonite Church"},
-      {date: new Date("2025-05-18T23:00:00Z"), location: null, venue: "Seeds of Truth Mennonite Church"},
+      {date: new Date("2025-05-15T23:00:00Z"), location: "Detroit, MI", venue: "Grace Fellowship"},
+      {
+        date: new Date("2025-05-17T23:00:00Z"),
+        location: "Hartville, OH",
+        venue: "Hartville Conservative Mennonite",
+      },
+      {date: new Date("2025-05-18T13:30:00Z"), location: "Guys Mills, PA", venue: "Shalom Mennonite Church"},
+      {
+        date: new Date("2025-05-18T23:00:00Z"),
+        location: "Perry, NY",
+        venue: "Seeds of Truth Mennonite Church",
+      },
     ],
     releases: [releaseMap["2025_spring_album"]],
     songs: [
@@ -886,7 +894,7 @@ export const seasonMap = {
       {
         address: "6449 Wellington County Rd 11, Moorefield, ON N0B 2S0",
         date: new Date("2026-05-03T23:30:00Z"),
-        location: "Moorefield",
+        location: "Woodlawn",
         venue: "Woodlawn Mennonite Fellowship",
       },
       {
