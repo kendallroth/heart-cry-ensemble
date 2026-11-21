@@ -15,7 +15,6 @@
     {
       "name": "Web (run)",
       "cwd": "./web",
-      "command": "npm run dev",
       "autorun": false,
       "icon": "zap"
     },

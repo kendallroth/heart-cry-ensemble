@@ -13,14 +13,14 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [100]
+    "editor.rulers": [110]
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [100]
+    "editor.rulers": [110]
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [100]
+    "editor.rulers": [110]
   }
 }

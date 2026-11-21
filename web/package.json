@@ -7,6 +7,7 @@
     "code:format": "prettier --write .",
     "code:lint": "eslint .",
     "code:lint:fix": "eslint . --fix",
+    "code:type": "nuxt typecheck",
     "dev": "nuxt dev",
     "dev:host": "nuxt dev --host",
     "generate": "nuxt generate",

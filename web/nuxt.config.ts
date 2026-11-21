@@ -40,7 +40,6 @@ export default defineNuxtConfig({
     // Client-side runtime configuration
     public: {
       email: "info@heartcryensemble.ca",
-      heroYoutube: "https://www.youtube.com/embed/zLRb9iOCqlw",
     },
   },
   typescript: {
@@ -67,7 +66,7 @@ export default defineNuxtConfig({
   // Module configuration
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/sanity"],
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxtjs/color-mode"],
   colorMode: {
     preference: "system",
     fallback: "light",
@@ -86,9 +85,5 @@ export default defineNuxtConfig({
       // Variable weight font (only supports 400 - 700)
       {name: "Instrument Sans", weights: ["400 700"], provider: "google"},
     ],
-  },
-  sanity: {
-    projectId: process.env.SANITY_PROJECT_ID || "",
-    dataset: process.env.SANITY_DATASET || "production",
   },
 });
