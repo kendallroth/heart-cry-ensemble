@@ -10,7 +10,7 @@ export const useQueryHomePageData = async () => {
         media: {
           name: "Group photo",
           type: "image",
-          url: "/group-photo.jpg",
+          url: "/photos/group/hce_2025.jpg",
         },
       },
       news: {
@@ -38,7 +38,7 @@ export const useQueryAboutPageData = async () => {
         media: {
           name: "Group photo",
           type: "image",
-          url: "/group-photo.jpg",
+          url: "/photos/group/hce_2025.jpg",
         },
         mission:
           "Our primary focus is bringing encouragement to churches with a small youth presence — and we welcome any opportunity to share our message.",
