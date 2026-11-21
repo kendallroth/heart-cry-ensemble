@@ -85,6 +85,8 @@ const {data: currentSeason} = await useQueryCurrentSeason();
 
 const {data: seasonList} = await useQuerySeasonList();
 
+const now = useNow();
+
 const currentSeasonTitle = computed<string>(() => {
   const relativityMap: Record<SeasonRelativity, string> = {
     past: "Recent Season",
@@ -94,7 +96,7 @@ const currentSeasonTitle = computed<string>(() => {
   if (!currentSeason.value) {
     return relativityMap["past"];
   }
-  const relativity = getSeasonRelativity(currentSeason.value.dateStart, currentSeason.value.dateEnd);
+  const relativity = getSeasonRelativity(currentSeason.value.dateStart, currentSeason.value.dateEnd, now.value);
   return relativityMap[relativity];
 });
 

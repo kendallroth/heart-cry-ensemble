@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import type {SeasonMember} from "~/modules/season/season.types";
 
 export const getSeasonMemberPartLists = (members: SeasonMember[]): {label: string; members: Member[]}[] => {
@@ -13,10 +14,14 @@ export const getSeasonMemberPartLists = (members: SeasonMember[]): {label: strin
 
 export type SeasonRelativity = "past" | "present" | "future";
 
-export const getSeasonRelativity = (seasonStart: Date, seasonEnd: Date): SeasonRelativity => {
-  const now = new Date();
-  if (seasonEnd < now) return "past";
-  if (seasonStart > now) return "future";
+/**
+ * Check the relativity of a season (past, present, or future) based on the current time
+ *
+ * NOTE: Requires hydrated 'now' time to handle both static generation and dynamic hydration.
+ */
+export const getSeasonRelativity = (seasonStart: Date, seasonEnd: Date, now: number): SeasonRelativity => {
+  if (dayjs(seasonEnd).isBefore(now)) return "past";
+  if (dayjs(seasonStart).isAfter(now)) return "future";
   return "present";
 };
 

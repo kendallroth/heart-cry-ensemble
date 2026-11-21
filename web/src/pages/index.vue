@@ -168,10 +168,11 @@ const heroStats = computed<HeroStat[]>(() => [
   {label: "programs given", value: groupStats.value?.programs ?? 0},
 ]);
 
-// TODO: is this client-side
+const now = useNow();
+
 const seasonPrograms = computed<{title: string; subtitle: string; programs: Program[]}>(() => {
   const hasUpcomingPrograms =
-    currentSeason.value?.programs.some((program) => dayjs(program.date).isAfter(undefined, "day")) ?? false;
+    currentSeason.value?.programs.some((program) => dayjs(program.date).isAfter(now.value, "day")) ?? false;
 
   return {
     programs: currentSeason.value?.programs ?? [],

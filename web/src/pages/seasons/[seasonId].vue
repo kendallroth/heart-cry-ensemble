@@ -170,11 +170,13 @@ const seasonDateSpan = computed(() =>
   seasonData.value ? formatDateSpan(seasonData.value.dateStart, seasonData.value.dateEnd) : undefined,
 );
 
+const now = useNow();
+
 const seasonRecordingReleaseDate = computed<{releaseDate: string; released: boolean}>(() => {
   if (!seasonRecording.value?.releaseDate) {
     return {releaseDate: "Unreleased", released: false};
   }
-  const released = dayjs(seasonRecording.value.releaseDate).isBefore(undefined, "day");
+  const released = dayjs(seasonRecording.value.releaseDate).isBefore(now.value, "day");
   const dateFormat = released ? "YYYY" : "MMM DD, YYYY";
   return {releaseDate: dayjs(seasonRecording.value.releaseDate).format(dateFormat), released};
 });

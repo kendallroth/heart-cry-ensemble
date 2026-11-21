@@ -23,7 +23,8 @@
 
 <script lang="ts" setup>
 const publicConfig = useRuntimeConfig().public;
-const currentYear = new Date().getFullYear();
+const now = useNow();
+const currentYear = computed(() => new Date(now.value).getFullYear());
 
 interface SocialLink {
   icon: IconType;

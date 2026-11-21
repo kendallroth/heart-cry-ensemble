@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-row items-center gap-5 px-5 py-3">
+  <!-- Dates are formatted in build timezone during static generation (patched to local timezone during hydration) -->
+  <div class="flex flex-row items-center gap-5 px-5 py-3" data-allow-mismatch="text">
     <div class="flex flex-col items-center" :class="programInPastClass">
       <p class="text-accent text-sm uppercase">
         {{ formatDate(program.date, "MMM") }}
@@ -60,10 +61,11 @@ interface ProgramItemProps {
 
 const props = defineProps<ProgramItemProps>();
 
-// TODO: Ensure this is a client-side calculation
-const showYear = computed(() => dayjs(props.program.date).year() !== dayjs().year());
+const now = useNow();
 
-const programInPast = computed(() => dayjs(props.program.date).isBefore(undefined, "day"));
+const showYear = computed(() => dayjs(props.program.date).year() !== dayjs(now.value).year());
+
+const programInPast = computed(() => dayjs(props.program.date).isBefore(now.value, "day"));
 
 const programInPastClass = computed(() => (programInPast.value ? "opacity-60" : ""));
 
