@@ -1,4 +1,4 @@
-import {loadTempDatabase} from "~/database.temp";
+import {loadTempDatabase} from "~/database-loader.temp";
 
 /** Get current (or most recent) season */
 export const useQueryCurrentSeason = async () => {

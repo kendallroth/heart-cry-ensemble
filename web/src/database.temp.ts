@@ -5,8 +5,6 @@ import {ProgramStatus, ProgramType} from "./modules/program/program.types";
 import {SeasonType} from "./modules/season/season.types";
 import {SongVoicing} from "./modules/song/song.types";
 
-export const loadTempDatabase = () => import("./database.temp");
-
 export const musicPlatformMap = {
   [MusicPlatformType.YOUTUBE]: {
     label: "YouTube",

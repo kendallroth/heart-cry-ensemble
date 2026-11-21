@@ -1,4 +1,4 @@
-import {loadTempDatabase} from "~/database.temp";
+import {loadTempDatabase} from "~/database-loader.temp";
 
 export const useQueryGroupStats = async () => {
   return useAsyncData("groupStats", async () => {
