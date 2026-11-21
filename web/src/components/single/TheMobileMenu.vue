@@ -10,7 +10,7 @@
     <div class="flex flex-col gap-6 h-full p-4">
       <div class="flex items-center gap-2">
         <span class="text-lg font-medium">Menu</span>
-        <ThemeToggleButton class="ml-auto" />
+        <ThemeToggleButton v-if="isDev" class="ml-auto" />
         <AppButton
           color="on-primary"
           :icon="CloseIcon"
@@ -64,6 +64,7 @@ const route = useRoute();
 const {mobile} = useDisplay();
 
 const {CloseIcon} = appIcons;
+const isDev = import.meta.dev;
 
 const dialogRef = useTemplateRef<HTMLDialogElement>("dialogRef");
 const scrollLocked = useScrollLock(import.meta.client ? document.body : null);
