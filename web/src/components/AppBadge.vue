@@ -3,14 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import type {AppButtonProps} from "./AppButton.vue";
-
-export interface AppBadgeProps extends Pick<
-  AppButtonProps,
-  "color" | "iconPrepend" | "iconAppend" | "rounded" | "size" | "variant"
-> {
-  text: string;
-}
+import type {AppBadgeProps} from "./app-badge.types";
 
 defineProps<AppBadgeProps>();
 </script>

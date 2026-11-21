@@ -35,7 +35,7 @@
 
 <script lang="ts" setup>
 import dayjs from "dayjs";
-import type {AppBadgeProps} from "~/components/AppBadge.vue";
+import type {AppBadgeProps} from "~/components/app-badge.types";
 
 interface ProgramItemProps {
   program: Program;

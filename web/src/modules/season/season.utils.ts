@@ -1,4 +1,3 @@
-import type {AppButtonProps} from "~/components/AppButton.vue";
 import type {SeasonMember} from "~/modules/season/season.types";
 
 export const getSeasonMemberPartLists = (members: SeasonMember[]): {label: string; members: Member[]}[] => {
@@ -21,9 +20,8 @@ export const getSeasonRelativity = (seasonStart: Date, seasonEnd: Date): SeasonR
   return "present";
 };
 
-export interface SeasonHighlightBadge extends Partial<
-  Pick<AppButtonProps, "color" | "iconPrepend" | "iconAppend" | "size" | "variant">
-> {
+export interface SeasonHighlightBadgeConfig {
+  color?: string;
   text: string;
 }
 
@@ -53,13 +51,13 @@ const seasonHighlightBadgeTypes = {
     text: "Video",
     condition: (season: Season) => season.releases.some((r) => r.type === MusicReleaseType.VIDEO),
   },
-} as const satisfies Record<string, SeasonHighlightBadge & {condition: (season: Season) => boolean}>;
+} as const satisfies Record<string, SeasonHighlightBadgeConfig & {condition: (season: Season) => boolean}>;
 
 export type SeasonHighlightBadgeType = keyof typeof seasonHighlightBadgeTypes;
 
 /** Season highlight badges indicate memorable aspects of a season (ie. tours, releases, etc) */
 export const getSeasonHighlightBadges = (season: Season, badgeTypes?: SeasonHighlightBadgeType[]) => {
-  const result: SeasonHighlightBadge[] = [];
+  const result: SeasonHighlightBadgeConfig[] = [];
   for (const [key, badgeDefinition] of Object.entries(seasonHighlightBadgeTypes)) {
     if (badgeTypes && !badgeTypes.includes(key as SeasonHighlightBadgeType)) continue;
 

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import type {AppButtonProps} from "~/components/AppButton.vue";
+import type {AppButtonProps} from "~/components/app-button.types";
 
 export interface SeasonHighlightBadge extends Partial<
   Pick<AppButtonProps, "color" | "iconPrepend" | "iconAppend" | "size" | "variant">

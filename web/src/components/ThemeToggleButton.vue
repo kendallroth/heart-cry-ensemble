@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import type {Component} from "vue";
-import type { AppButtonThemeColor } from "./AppButton.vue";
+import type {AppButtonThemeColor} from "./app-button.types";
 
 interface ThemeToggleButtonProps {
   color?: AppButtonThemeColor;
