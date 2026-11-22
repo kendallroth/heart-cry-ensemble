@@ -1,14 +1,10 @@
+# Netlify redirects (https://docs.netlify.com/routing/redirects/)
+#
+# NOTE: No app redirects are needed, as the site is fully prerendered ('nuxt generate'):
+#   - HTTPS is enforced by Netlify
+#   - Missing paths are served the generated '404.html' (with 404 status)
+
 ### Domain Redirects #####
 
-# Redirect http to https
-http://heartcryensemble.netlify.app/*               https://heart-cry-ensemble-app.netlify.app/:splat     301!
-http://www.heart-cry-ensemble-app.netlify.app/*     https://heart-cry-ensemble-app.netlify.app/:splat     301!
-
-# Redirect from Netlify subdomain to actual app subdomain
-https://heart-cry-ensemble-app.netlify.app/*     https://heartcryensemble.ca/:splat        301!
-
-### App Redirects #####
-
-/*  /index.html  200
-
-# TODO: Redirect dynamic routes to 200 page
+# Redirect from Netlify subdomain to custom domain (staging)
+https://heartcry-web-staging.netlify.app/*  https://staging.heartcryensemble.ca/:splat  301!

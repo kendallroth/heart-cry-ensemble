@@ -129,7 +129,7 @@
           welcome any opportunity to share our message in song.
         </TextBlock>
         <div class="flex flex-col gap-4">
-          <AppButton color="accent-light" size="lg" text="Contact Us" />
+          <AppButton color="accent-light" size="lg" text="Contact Us" :to="`mailto:${publicConfig.email}`" />
           <p class="text-sm text-center">We usually plan programs 6 months in advance.</p>
         </div>
       </PageWidth>
@@ -146,6 +146,8 @@ import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue"
 import dayjs from "dayjs";
 
 const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
+
+const publicConfig = useRuntimeConfig().public;
 
 const {data: homePageData} = await useQueryHomePageData();
 

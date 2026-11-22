@@ -31,8 +31,8 @@ import dayjs from "dayjs";
 const publicConfig = useRuntimeConfig().public;
 
 const now = useNow();
-const currentYear = computed(() => new Date(now.value).getFullYear());
-const currentNowTime = computed(() => dayjs(now.value).format("YYYY-MM-DD HH:mm:ss"));
+const currentYear = computed(() => dayjs(now.value).year());
+const currentNowTime = computed(() => dayjs(now.value).format("YYYY-MMM-DD HH:mm:ss"));
 
 interface SocialLink {
   icon: IconType;
