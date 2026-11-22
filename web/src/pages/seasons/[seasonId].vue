@@ -177,7 +177,7 @@ const seasonRecordingReleaseDate = computed<{releaseDate: string; released: bool
     return {releaseDate: "Unreleased", released: false};
   }
   const released = dayjs(seasonRecording.value.releaseDate).isBefore(now.value, "day");
-  const dateFormat = released ? "YYYY" : "MMM DD, YYYY";
+  const dateFormat = released ? "YYYY" : "MMM YYYY";
   return {releaseDate: dayjs(seasonRecording.value.releaseDate).format(dateFormat), released};
 });
 

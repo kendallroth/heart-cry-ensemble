@@ -60,7 +60,7 @@ export const memberMap = {
   christalyn_lichty: {name: "Christalyn Lichty"},
   christopher_good: {name: "Christopher Good"},
   craig_streicher: {name: "Craig Streicher"},
-  crista_gerber: {name: "Crista Gerber"},
+  crista_gerber: {name: "Crista Gingrich"},
   curtis_cressman: {name: "Curtis Cressman"},
   dezhan_good: {name: "Dezhan Good"},
   dorothy_carr: {name: "Dorothy Carr"},
@@ -72,7 +72,7 @@ export const memberMap = {
   kendall_bauman: {name: "Kendall Bauman"},
   kendall_roth: {name: "Kendall Roth"},
   kenton_shantz: {name: "Kenton Shantz"},
-  kerra_martin: {name: "Kerra Martin"},
+  kerra_martin: {name: "Kerra Cressman"},
   kimberly_froese: {name: "Kimberly Froese"},
   kyle_roth: {name: "Kyle Roth"},
   lauren_diefenbacher: {name: "Lauren Diefenbacher"},
@@ -91,7 +91,7 @@ export const memberMap = {
   virginia_gingrich: {name: "Virginia Gingrich"},
   wendell_diefenbacher: {...conductorDefault},
   wendy_shantz: {name: "Wendy Shantz"},
-  yolanda_lichty: {name: "Yolanda Lichty"},
+  yolanda_lichty: {name: "Yolanda Span"},
 } satisfies Record<string, Member>;
 
 export const memberList: Member[] = Object.values(memberMap).sort((a, b) => a.name.localeCompare(b.name));
@@ -245,6 +245,8 @@ export const releaseList: MusicRelease[] = Object.values(releaseMap).sort((a, b)
 export const seasonMap = {
   "2018-spring": {
     slug: "2018-spring",
+    contentDescription: null,
+    contentTitle: "Our first season!",
     dateStart: new Date("2017-08-24"),
     dateEnd: new Date("2018-08-12"),
     media: {
@@ -336,6 +338,9 @@ export const seasonMap = {
   },
   "2019-spring": {
     slug: "2019-spring",
+    contentDescription:
+      "Our second season wound up morphing into a men's ensemble as various commitments prevented many of the previous members from returning.",
+    contentTitle: "Men's Ensemble",
     dateStart: new Date("2018-11-05"),
     dateEnd: new Date("2019-03-31"),
     media: {
@@ -397,6 +402,8 @@ export const seasonMap = {
   },
   "2019-fall": {
     slug: "2019-fall",
+    contentDescription: null,
+    contentTitle: null,
     dateStart: new Date("2019-05-06"),
     dateEnd: new Date("2019-11-12"),
     media: {
@@ -477,7 +484,7 @@ export const seasonMap = {
     slug: "2020-fall",
     contentTitle: "Our first recording!",
     contentDescription:
-      "Unfortunately our fall season was heavily impacted by COVID, but we were thankful we were able to record our first album!",
+      "Unfortunately our fall season was heavily impacted by COVID, but we were grateful we were able to rehearse and connect even if differently than normal. While we missed live performances and interacting with the audiences, we took the chance to venture into recording our first album!",
     dateStart: new Date("2020-07-06"),
     dateEnd: new Date("2020-10-26"),
     dateName: "Fall 2020",
@@ -537,6 +544,8 @@ export const seasonMap = {
   },
   "2022-spring": {
     slug: "2022-spring",
+    contentDescription: null,
+    contentTitle: null,
     dateStart: new Date("2022-01-03"),
     dateEnd: new Date("2022-04-03"),
     media: {
@@ -602,6 +611,8 @@ export const seasonMap = {
   },
   "2023-fall": {
     slug: "2023-fall",
+    contentDescription: null,
+    contentTitle: null,
     dateStart: new Date("2023-07-10"),
     dateEnd: new Date("2023-11-05"),
     media: {
@@ -754,9 +765,9 @@ export const seasonMap = {
   },
   "2025-tour": {
     slug: "2025-tour",
-    contentTitle: "Our 2025 season culminated in an extended weekend tour around Lake Erie.",
+    contentTitle: "Our first tour!",
     contentDescription:
-      "After the tour we were able to record once again, as well as film our first music video!",
+      "Our 2025 season culminated in an extended weekend tour around Lake Erie. After the tour we were able to record once again, as well as film our first music video!",
     dateStart: new Date("2025-02-03"),
     dateEnd: new Date("2025-05-18"),
     media: {
@@ -834,6 +845,8 @@ export const seasonMap = {
   },
   "2026-spring": {
     slug: "2026-spring",
+    contentDescription: null,
+    contentTitle: null,
     dateStart: new Date("2026-01-19"),
     dateEnd: new Date("2026-05-10"),
     media: {
