@@ -1,7 +1,7 @@
 <template>
   <!-- Dates are formatted in build timezone during static generation (patched to local timezone during hydration) -->
   <div class="flex flex-row items-center gap-5 px-5 py-3" data-allow-mismatch="text">
-    <div class="flex flex-col items-center" :class="programInPastClass">
+    <div class="flex flex-col items-center" :class="programRelativityDateTimeClasses">
       <p class="text-accent text-sm uppercase">
         {{ formatDate(program.date, "MMM") }}
       </p>
@@ -35,7 +35,7 @@
       <p class="flex items-center gap-2">
         <span>{{ program.location || "N/A" }}</span>
         &bullet;
-        <span :class="programInPastClass">{{ formatDate(program.date, "HH:mm") }}</span>
+        <span :class="programRelativityDateTimeClasses">{{ formatDate(program.date, "HH:mm") }}</span>
         <template v-if="program.eventLink">
           &bullet;
           <AppButton
@@ -67,7 +67,8 @@ const showYear = computed(() => dayjs(props.program.date).year() !== dayjs(now.v
 
 const programInPast = computed(() => dayjs(props.program.date).isBefore(now.value, "day"));
 
-const programInPastClass = computed(() => (programInPast.value ? "opacity-60" : ""));
+/** Program date/time classes are based on relativity (ie. past/future) */
+const programRelativityDateTimeClasses = computed(() => (programInPast.value ? "opacity-60" : "font-medium"));
 
 const programBadges = computed(() => {
   const badges: AppBadgeProps[] = [];
