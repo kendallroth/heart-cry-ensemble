@@ -36,7 +36,12 @@
         tile-class="lg:before:-inset-x-2 before:bg-surface lg:before:rounded-2xl"
       >
         <AppMedia alt="Album cover" aspect="1/1" class="w-40 md:w-32 bg-primary/10 border-2 border-primary">
-          <img v-if="seasonRecording.thumbnailUrl" alt="Album cover" :src="seasonRecording.thumbnailUrl" />
+          <img
+            v-if="seasonRecording.thumbnailUrl"
+            v-image-fallback="'square'"
+            alt="Album cover"
+            :src="seasonRecording.thumbnailUrl"
+          />
         </AppMedia>
         <TextBlock
           class="max-sm:items-center"
