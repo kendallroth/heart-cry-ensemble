@@ -18,7 +18,7 @@
           />
         </nav>
 
-        <ThemeToggleButton v-if="isDev" />
+        <ThemeToggleButton />
 
         <AppButton
           color="accent"
@@ -63,5 +63,4 @@ const appLinks: AppLink[] = [
 ];
 
 const mobileMenuOpen = ref(false);
-const isDev = import.meta.dev;
 </script>
