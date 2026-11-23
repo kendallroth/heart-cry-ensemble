@@ -17,6 +17,10 @@ This changelog tracks aggregated changes and releases, and is intended to summar
 > [!Warning]
 > May include features under development and staging releases!
 
+- ✨ Overhaul website design
+- 🚧️ Switch from Gridsome to Nuxt
+- 🗑️ Remove Sanity CMS (temporarily storing in local files)
+
 ## [2022-07-07]
 
 - ✨ Streaming platform links/icons

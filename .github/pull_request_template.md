@@ -18,10 +18,6 @@
 
 > Describe whether/what deployment changes are required
 
-### Migrations
-
-> Summarize included migrations
-
 ## Checklist
 
 - [ ] Code quality has been checked locally (formatting, linting, etc)

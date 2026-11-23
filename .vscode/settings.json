@@ -11,6 +11,12 @@
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json"
   },
+  // Explicitly ignore some Nuxt output directories as Git ignore files can be overridden if/when searching
+  //   with a directory prefix.
+  "search.exclude": {
+    "**/.output": true,
+    "**/.nuxt": true
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [110]

@@ -1,0 +1,3 @@
+[build]
+  # Skip builds triggered via GitHub push (use webhook builds instead)
+  ignore = "exit 0"

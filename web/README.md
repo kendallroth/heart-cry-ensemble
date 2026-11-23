@@ -1,4 +1,27 @@
-# Web app
+# Heart Cry Ensemble (web)
+
+## Setup
+
+> [!NOTE]
+> Work in progress
+
+```bash
+# Install dependencies
+npm install
+```
+
+## Development
+
+```bash
+# Start web dev server
+npm run dev
+
+# View local production build
+npm run preview
+
+# Generate static site
+npm run generate
+```
 
 ## TODOs
 
