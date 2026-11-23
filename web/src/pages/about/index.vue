@@ -3,7 +3,7 @@
     <PageHeader subtitle="About Us" title="A love of singing" title-class="lg:flex lg:flex-col">
       <template #title>
         <span>Two families, a love of singing, and a&nbsp;</span>
-        <span class="text-accent-light">tradition worth keeping.</span>
+        <span class="text-accent">tradition worth keeping.</span>
       </template>
     </PageHeader>
 
@@ -19,11 +19,10 @@
           :media="aboutPageData?.content.media"
         />
         <TextBlock
-          class="bg-primary text-on-primary flex-col-reverse px-6 py-4 rounded-xl"
+          class="theme-dark bg-surface flex-col-reverse px-6 py-4 rounded-xl"
           subtitle="Our Mission"
-          subtitle-class="text-accent-light"
           :title="aboutPageData?.content.mission ?? enDash"
-          title-class="!text-on-primary text-xl"
+          title-class="text-xl"
         />
       </div>
     </PageWidth>

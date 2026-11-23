@@ -5,20 +5,20 @@
         <template #title>
           <span>Sacred music,</span>
           <br />
-          <span class="text-accent-light">sung from the heart</span>
+          <span class="text-accent">sung from the heart</span>
         </template>
         <template #default>
           <p v-if="homePageData">{{ homePageData.header.description }}</p>
           <div class="flex flex-col lg:flex-row items-center gap-4">
             <AppButton
-              color="on-primary"
+              color="primary"
               :icon-prepend="PlayIcon"
               size="lg"
               text="Listen to our music"
               :to="`#${headerIdListenAnywhere}`"
             />
             <AppButton
-              color="on-primary"
+              color="primary"
               text="See past seasons"
               :to="routeLinks.seasons.index()"
               variant="outlined"
@@ -29,22 +29,23 @@
           <AppMedia
             alt="Group photo"
             aspect="3/2"
-            class="bg-on-primary/10"
+            class="bg-primary/10"
             :media="homePageData?.header.media"
           />
         </template>
       </PageHeader>
 
-      <PageWidth class="grid md:grid-cols-3 gap-2 py-4 bg-surface">
-        <template v-for="(stat, idx) in heroStats" :key="stat.label">
-          <hr v-if="idx > 0" class="md:hidden text-primary/10" />
-          <div class="flex flex-row md:flex-col items-center justify-center gap-2 md:gap-1">
-            <div class="font-serif text-4xl font-medium">{{ stat.value }}</div>
-            <div class="">{{ stat.label }}</div>
-          </div>
-        </template>
-      </PageWidth>
-      <hr class="w-full text-primary/25" />
+      <div class="bg-surface border-b border-primary/25">
+        <PageWidth class="grid md:grid-cols-3 gap-2 py-4">
+          <template v-for="(stat, idx) in heroStats" :key="stat.label">
+            <hr v-if="idx > 0" class="md:hidden text-primary/10" />
+            <div class="flex flex-row md:flex-col items-center justify-center gap-2 md:gap-1">
+              <div class="font-serif text-4xl font-medium">{{ stat.value }}</div>
+              <div class="">{{ stat.label }}</div>
+            </div>
+          </template>
+        </PageWidth>
+      </div>
     </div>
 
     <PageWidth align="center" class="grid md:grid-cols-2 gap-8">
@@ -121,15 +122,15 @@
     <div class="lg:px-8">
       <PageWidth
         align="center"
-        class="grid md:grid-cols-2 gap-8 py-6 lg:py-10 text-on-primary"
-        tile-class="lg:before:-inset-x-4 before:bg-primary lg:before:rounded-2xl"
+        class="grid md:grid-cols-2 gap-8 py-6 lg:py-10 theme-dark"
+        tile-class="lg:before:-inset-x-4 before:bg-surface lg:before:rounded-2xl"
       >
-        <TextBlock title="Invite us to your church" title-class="!text-on-primary">
+        <TextBlock title="Invite us to your church">
           Our heart is to bring encouragement — especially to congregations with few young people — but we
           welcome any opportunity to share our message in song.
         </TextBlock>
         <div class="flex flex-col gap-4">
-          <AppButton color="accent-light" size="lg" text="Contact Us" :to="`mailto:${publicConfig.email}`" />
+          <AppButton color="accent" size="lg" text="Contact Us" :to="`mailto:${publicConfig.email}`" />
           <p class="text-sm text-center">We usually plan programs 6 months in advance.</p>
         </div>
       </PageWidth>

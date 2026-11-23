@@ -91,6 +91,15 @@ const sizeClasses: Record<AppButtonSize, {height: string; icon: string; content:
 // NOTE: Expects all base theme colors to have a corresponding 'on-' variant (which is reasonable)
 const allThemeColors = new Set<string>(baseThemeColors.flatMap((color) => [color, `on-${color}`]));
 
+/**
+ * Theme color CSS variable reference (ie. 'primary' -> '--bg-primary', 'on-primary' -> '--text-on-primary')
+ *
+ * NOTE: Raw theme variables are used (vs Tailwind '--color-*' variables), as Tailwind variables are
+ *         resolved at ':root' and would ignore scoped theme containers (ie. '.theme-dark')!
+ */
+const getThemeColorVar = (color: string) =>
+  color.startsWith("on-") ? `var(--text-${color})` : `var(--bg-${color})`;
+
 /** Whether button uses non-theme color (ie. any CSS color) */
 const isCustomColor = computed(() => !allThemeColors.has(props.color));
 
@@ -110,8 +119,8 @@ const colorStyle = computed(() => {
   const baseColor = props.color.replace(/^on-/, "");
   const pairColor = baseColor === props.color ? `on-${baseColor}` : baseColor;
   return {
-    "--btn-color": `var(--color-${props.color})`,
-    "--btn-on-color": props.textColor ?? `var(--color-${pairColor})`,
+    "--btn-color": getThemeColorVar(props.color),
+    "--btn-on-color": props.textColor ?? getThemeColorVar(pairColor),
   };
 });
 
@@ -171,7 +180,7 @@ const tagAttrs = computed(() => {
 
 .btn {
   /* Automatic black/white text based on lightness (used when '--btn-on-color' is unset/invalid) */
-  --btn-on-color-auto: var(--color-on-primary, white);
+  --btn-on-color-auto: var(--text-on-primary, white);
 
   background-color: var(--btn-bg, transparent);
   /* Border always present (transparent when unused) to keep variant sizes consistent */

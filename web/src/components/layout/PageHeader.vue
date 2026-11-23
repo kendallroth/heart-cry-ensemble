@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-primary text-on-primary flex flex-col items-center">
+  <div class="theme-dark bg-background flex flex-col items-center">
     <PageWidth align="center" class="grid gap-8 py-6 md:py-10" :class="{'md:grid-cols-2': slots.media}">
       <div class="flex flex-col gap-6">
         <AppButton
           v-if="backText"
           class="w-fit -ml-3 -mt-4 -mb-2"
-          color="on-primary"
+          color="primary"
           :icon-prepend="appIcons.ArrowLeftIcon"
           size="sm"
           :text="backText || 'Back'"
@@ -13,7 +13,7 @@
           @click="handleBack"
         />
         <div
-          class="text-accent-light uppercase"
+          class="text-accent uppercase"
           :class="[subtitleClass, {'max-md:text-center': props.mobileTitleLayout === 'center'}]"
         >
           <slot name="subtitle" v-bind="{subtitle}">

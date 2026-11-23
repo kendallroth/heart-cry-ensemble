@@ -8,7 +8,7 @@
   <ClientOnly>
     <div
       v-if="showBreakpointIndicators"
-      class="fixed left-2 bottom-2 py-1 px-2 bg-accent-light rounded-full text-xs shadow z-10 pointer-events-none"
+      class="fixed left-2 bottom-2 py-1 px-2 bg-accent text-on-accent rounded-full text-xs shadow z-10 pointer-events-none"
     >
       <component :is="breakpointIcon" class="inline w-3 h-3 mr-1" />
       {{ breakpointName || "xs" }}

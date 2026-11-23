@@ -24,7 +24,7 @@ interface ThemeToggleButtonProps {
 }
 
 withDefaults(defineProps<ThemeToggleButtonProps>(), {
-  color: "on-primary"
+  color: "primary"
 });
 
 type ThemePreference = "system" | "light" | "dark";

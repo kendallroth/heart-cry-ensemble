@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-primary text-on-primary">
+  <header class="theme-dark bg-background">
     <PageWidth align="center" class="flex-row justify-between py-4">
       <div class="flex items-center gap-4">
         <NuxtImg class="rounded-lg" src="/icon-maskable.png" width="48" />
@@ -11,7 +11,7 @@
             v-for="link in appLinks"
             :key="link.label"
             active-class="font-semibold"
-            color="on-primary"
+            color="primary"
             :text="link.label"
             :to="link.path"
             variant="text"
@@ -21,7 +21,7 @@
         <ThemeToggleButton v-if="isDev" />
 
         <AppButton
-          color="accent-light"
+          color="accent"
           target="_blank"
           text="Host a program"
           :to="`mailto:${publicConfig.email}?subject=Host a program`"
@@ -31,7 +31,7 @@
         <AppButton
           :aria-expanded="mobileMenuOpen"
           aria-haspopup="dialog"
-          color="on-primary"
+          color="primary"
           :icon="MenuIcon"
           text="Open menu"
           variant="text"

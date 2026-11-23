@@ -3,21 +3,15 @@
   <dialog
     ref="dialogRef"
     aria-label="Main menu"
-    class="mobile-menu fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-[80vw] max-w-[350px] bg-primary text-on-primary"
+    class="mobile-menu fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-[80vw] max-w-[350px] theme-dark bg-background"
     @click="handleDialogClick"
     @close="open = false"
   >
     <div class="flex flex-col gap-6 h-full p-4">
       <div class="flex items-center gap-2">
-        <span class="text-lg font-medium">Menu</span>
-        <ThemeToggleButton v-if="isDev" class="ml-auto" />
-        <AppButton
-          color="on-primary"
-          :icon="CloseIcon"
-          text="Close menu"
-          variant="text"
-          @click="open = false"
-        />
+        <span class="text-lg font-medium mr-auto">Menu</span>
+        <ThemeToggleButton v-if="isDev" />
+        <AppButton color="primary" :icon="CloseIcon" text="Close menu" variant="text" @click="open = false" />
       </div>
 
       <nav class="flex flex-col gap-1">
@@ -26,7 +20,7 @@
           :key="link.label"
           active-class="font-semibold"
           class="justify-start!"
-          color="on-primary"
+          color="primary"
           :text="link.label"
           :to="link.path"
           variant="text"
@@ -36,7 +30,7 @@
 
       <div class="flex flex-col mt-auto gap-4">
         <AppButton
-          color="accent-light"
+          color="accent"
           target="_blank"
           text="Host a program"
           :to="`mailto:${publicConfig.email}?subject=Host a program`"

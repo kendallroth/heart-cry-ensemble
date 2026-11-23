@@ -7,7 +7,6 @@ import type {RouteLocationRaw} from "vue-router";
 export const baseThemeColors = [
   "primary",
   "accent",
-  "accent-light",
   "warning",
   "error",
   "background",

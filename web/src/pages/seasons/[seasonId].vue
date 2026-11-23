@@ -32,22 +32,21 @@
     <div v-if="seasonRecording" class="lg:px-6">
       <PageWidth
         align="center"
-        class="flex-col md:flex-row gap-8 py-6 md:max-lg:py-4 text-on-primary"
-        tile-class="lg:before:-inset-x-2 before:bg-primary lg:before:rounded-2xl"
+        class="flex-col md:flex-row gap-8 py-6 md:max-lg:py-4 theme-dark"
+        tile-class="lg:before:-inset-x-2 before:bg-surface lg:before:rounded-2xl"
       >
         <AppMedia
           alt="Album cover"
           aspect="1/1"
-          class="w-40 md:w-32 bg-on-primary/10 border-2 border-on-primary"
+          class="w-40 md:w-32 bg-primary/10 border-2 border-primary"
         >
           <img v-if="seasonRecording.thumbnailUrl" alt="Album cover" :src="seasonRecording.thumbnailUrl" />
         </AppMedia>
         <TextBlock
           class="max-sm:items-center"
           subtitle="Season Recording"
-          subtitle-class="!text-accent-light"
           :title="seasonRecording.title"
-          title-class="!text-on-primary truncate"
+          title-class="truncate"
         >
           <div class="flex items-center gap-2">
             <span
@@ -56,7 +55,7 @@
             >
               <WarningFilledIcon
                 v-if="!seasonRecordingReleaseDate.released"
-                class="text-on-primary"
+                class="text-on-background"
                 :class="appIcons.sizeClasses.sm"
               />
               {{ seasonRecordingReleaseDate.releaseDate }}
@@ -74,7 +73,7 @@
           <AppButton
             v-for="platform in seasonRecording.platforms"
             :key="platform.type"
-            color="on-primary"
+            color="primary"
             :icon-prepend="appIcons.MusicIcon"
             target="_blank"
             :text="platform.label"

@@ -10,10 +10,17 @@
 /* Theming */
 /**************************************************************************************************/
 
-/* TODO: Add some theme color light/dark variants (ie. primary, etc), and maybe make split accent colors use that?  */
+/*
+ * Sections can force a theme with '.theme-dark' / '.theme-light' (ie. dark sections in light theme),
+ *   which re-declares the raw theme variables for all descendants (no 'dark:' styles needed).
+ *
+ * NOTE: Tailwind '--color-*' variables are resolved at ':root' and ignore scoped themes when read
+ *   directly via 'var()' (use the raw '--bg-*' / '--text-on-*' variables instead). Utility classes
+ *   (ie. 'bg-primary') are unaffected, as '@theme inline' outputs the raw variables.
+ */
 
 /* Customize the dark variant to use classes vs 'prefers-color-scheme' media query */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *, .theme-dark, .theme-dark *));
 
 /* Theme color variables should be static (always generated regardless of use) */
 @theme inline static {
@@ -21,8 +28,6 @@
   --color-on-primary: var(--text-on-primary);
   --color-accent: var(--bg-accent);
   --color-on-accent: var(--text-on-accent);
-  --color-accent-light: var(--bg-accent-light);
-  --color-on-accent-light: var(--text-on-accent-light);
 
   --color-warning: var(--bg-warning);
   --color-on-warning: var(--text-on-warning);
@@ -39,16 +44,15 @@
   --primary-unthemed: #12213a;
 }
 
-/* Light theme */
-:root {
+/* Light theme (also forced within '.theme-light' containers) */
+:root,
+.theme-light {
   --bg-primary: var(--primary-unthemed);
   --text-on-primary: #ffffff;
-  --bg-accent: #3e6e60;
+  --bg-accent: #86651a;
   --text-on-accent: #ffffff;
-  --bg-accent-light: #a9d3c3;
-  --text-on-accent-light: #000000;
 
-  --bg-warning: #a15c07;
+  --bg-warning: #b54708;
   --text-on-warning: #ffffff;
   --bg-error: #b42318;
   --text-on-error: #ffffff;
@@ -59,17 +63,15 @@
   --text-on-surface: var(--primary-unthemed);
 }
 
-/* Dark theme */
+/* Dark theme (also forced within '.theme-dark' containers, ie. dark sections in light theme) */
 :root.dark,
-:is(html).dark {
+.theme-dark {
   --bg-primary: #c3d3ea;
   --text-on-primary: var(--primary-unthemed);
-  --bg-accent: #a9d3cd;
+  --bg-accent: #dcc285;
   --text-on-accent: var(--primary-unthemed);
-  --bg-accent-light: #3e6e60;
-  --text-on-accent-light: #ffffff;
 
-  --bg-warning: #f2c26b;
+  --bg-warning: #f79e5a;
   --text-on-warning: var(--primary-unthemed);
   --bg-error: #f4a39a;
   --text-on-error: var(--primary-unthemed);
@@ -78,6 +80,16 @@
   --text-on-background: #e6ecf4;
   --bg-surface: #1b2e4d;
   --text-on-surface: #e6ecf4;
+}
+
+/* Scoped themes must reset inherited text color (resolved against the scoped variables) */
+.theme-light {
+  color-scheme: light;
+  color: var(--text-on-background);
+}
+.theme-dark {
+  color-scheme: dark;
+  color: var(--text-on-background);
 }
 
 /**************************************************************************************************/
