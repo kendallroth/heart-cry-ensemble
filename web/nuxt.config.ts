@@ -1,6 +1,9 @@
 import {fileURLToPath} from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
+import {createJiti} from "jiti";
+
+import type * as RoutesUtils from "./src/utils/routes.utils";
 
 const getAliasPath = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
@@ -36,6 +39,26 @@ export default defineNuxtConfig({
   srcDir: "src/",
   // Must enable SSR for pre-rendered static routes/pages
   ssr: true,
+  hooks: {
+    async "prerender:routes"(ctx) {
+      // NOTE: App source is loaded via 'jiti' as config may load natively (Node ESM needs file extensions),
+      //   and string paths keep config type checking out of app source (which relies on Nuxt global types).
+      const jiti = createJiti(import.meta.url);
+
+      // Explicitly prerender all season pages (rather than relying on crawling links from seasons list)
+      const {seasonList} = await jiti.import<{seasonList: {slug: string}[]}>("./src/database.temp");
+      const {routeLinks} = await jiti.import<typeof RoutesUtils>("./src/utils/routes.utils");
+      for (const season of seasonList) {
+        ctx.routes.add(routeLinks.seasons.details(season.slug));
+      }
+    },
+  },
+  nitro: {
+    prerender: {
+      // Fail static generation on prerender errors (ie. broken links, render errors) to avoid silent failures
+      failOnError: true,
+    },
+  },
   runtimeConfig: {
     // Client-side runtime configuration
     public: {
