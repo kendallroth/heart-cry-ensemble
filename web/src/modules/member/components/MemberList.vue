@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col gap-1 md:gap-2">
+  <div class="flex flex-col gap-0.5 md:gap-1">
     <div class="text-2xl font-serif capitalize">{{ part }}</div>
-    <p v-for="(member, memberIdx) in sortedMembers" :key="memberIdx" class="text-sm">{{ member.name }}</p>
+    <p v-for="(member, memberIdx) in sortedMembers" :key="memberIdx" class="text">{{ member.name }}</p>
   </div>
 </template>
 

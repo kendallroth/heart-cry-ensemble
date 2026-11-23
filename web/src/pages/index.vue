@@ -79,7 +79,9 @@
             />
           </template>
         </TextBlock>
-        <div class="bg-surface text-on-surface rounded-xl divide-y-2 divide-primary/5">
+        <div
+          class="bg-surface text-on-surface rounded-xl border border-primary/5 divide-y-2 divide-primary/5"
+        >
           <template v-if="seasonPrograms.programs.length">
             <ProgramItem
               v-for="(program, programIdx) in seasonPrograms.programs"
