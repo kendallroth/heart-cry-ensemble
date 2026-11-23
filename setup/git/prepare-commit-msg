@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Ensures branch name contains a task number (ie. GH-123)
+#
+# Prevents commits on branches without task number (can be overridden!), and will
+#   automatically prepend commit message with parsed task number (ie. "[GH-123]").
+#
+# NOTE: This hook can be disabled with 'SKIP_PREPARE_COMMIT_MSG' flag, while still running other hooks!
+#         'SKIP_PREPARE_COMMIT_MSG=true git commit'
+#
+# Source: https://medium.com/bytelimes/automate-issue-numbers-in-git-commit-messages-2790ae6fe071
+
+branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+# Ensure branch_name is not empty and is not in a detached HEAD state (i.e. rebase).
+if [ ! -z "$branch_name" ] && [ "$branch_name" != "HEAD" ] && [ "$SKIP_PREPARE_COMMIT_MSG" != "true" ]; then
+  prefix_pattern='GH-[0-9]{1,4}'
+
+  [[ $branch_name =~ $prefix_pattern ]]
+
+  prefix=${BASH_REMATCH[0]}
+
+  prefix_in_commit=$(grep -c "\[$prefix\]" $1)
+
+  if ! [[ -n "$prefix" ]]; then
+    echo "Branch name does not contain task number"
+    exit 1
+  fi
+
+  if ! [[ $prefix_in_commit -ge 1 ]]; then
+    sed -i.bak -e "1s~^~[$prefix] ~" $1
+  fi
+fi

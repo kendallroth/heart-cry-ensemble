@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Use '@theme static' to generate all CSS variables (not just used ones). */
+/* Use '@theme inline' to output CSS variables (vs resolved values) when referencing other variables. */
+
+/* Detect classes mentioned in Nuxt config file */
+@source "../../../nuxt.config.ts";
+
+/**************************************************************************************************/
+/* Theming */
+/**************************************************************************************************/
+
+/*
+ * Sections can force a theme with '.theme-dark' / '.theme-light' (ie. dark sections in light theme),
+ *   which re-declares the raw theme variables for all descendants (no 'dark:' styles needed).
+ *
+ * NOTE: Tailwind '--color-*' variables are resolved at ':root' and ignore scoped themes when read
+ *   directly via 'var()' (use the raw '--bg-*' / '--text-on-*' variables instead). Utility classes
+ *   (ie. 'bg-primary') are unaffected, as '@theme inline' outputs the raw variables.
+ */
+
+/* Customize the dark variant to use classes vs 'prefers-color-scheme' media query */
+@custom-variant dark (&:where(.dark, .dark *, .theme-dark, .theme-dark *));
+
+/* Theme color variables should be static (always generated regardless of use) */
+@theme inline static {
+  --color-primary: var(--bg-primary);
+  --color-on-primary: var(--text-on-primary);
+  --color-accent: var(--bg-accent);
+  --color-on-accent: var(--text-on-accent);
+
+  --color-danger: var(--bg-danger);
+  --color-on-danger: var(--text-on-danger);
+
+  --color-background: var(--bg-background);
+  --color-on-background: var(--text-on-background);
+  --color-surface: var(--bg-surface);
+  --color-on-surface: var(--text-on-surface);
+}
+
+:root {
+  --primary-unthemed: #12213a;
+}
+
+/* Light theme (also forced within '.theme-light' containers) */
+:root,
+.theme-light {
+  --bg-primary: var(--primary-unthemed);
+  --text-on-primary: #ffffff;
+  --bg-accent: #86651a;
+  --text-on-accent: #ffffff;
+
+  --bg-danger: #b42318;
+  --text-on-danger: #ffffff;
+
+  --bg-background: #fcfcfe;
+  --text-on-background: var(--primary-unthemed);
+  --bg-surface: #ffffff;
+  --text-on-surface: var(--primary-unthemed);
+}
+
+/* Dark theme (also forced within '.theme-dark' containers, ie. dark sections in light theme) */
+:root.dark,
+.theme-dark {
+  --bg-primary: #c3d3ea;
+  --text-on-primary: var(--primary-unthemed);
+  --bg-accent: #dcc285;
+  --text-on-accent: var(--primary-unthemed);
+
+  --bg-danger: #f4a39a;
+  --text-on-danger: var(--primary-unthemed);
+
+  --bg-background: var(--primary-unthemed);
+  --text-on-background: #e6ecf4;
+  --bg-surface: #1b2e4d;
+  --text-on-surface: #e6ecf4;
+}
+
+/* Scoped themes must reset inherited text color (resolved against the scoped variables) */
+.theme-light {
+  color-scheme: light;
+  color: var(--text-on-background);
+}
+.theme-dark {
+  color-scheme: dark;
+  color: var(--text-on-background);
+}
+
+/**************************************************************************************************/
+/* Fonts */
+/**************************************************************************************************/
+
+@theme {
+  /* --default-font-family uses --font-sans */
+  --font-sans: "Instrument Sans", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+}

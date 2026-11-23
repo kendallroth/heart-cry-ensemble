@@ -1,0 +1,41 @@
+{
+  "name": "web",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "code:format": "prettier --write .",
+    "code:lint": "eslint .",
+    "code:lint:fix": "eslint . --fix",
+    "code:type": "nuxt typecheck",
+    "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host",
+    "generate": "TZ=America/Toronto nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "@nuxt/fonts": "^1.2.0",
+    "@nuxt/image": "^2.2.1",
+    "@nuxtjs/color-mode": "^4.1.0",
+    "@nuxtjs/sanity": "^2.5.0",
+    "@tabler/icons-vue": "^3.52.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@vueuse/core": "^15.0.0",
+    "dayjs": "^1.11.23",
+    "eslint": "^10.15.0",
+    "nuxt": "^4.6.4",
+    "tailwindcss": "^4.3.5",
+    "vue": "^3.5.45",
+    "vue-router": "^5.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "jiti": "^2.7.0",
+    "prettier": "^3.10.1",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.14"
+  }
+}

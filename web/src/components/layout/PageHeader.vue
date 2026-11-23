@@ -1,0 +1,72 @@
+<template>
+  <div class="theme-dark bg-background flex flex-col items-center">
+    <PageWidth align="center" class="grid gap-8 py-6 md:py-10" :class="{'md:grid-cols-2': slots.media}">
+      <div class="flex flex-col gap-6">
+        <AppButton
+          v-if="backText"
+          class="w-fit -ml-3 -mt-4 -mb-2"
+          color="primary"
+          :icon-prepend="appIcons.ArrowLeftIcon"
+          size="sm"
+          :text="backText || 'Back'"
+          variant="text"
+          @click="handleBack"
+        />
+        <div
+          class="text-accent uppercase"
+          :class="[subtitleClass, {'max-md:text-center': props.mobileTitleLayout === 'center'}]"
+        >
+          <slot name="subtitle" v-bind="{subtitle}">
+            {{ subtitle }}
+          </slot>
+        </div>
+        <h2
+          :alt="title"
+          class="text-6xl font-serif"
+          :class="[titleClass, {'max-md:text-center': props.mobileTitleLayout === 'center'}]"
+        >
+          <slot name="title" v-bind="{title}">
+            {{ title }}
+          </slot>
+        </h2>
+        <slot name="default" />
+      </div>
+      <slot name="media" />
+    </PageWidth>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import type {HTMLAttributes} from "vue";
+import {useRouter} from "vue-router";
+
+interface PageHeaderProps {
+  backText?: string;
+  mobileTitleLayout?: "center" | "default";
+  subtitle: string;
+  subtitleClass?: HTMLAttributes["class"];
+  /** NOTE: Title is always required (even if not shown) for accessibility */
+  title: string;
+  titleClass?: HTMLAttributes["class"];
+}
+
+const props = withDefaults(defineProps<PageHeaderProps>(), {
+  backText: undefined,
+  mobileTitleLayout: "default",
+  subtitleClass: undefined,
+  titleClass: undefined,
+});
+
+const slots = defineSlots<{
+  default: () => unknown;
+  subtitle?: (props: {subtitle: string}) => unknown;
+  title?: (props: {title: string}) => unknown;
+  media?: () => unknown;
+}>();
+
+const router = useRouter();
+
+const handleBack = () => {
+  router.back();
+};
+</script>

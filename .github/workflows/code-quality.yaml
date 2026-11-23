@@ -1,0 +1,37 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches-ignore:
+      - production
+      - staging
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run code:lint
+
+      - name: Run Prettier
+        run: npm run code:format
+
+      - name: Run Typechecking
+        run: npm run code:type

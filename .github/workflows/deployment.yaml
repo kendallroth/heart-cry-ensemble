@@ -1,0 +1,20 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - staging
+      - production
+  workflow_dispatch:
+
+jobs:
+  deploy-web:
+    name: Web (Netlify)
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
+
+    steps:
+      - name: Trigger Netlify build hook
+        env:
+          NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+        run: curl -sf -X POST -d '{}' "$NETLIFY_BUILD_HOOK_URL?trigger_branch=${{ github.ref_name }}"
