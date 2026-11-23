@@ -15,7 +15,10 @@
         We couldn't find the page you were looking for. It may have moved when we refreshed the site, or the
         link may be mistyped.
       </p>
-      <AppButton :icon-prepend="appIcons.ArrowLeftIcon" to="/">Back to home</AppButton>
+      <div class="flex items-center gap-4">
+        <AppButton :icon-prepend="appIcons.ArrowLeftIcon" @click="handleBack">Back</AppButton>
+        <AppButton :icon-prepend="appIcons.HomeIcon" variant="tonal" @click="handleHome">Home</AppButton>
+      </div>
     </PageWidth>
   </PageLayout>
 
@@ -30,4 +33,14 @@ interface ErrorProps {
 }
 
 defineProps<ErrorProps>();
+
+const router = useRouter();
+
+const handleBack = () => {
+  router.back();
+};
+
+const handleHome = async () => {
+  await clearError({redirect: "/"});
+};
 </script>

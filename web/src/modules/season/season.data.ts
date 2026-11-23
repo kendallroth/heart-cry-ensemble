@@ -15,20 +15,13 @@ export const useQuerySeasonList = async () => {
   });
 };
 
-/** @throws Nuxt error if season is not found */
-export const useQuerySeasonDetails = async (slug: MaybeRefOrGetter<string>) => {
-  // TODO: Is this the correct way for reactivity?
-  return useAsyncData(`season-${toValue(slug)}`, async () => {
-    const {seasonList} = await loadTempDatabase();
-    const season = seasonList.find((season) => season.slug === toValue(slug));
-    if (!season) {
-      throw createError({
-        fatal: true,
-        status: 404,
-        statusText: "Season not found",
-        message: "Season not found",
-      });
-    }
-    return season;
-  });
+export const useQuerySeasonDetails = (slug: MaybeRefOrGetter<string>) => {
+  return useAsyncData(
+    () => `season-${toValue(slug)}`,
+    async () => {
+      const {seasonList} = await loadTempDatabase();
+      // NOTE: Nuxt warns in development when a handler resolves to 'undefined'
+      return seasonList.find((season) => season.slug === toValue(slug)) ?? null;
+    },
+  );
 };

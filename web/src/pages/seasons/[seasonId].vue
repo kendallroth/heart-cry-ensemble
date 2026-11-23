@@ -35,11 +35,7 @@
         class="flex-col md:flex-row gap-8 py-6 md:max-lg:py-4 theme-dark"
         tile-class="lg:before:-inset-x-2 before:bg-surface lg:before:rounded-2xl"
       >
-        <AppMedia
-          alt="Album cover"
-          aspect="1/1"
-          class="w-40 md:w-32 bg-primary/10 border-2 border-primary"
-        >
+        <AppMedia alt="Album cover" aspect="1/1" class="w-40 md:w-32 bg-primary/10 border-2 border-primary">
           <img v-if="seasonRecording.thumbnailUrl" alt="Album cover" :src="seasonRecording.thumbnailUrl" />
         </AppMedia>
         <TextBlock
@@ -141,7 +137,23 @@ import SongItem from "~/modules/song/components/SongItem.vue";
 const route = useRoute();
 const {WarningFilledIcon} = appIcons;
 
-const {data: seasonData} = await useQuerySeasonDetails(() => route.params.seasonId as string);
+const {data: seasonData, error: seasonError} = await useQuerySeasonDetails(
+  () => route.params.seasonId as string,
+);
+
+// Errors thrown within 'useAsyncData' handlers are captured (not propagated), and must be rethrown
+//   (as fatal) to display the error page (including during client-side navigation).
+if (seasonError.value) {
+  throw createError({...seasonError.value, fatal: true});
+}
+if (!seasonData.value) {
+  throw createError({
+    fatal: true,
+    status: 404,
+    statusText: "Season not found",
+    message: "Season not found",
+  });
+}
 
 const seasonStats = computed<TextStat[]>(() => [
   {label: "singers", value: seasonData.value?.members.length ?? 0},
