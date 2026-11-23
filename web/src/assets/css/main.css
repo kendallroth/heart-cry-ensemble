@@ -29,10 +29,8 @@
   --color-accent: var(--bg-accent);
   --color-on-accent: var(--text-on-accent);
 
-  --color-warning: var(--bg-warning);
-  --color-on-warning: var(--text-on-warning);
-  --color-error: var(--bg-error);
-  --color-on-error: var(--text-on-error);
+  --color-danger: var(--bg-danger);
+  --color-on-danger: var(--text-on-danger);
 
   --color-background: var(--bg-background);
   --color-on-background: var(--text-on-background);
@@ -52,10 +50,8 @@
   --bg-accent: #86651a;
   --text-on-accent: #ffffff;
 
-  --bg-warning: #b54708;
-  --text-on-warning: #ffffff;
-  --bg-error: #b42318;
-  --text-on-error: #ffffff;
+  --bg-danger: #b42318;
+  --text-on-danger: #ffffff;
 
   --bg-background: #fcfcfe;
   --text-on-background: var(--primary-unthemed);
@@ -71,10 +67,8 @@
   --bg-accent: #dcc285;
   --text-on-accent: var(--primary-unthemed);
 
-  --bg-warning: #f79e5a;
-  --text-on-warning: var(--primary-unthemed);
-  --bg-error: #f4a39a;
-  --text-on-error: var(--primary-unthemed);
+  --bg-danger: #f4a39a;
+  --text-on-danger: var(--primary-unthemed);
 
   --bg-background: var(--primary-unthemed);
   --text-on-background: #e6ecf4;

@@ -72,15 +72,15 @@ const programInPastClass = computed(() => (programInPast.value ? "opacity-60" : 
 const programBadges = computed(() => {
   const badges: AppBadgeProps[] = [];
   if (props.program.status === ProgramStatus.CANCELLED) {
-    badges.push({text: "Cancelled", color: "error"});
+    badges.push({text: "Cancelled", color: "danger"});
   } else if (props.program.status === ProgramStatus.TENTATIVE) {
-    badges.push({text: "Pending", color: "warning"});
+    badges.push({text: "Pending", color: "accent"});
   }
 
   if (props.program.type === ProgramType.PARTIAL) {
-    badges.push({text: "Partial", color: "warning"});
+    badges.push({text: "Partial", color: "accent"});
   } else if (props.program.type === ProgramType.LIVESTREAM) {
-    badges.push({text: "Livestream", color: "warning"});
+    badges.push({text: "Livestream", color: "accent"});
   }
   return badges;
 });

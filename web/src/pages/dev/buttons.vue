@@ -26,7 +26,7 @@
         <AppButton disabled>Disabled</AppButton>
         <AppButton disabled variant="outlined">Disabled</AppButton>
         <AppButton disabled to="/seasons">Disabled link</AppButton>
-        <AppButton color="error" readonly>Readonly</AppButton>
+        <AppButton color="danger" readonly>Readonly</AppButton>
         <AppButton color="gold" text-color="#000">Gold override</AppButton>
       </div>
       <div class="flex gap-3 items-center">
@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-const colors = ["primary", "accent", "error", "#e91e63", "gold"];
+const colors = ["primary", "accent", "danger", "#e91e63", "gold"];
 const sizes = ["sm", "md", "lg"] as const;
 const variants = ["elevated", "flat", "tonal", "outlined", "text"] as const;
 </script>

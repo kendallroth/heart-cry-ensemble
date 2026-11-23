@@ -32,12 +32,12 @@ export interface SeasonHighlightBadgeConfig {
 
 const seasonHighlightBadgeTypes = {
   tour: {
-    color: "warning",
+    color: "accent",
     text: "Tour",
     condition: (season: Season) => !!season.tour,
   },
   mens: {
-    color: "warning",
+    color: "accent",
     text: "TTBB",
     condition: (season: Season) => season.type === SeasonType.MENS,
   },
