@@ -17,17 +17,6 @@
       "cwd": "./web",
       "autorun": false,
       "icon": "zap"
-    },
-    {
-      "name": "API",
-      "cwd": "./api",
-      "icon": "file-directory"
-    },
-    {
-      "name": "API (run)",
-      "cwd": "./api",
-      "autorun": false,
-      "icon": "zap"
     }
   ]
 }
