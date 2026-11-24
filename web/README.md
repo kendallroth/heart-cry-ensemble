@@ -25,7 +25,10 @@ npm run generate
 
 ## TODOs
 
+- Add music/releases page (see Claude design)
+- Investigate Netlify integration with Nuxt
 - Project documentation
+  - Update overhaul PRs
 - Enable linting import order rules (import-x supported by Nuxt already)
 - Fetch data from Sanity
   - Automatically type data
