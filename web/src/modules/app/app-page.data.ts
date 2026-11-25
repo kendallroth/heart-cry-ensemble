@@ -18,6 +18,10 @@ export const useQueryHomePageData = async () => {
           "Our 2026 season wrapped up in May with recording and filming sessions, so stay tuned for our upcoming album release!",
         title: "Upcoming music videos",
         subtitle: "Latest news",
+        link: {
+          label: "View season",
+          url: "/seasons/2026-spring",
+        },
         media: {
           name: "You Are My Hiding Place",
           type: "video",

@@ -52,6 +52,15 @@
       <template v-if="homePageData">
         <TextBlock :subtitle="homePageData.news.subtitle || 'Latest news'" :title="homePageData.news.title">
           {{ homePageData.news.description }}
+          <AppButton
+            v-if="homePageData.news.link"
+            class="w-fit -ml-4"
+            color="accent"
+            :icon-append="appIcons.ArrowRightIcon"
+            :text="homePageData.news.link.label"
+            :to="homePageData.news.link.url"
+            variant="text"
+          />
         </TextBlock>
         <AppMedia alt="News media" aspect="3/2" class="bg-primary/10" :media="homePageData.news.media" />
       </template>
