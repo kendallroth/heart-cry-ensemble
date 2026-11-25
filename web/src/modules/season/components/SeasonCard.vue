@@ -10,7 +10,7 @@
     <p class="text-lg font-medium text-primary truncate">{{ season.title || "N/A" }}</p>
     <p>{{ formatDateSpan(season.dateStart, season.dateEnd) }}</p>
     <SeasonHighlightBadges :badges="badges" class="my-1" />
-    <TextListBulleted class="text-sm">
+    <TextListBulleted class="mt-auto text-sm">
       <div class="flex items-center gap-1">
         <PeopleIcon class="text-accent" :class="appIcons.sizeClasses.sm" />
         {{ season.members.length }} singers
