@@ -4,13 +4,7 @@ import type {RouteLocationRaw} from "vue-router";
 // NOTE: Component prop types live in '.ts' files, as type-aware ESLint cannot resolve named type
 //         exports from '.vue' files (they are typed as 'any' via the generic '*.vue' module shim).
 
-export const baseThemeColors = [
-  "primary",
-  "accent",
-  "danger",
-  "background",
-  "surface",
-] as const;
+export const baseThemeColors = ["primary", "accent", "danger", "background", "surface"] as const;
 
 type BaseThemeColor = (typeof baseThemeColors)[number];
 export type AppButtonThemeColor = BaseThemeColor | `on-${BaseThemeColor}`;

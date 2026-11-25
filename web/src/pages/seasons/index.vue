@@ -10,20 +10,18 @@
     <PageWidth class="flex-col">
       <div v-if="currentSeason" class="grid lg:grid-cols-2 lg:items-end gap-4 lg:gap-8">
         <TextBlock :subtitle="currentSeasonTitle" :title="currentSeason.title">
-          <p class="text-sm">
+          <TextListBulleted class="text-sm">
             <span class="font-medium">
               {{ formatDateSpan(currentSeason.dateStart, currentSeason.dateEnd) }}
             </span>
-            <template v-if="currentSeason.conductor">
-              <span>&nbsp;&bullet;&nbsp;</span>
-              Conducted by {{ currentSeason.conductor.name }}
-            </template>
-          </p>
+            <span v-if="currentSeason.conductor">Conducted by {{ currentSeason.conductor.name }}</span>
+          </TextListBulleted>
           <AppButton
             class="w-fit"
             :icon-append="appIcons.ArrowRightIcon"
             text="View season details"
             :to="routeLinks.seasons.details(currentSeason.slug)"
+            variant="tonal"
           />
         </TextBlock>
         <div class="flex flex-col items-center lg:items-end gap-4">
@@ -96,7 +94,11 @@ const currentSeasonTitle = computed<string>(() => {
   if (!currentSeason.value) {
     return relativityMap["past"];
   }
-  const relativity = getSeasonRelativity(currentSeason.value.dateStart, currentSeason.value.dateEnd, now.value);
+  const relativity = getSeasonRelativity(
+    currentSeason.value.dateStart,
+    currentSeason.value.dateEnd,
+    now.value,
+  );
   return relativityMap[relativity];
 });
 

@@ -1,11 +1,11 @@
 <template>
   <PageLayout class="gap-8 pb-0 md:gap-12 lg:pb-12">
     <div>
-      <PageHeader subtitle="Choral Ensemble • Ontario" title="Sacred music, sung from the heart">
+      <PageHeader subtitle="Choral Ensemble&ensp;•&ensp;Ontario" title="Sacred music, sung from the heart">
         <template #title>
           <span>Sacred music,</span>
           <br />
-          <span class="text-accent">sung from the heart</span>
+          <span class="text-accent italic">sung from the heart</span>
         </template>
         <template #default>
           <p v-if="homePageData">{{ homePageData.header.description }}</p>
@@ -52,6 +52,15 @@
       <template v-if="homePageData">
         <TextBlock :subtitle="homePageData.news.subtitle || 'Latest news'" :title="homePageData.news.title">
           {{ homePageData.news.description }}
+          <AppButton
+            v-if="homePageData.news.link"
+            class="w-fit -ml-4"
+            color="accent"
+            :icon-append="appIcons.ArrowRightIcon"
+            :text="homePageData.news.link.label"
+            :to="homePageData.news.link.url"
+            variant="text"
+          />
         </TextBlock>
         <AppMedia alt="News media" aspect="3/2" class="bg-primary/10" :media="homePageData.news.media" />
       </template>
@@ -111,7 +120,7 @@
           <div class="font-medium">{{ platform.label }}</div>
           <AppButton
             class="ml-auto"
-            :icon="LinkIcon"
+            :icon="appIcons.LinkIcon"
             size="sm"
             target="_blank"
             :to="platform.link"
@@ -148,7 +157,7 @@ import {useQueryCurrentSeason} from "~/modules/season/season.data";
 import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
 import dayjs from "dayjs";
 
-const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
+const {MusicIcon, PlayIcon} = appIcons;
 
 const publicConfig = useRuntimeConfig().public;
 

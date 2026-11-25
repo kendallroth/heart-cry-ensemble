@@ -49,23 +49,7 @@
           :title="seasonRecording.title"
           title-class="truncate"
         >
-          <div class="flex items-center gap-2">
-            <span
-              class="flex items-center gap-1"
-              :class="{'italic opacity-80': !seasonRecordingReleaseDate.released}"
-            >
-              <WarningFilledIcon
-                v-if="!seasonRecordingReleaseDate.released"
-                class="text-on-background"
-                :class="appIcons.sizeClasses.sm"
-              />
-              {{ seasonRecordingReleaseDate.releaseDate }}
-            </span>
-            <template v-if="(seasonRecording.trackCount ?? 0) > 1">
-              &bullet;
-              <span>{{ seasonRecording.trackCount }} tracks</span>
-            </template>
-          </div>
+          <ReleaseStats :release="seasonRecording" :stats="['date', 'tracks']" />
         </TextBlock>
         <div
           v-if="seasonRecording.platforms.length"
@@ -129,18 +113,17 @@
 </template>
 
 <script lang="ts" setup>
-import dayjs from "dayjs";
 import type {TextStat} from "~/components/typography/TextStats.vue";
 import ConductorChip from "~/modules/member/components/ConductorChip.vue";
 import MemberList from "~/modules/member/components/MemberList.vue";
 import ProgramItem from "~/modules/program/components/ProgramItem.vue";
 import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
+import ReleaseStats from "~/modules/release/components/ReleaseStats.vue";
 import SeasonHighlightBadges from "~/modules/season/components/SeasonHighlightBadges.vue";
 import {useQuerySeasonDetails} from "~/modules/season/season.data";
 import SongItem from "~/modules/song/components/SongItem.vue";
 
 const route = useRoute();
-const {WarningFilledIcon} = appIcons;
 
 const {data: seasonData, error: seasonError} = await useQuerySeasonDetails(
   () => route.params.seasonId as string,
@@ -185,17 +168,6 @@ const seasonBadges = computed(() =>
 const seasonDateSpan = computed(() =>
   seasonData.value ? formatDateSpan(seasonData.value.dateStart, seasonData.value.dateEnd) : undefined,
 );
-
-const now = useNow();
-
-const seasonRecordingReleaseDate = computed<{releaseDate: string; released: boolean}>(() => {
-  if (!seasonRecording.value?.releaseDate) {
-    return {releaseDate: "Unreleased", released: false};
-  }
-  const released = dayjs(seasonRecording.value.releaseDate).isBefore(now.value, "day");
-  const dateFormat = released ? "YYYY" : "MMM YYYY";
-  return {releaseDate: dayjs(seasonRecording.value.releaseDate).format(dateFormat), released};
-});
 
 const seasonMemberPartLists = computed(() => getSeasonMemberPartLists(seasonData.value?.members ?? []));
 </script>

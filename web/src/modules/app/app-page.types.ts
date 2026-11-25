@@ -9,6 +9,7 @@ export interface AppPageHome {
     description: string;
     title: string;
     subtitle?: string;
+    link?: {label: string; url: string} | null;
     media: AppMedia;
   };
 }

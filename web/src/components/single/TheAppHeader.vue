@@ -59,6 +59,7 @@ const {MenuIcon} = appIcons;
 const appLinks: AppLink[] = [
   {label: "Home", path: routeLinks.home()},
   {label: "Seasons", path: routeLinks.seasons.index()},
+  {label: "Music", path: routeLinks.music()},
   {label: "About", path: routeLinks.about()},
 ];
 

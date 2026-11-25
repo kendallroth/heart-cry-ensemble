@@ -7,6 +7,9 @@ export enum MusicReleaseType {
 export interface MusicRelease {
   title: string;
   type: MusicReleaseType;
+  /** When the release was recorded */
+  recordDate: Date;
+  /** When the release was made available */
   releaseDate: Date | null;
   thumbnailUrl?: string;
   /** Omitted for videos */
