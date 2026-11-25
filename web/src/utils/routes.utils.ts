@@ -4,6 +4,7 @@ type RouteLink = (...args: any[]) => string;
 export const routeLinks = {
   about: () => "/about",
   home: () => "/",
+  music: () => "/music",
   seasons: {
     index: () => "/seasons",
     details: (slug: string) => `/seasons/${slug}`,
