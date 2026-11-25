@@ -32,21 +32,18 @@
       <p v-if="program.address && !programInPast" class="text-xs opacity-80">
         {{ program.address }}
       </p>
-      <p class="flex items-center gap-2">
+      <TextListBulleted>
         <span>{{ program.location || "N/A" }}</span>
-        &bullet;
         <span :class="programRelativityDateTimeClasses">{{ formatDate(program.date, "HH:mm") }}</span>
-        <template v-if="program.eventLink">
-          &bullet;
-          <AppButton
-            :icon="appIcons.LinkIcon"
-            size="xs"
-            target="_blank"
-            :to="program.eventLink"
-            variant="text"
-          />
-        </template>
-      </p>
+        <AppButton
+          v-if="program.eventLink"
+          :icon="appIcons.LinkIcon"
+          size="xs"
+          target="_blank"
+          :to="program.eventLink"
+          variant="text"
+        />
+      </TextListBulleted>
     </div>
   </div>
 </template>

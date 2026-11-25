@@ -10,13 +10,16 @@
     <p class="text-lg font-medium text-primary truncate">{{ season.title || "N/A" }}</p>
     <p>{{ formatDateSpan(season.dateStart, season.dateEnd) }}</p>
     <SeasonHighlightBadges :badges="badges" class="my-1" />
-    <div class="flex items-center gap-1 mt-auto text-sm">
-      <PeopleIcon class="text-accent" :class="appIcons.sizeClasses.sm" />
-      {{ season.members.length }} singers
-      <span class="mx-0.5">&bullet;</span>
-      <PlaceIcon class="text-accent" :class="appIcons.sizeClasses.sm" />
-      {{ season.programs.length || "No" }} programs
-    </div>
+    <TextListBulleted class="text-sm">
+      <div class="flex items-center gap-1">
+        <PeopleIcon class="text-accent" :class="appIcons.sizeClasses.sm" />
+        {{ season.members.length }} singers
+      </div>
+      <div class="flex items-center gap-1">
+        <PlaceIcon class="text-accent" :class="appIcons.sizeClasses.sm" />
+        {{ season.programs.length || "No" }} programs
+      </div>
+    </TextListBulleted>
   </component>
 </template>
 
