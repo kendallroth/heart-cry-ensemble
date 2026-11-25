@@ -1,3 +1,5 @@
+import {sort} from "fast-sort";
+
 import {MusicPlatformType} from "./modules/app/app.types";
 import {MusicReleaseType} from "./modules/release/release.types";
 import {MemberPart} from "./modules/member/member.types";
@@ -94,12 +96,13 @@ export const memberMap = {
   yolanda_lichty: {name: "Yolanda Span"},
 } satisfies Record<string, Member>;
 
-export const memberList: Member[] = Object.values(memberMap).sort((a, b) => a.name.localeCompare(b.name));
+export const memberList: Member[] = sort(Object.values(memberMap)).asc((member) => member.name);
 
 export const releaseMap = {
   "2020_fall_album": {
     title: "God Is Near",
     type: MusicReleaseType.ALBUM,
+    recordDate: new Date("2020-10-30"),
     releaseDate: new Date("2022-07-01"),
     trackCount: 15,
     thumbnailUrl:
@@ -119,6 +122,7 @@ export const releaseMap = {
   "2022_spring_album": {
     title: "Because He Lives",
     type: MusicReleaseType.ALBUM,
+    recordDate: new Date("2022-05-01"),
     releaseDate: new Date("2022-07-01"),
     trackCount: 14,
     thumbnailUrl:
@@ -138,6 +142,7 @@ export const releaseMap = {
   "2022_spring_single": {
     title: "Bless the Lord",
     type: MusicReleaseType.SINGLE,
+    recordDate: new Date("2022-05-01"),
     releaseDate: new Date("2022-07-01"),
     thumbnailUrl:
       "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/10/b2/38/10b238f3-0270-452a-3f00-094b3e23cdce/198004062725.jpg/600x600bb.jpg",
@@ -156,6 +161,7 @@ export const releaseMap = {
   "2023_fall_album": {
     title: "And Send Thee Help",
     type: MusicReleaseType.ALBUM,
+    recordDate: new Date("2023-11-04"),
     releaseDate: new Date("2024-10-01"),
     trackCount: 15,
     thumbnailUrl:
@@ -175,6 +181,7 @@ export const releaseMap = {
   "2023_fall_single": {
     title: "Hiding Place",
     type: MusicReleaseType.SINGLE,
+    recordDate: new Date("2023-11-04"),
     releaseDate: new Date("2024-07-01"),
     thumbnailUrl:
       "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/57/a4/e2/57a4e2d0-5c16-d0a6-f6bc-13496d55faf0/198595242322.jpg/600x600bb.jpg",
@@ -190,15 +197,10 @@ export const releaseMap = {
       ),
     ],
   },
-  "2023_fall_video": {
-    title: "You Are My Hiding Place",
-    type: MusicReleaseType.VIDEO,
-    releaseDate: new Date("2024-07-01"),
-    platforms: [releasePlatform(MusicPlatformType.YOUTUBE, "https://www.youtube.com/watch?v=zLRb9iOCqlw")],
-  },
   "2025_spring_album": {
     title: "All the Way",
     type: MusicReleaseType.ALBUM,
+    recordDate: new Date("2025-05-24"),
     releaseDate: new Date("2025-07-01"),
     trackCount: 9,
     thumbnailUrl:
@@ -215,9 +217,18 @@ export const releaseMap = {
       ),
     ],
   },
+  "2025_spring_video": {
+    title: "You Are My Hiding Place",
+    type: MusicReleaseType.VIDEO,
+    recordDate: new Date("2025-05-31"),
+    releaseDate: new Date("2025-07-15"),
+    thumbnailUrl: "https://img.youtube.com/vi/zLRb9iOCqlw/mqdefault.jpg",
+    platforms: [releasePlatform(MusicPlatformType.YOUTUBE, "https://www.youtube.com/watch?v=zLRb9iOCqlw")],
+  },
   "2026_spring_album": {
     title: "Be Thou My Vision",
     type: MusicReleaseType.ALBUM,
+    recordDate: new Date("2026-05-09"),
     releaseDate: null,
     trackCount: 10,
     platforms: [],
@@ -225,22 +236,23 @@ export const releaseMap = {
   "2026_spring_video_1": {
     title: "Be Thou My Vision",
     type: MusicReleaseType.VIDEO,
+    recordDate: new Date("2026-06-13"),
     releaseDate: null,
     platforms: [],
   },
   "2026_spring_video_2": {
     title: "God Is Here",
     type: MusicReleaseType.VIDEO,
+    recordDate: new Date("2026-06-13"),
     releaseDate: null,
     platforms: [],
   },
 } satisfies Record<string, MusicRelease>;
 
-export const releaseList: MusicRelease[] = Object.values(releaseMap).sort((a, b) => {
-  if (!a.releaseDate) return 1;
-  if (!b.releaseDate) return -1;
-  return b.releaseDate.getTime() - a.releaseDate.getTime();
-});
+/** NOTE: Sorted by record date as not new releases will not have release dates initially */
+export const releaseList: MusicRelease[] = sort(Object.values(releaseMap)).desc((release) =>
+  release.recordDate.getTime(),
+);
 
 export const seasonMap = {
   "2018-spring": {
@@ -681,7 +693,7 @@ export const seasonMap = {
         venue: "St. Agatha Catholic Church",
       },
     ],
-    releases: [releaseMap["2023_fall_album"], releaseMap["2023_fall_single"], releaseMap["2023_fall_video"]],
+    releases: [releaseMap["2023_fall_album"], releaseMap["2023_fall_single"]],
     songs: [
       {composer: "Glenn Wonacott", title: "God is Here"},
       {composer: "Karlin Miller", title: "Psalm 20"},
@@ -824,7 +836,7 @@ export const seasonMap = {
         venue: "Seeds of Truth Mennonite Church",
       },
     ],
-    releases: [releaseMap["2025_spring_album"]],
+    releases: [releaseMap["2025_spring_album"], releaseMap["2025_spring_video"]],
     songs: [
       {composer: "Pavel Chesnokov", title: "May Thy Holy Spirit", voicing: SongVoicing.MEN},
       {composer: "Lyle Stutzman", title: "All the Way my Saviour Leads Me"},
@@ -940,6 +952,6 @@ export const seasonMap = {
   },
 } satisfies Record<string, Season>;
 
-export const seasonList: Season[] = Object.values(seasonMap).sort(
-  (a, b) => b.dateStart.getTime() - a.dateStart.getTime(),
+export const seasonList: Season[] = sort(Object.values(seasonMap)).desc((season) =>
+  season.dateStart.getTime(),
 );
