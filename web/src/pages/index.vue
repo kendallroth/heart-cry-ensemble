@@ -1,11 +1,11 @@
 <template>
   <PageLayout class="gap-8 pb-0 md:gap-12 lg:pb-12">
     <div>
-      <PageHeader subtitle="Choral Ensemble • Ontario" title="Sacred music, sung from the heart">
+      <PageHeader subtitle="Choral Ensemble&ensp;•&ensp;Ontario" title="Sacred music, sung from the heart">
         <template #title>
           <span>Sacred music,</span>
           <br />
-          <span class="text-accent">sung from the heart</span>
+          <span class="text-accent italic">sung from the heart</span>
         </template>
         <template #default>
           <p v-if="homePageData">{{ homePageData.header.description }}</p>
@@ -111,7 +111,7 @@
           <div class="font-medium">{{ platform.label }}</div>
           <AppButton
             class="ml-auto"
-            :icon="LinkIcon"
+            :icon="appIcons.LinkIcon"
             size="sm"
             target="_blank"
             :to="platform.link"
@@ -148,7 +148,7 @@ import {useQueryCurrentSeason} from "~/modules/season/season.data";
 import ProgramListEmpty from "~/modules/program/components/ProgramListEmpty.vue";
 import dayjs from "dayjs";
 
-const {LinkIcon, MusicIcon, PlayIcon} = appIcons;
+const {MusicIcon, PlayIcon} = appIcons;
 
 const publicConfig = useRuntimeConfig().public;
 

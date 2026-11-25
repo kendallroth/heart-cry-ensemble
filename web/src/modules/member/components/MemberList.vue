@@ -6,6 +6,8 @@
 </template>
 
 <script lang="ts" setup>
+import {sort} from "fast-sort";
+
 interface MemberListProps {
   members: Member[];
   part: string;
@@ -13,5 +15,5 @@ interface MemberListProps {
 
 const props = defineProps<MemberListProps>();
 
-const sortedMembers = computed(() => props.members.slice().sort((a, b) => a.name.localeCompare(b.name)));
+const sortedMembers = computed(() => sort(props.members).asc((member) => member.name));
 </script>

@@ -3,6 +3,9 @@ import landscapeError from "./placeholder_landscape_error.png";
 import square from "./placeholder_square.png";
 import squareError from "./placeholder_square_error.png";
 
+/** `AppMedia` child element classes (for `img`) */
+export const appMediaChildImgClasses = "w-full h-full object-cover";
+
 export type PlaceholderType = "square" | "landscape";
 
 /** Placeholder images (statically imported to guarantee existence at build time) */

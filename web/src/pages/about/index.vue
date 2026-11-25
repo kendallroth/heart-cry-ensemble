@@ -3,7 +3,7 @@
     <PageHeader subtitle="About Us" title="A love of singing" title-class="lg:flex lg:flex-col">
       <template #title>
         <span>Two families, a love of singing, and a&nbsp;</span>
-        <span class="text-accent">tradition worth keeping.</span>
+        <span class="text-accent italic">tradition worth keeping.</span>
       </template>
     </PageHeader>
 
